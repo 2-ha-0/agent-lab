@@ -2,9 +2,8 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
-import { EmbeddingService } from './embedding/embedding.service';
-import { EmbeddingController } from './embedding/embedding.controller';
 import { OllamaModule } from './ollama/ollama.module';
+import { EmbeddingModule } from './embedding/embedding.module';
 
 @Module({
   imports: [
@@ -12,8 +11,9 @@ import { OllamaModule } from './ollama/ollama.module';
       isGlobal: true,
     }),
     OllamaModule,
+    EmbeddingModule,
   ],
-  controllers: [AppController, EmbeddingController],
-  providers: [AppService, EmbeddingService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
