@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { EmbeddingService } from './embedding/embedding.service';
+import { EmbeddingController } from './embedding/embedding.controller';
 
 @Module({
   imports: [
@@ -10,7 +11,7 @@ import { EmbeddingService } from './embedding/embedding.service';
       isGlobal: true,
     }),
   ],
-  controllers: [AppController],
+  controllers: [AppController, EmbeddingController],
   providers: [AppService, EmbeddingService],
 })
 export class AppModule {}
