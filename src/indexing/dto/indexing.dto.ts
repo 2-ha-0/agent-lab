@@ -6,4 +6,10 @@ export class IndexingDto {
     example: 'hello world',
   })
   text!: string;
+
+  @ApiProperty({
+    description: '인덱싱할 이름',
+    example: 'test',
+  })
+  name!: string;
 }

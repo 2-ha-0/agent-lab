@@ -10,6 +10,6 @@ export class IndexingController {
   @Post('')
   @ApiOperation({ summary: '인덱싱' })
   async indexing(@Body() body: IndexingDto) {
-    return this.indexingService.indexing(body.text);
+    return this.indexingService.indexing(body.name, body.text);
   }
 }

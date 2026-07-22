@@ -18,15 +18,19 @@ export class QdrantService {
     });
   }
 
-  async upsert(embedding: any[]) {
+  async upsert(embedding: any[], name: string, text: string) {
+    const id = uuidv4();
+
     await this.client.upsert('test', {
       wait: true,
       points: [
         {
-          id: uuidv4(),
+          id: id,
           vector: embedding,
           payload: {
-            name: 'test',
+            id: id,
+            name: name,
+            text: text,
           },
         },
       ],

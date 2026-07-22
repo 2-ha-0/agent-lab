@@ -9,10 +9,10 @@ export class IndexingService {
     private readonly embeddingService: EmbeddingService,
   ) {}
 
-  async indexing(text: string) {
+  async indexing(name: string, text: string) {
     const embedding = await this.embeddingService.embedding(text);
 
-    const result = await this.qdrantService.upsert(embedding);
+    const result = await this.qdrantService.upsert(embedding, name, text);
 
     console.log(result);
 

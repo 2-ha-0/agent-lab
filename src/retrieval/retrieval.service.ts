@@ -12,6 +12,11 @@ export class RetrievalService {
   async retrieval(query: string) {
     const embedding = await this.embeddingService.embedding(query);
     const result = await this.qdrantService.search(embedding);
-    return result;
+
+    if (result) {
+      return result[0]?.payload?.name;
+    } else {
+      return null;
+    }
   }
 }
