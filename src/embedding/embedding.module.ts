@@ -8,5 +8,6 @@ import { EmbeddingController } from './embedding.controller';
   imports: [HttpModule],
   providers: [EmbeddingService, OllamaService],
   controllers: [EmbeddingController],
+  exports: [EmbeddingService],
 })
 export class EmbeddingModule {}

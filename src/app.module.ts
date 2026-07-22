@@ -5,6 +5,8 @@ import { ConfigModule } from '@nestjs/config';
 import { OllamaModule } from './ollama/ollama.module';
 import { EmbeddingModule } from './embedding/embedding.module';
 import { QdrantModule } from './qdrant/qdrant.module';
+import { IndexingModule } from './indexing/indexing.module';
+import { RetrievalModule } from './retrieval/retrieval.module';
 
 @Module({
   imports: [
@@ -14,6 +16,8 @@ import { QdrantModule } from './qdrant/qdrant.module';
     OllamaModule,
     EmbeddingModule,
     QdrantModule,
+    IndexingModule,
+    RetrievalModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { QdrantClient } from '@qdrant/js-client-rest';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class QdrantService {
@@ -15,5 +16,29 @@ export class QdrantService {
         distance: 'Cosine',
       },
     });
+  }
+
+  async upsert(embedding: any[]) {
+    await this.client.upsert('test', {
+      wait: true,
+      points: [
+        {
+          id: uuidv4(),
+          vector: embedding,
+          payload: {
+            name: 'test',
+          },
+        },
+      ],
+    });
+  }
+
+  async search(embedding: any[]) {
+    const result = await this.client.search('test', {
+      vector: embedding,
+      limit: 5,
+    });
+
+    return result;
   }
 }
