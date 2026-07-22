@@ -4,6 +4,6 @@ import { QdrantController } from './qdrant.controller';
 
 @Module({
   providers: [QdrantService],
-  controllers: [QdrantController]
+  controllers: [QdrantController],
 })
 export class QdrantModule {}
