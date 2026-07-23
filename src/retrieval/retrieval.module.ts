@@ -8,5 +8,6 @@ import { RetrievalController } from './retrieval.controller';
   providers: [RetrievalService],
   imports: [EmbeddingModule, QdrantModule],
   controllers: [RetrievalController],
+  exports: [RetrievalService],
 })
 export class RetrievalModule {}

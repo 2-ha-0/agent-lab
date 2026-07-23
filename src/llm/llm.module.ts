@@ -7,5 +7,6 @@ import { LlmController } from './llm.controller';
   providers: [LlmService],
   imports: [OllamaModule],
   controllers: [LlmController],
+  exports: [LlmService],
 })
 export class LlmModule {}
