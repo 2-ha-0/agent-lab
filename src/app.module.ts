@@ -7,6 +7,7 @@ import { EmbeddingModule } from './embedding/embedding.module';
 import { QdrantModule } from './qdrant/qdrant.module';
 import { IndexingModule } from './indexing/indexing.module';
 import { RetrievalModule } from './retrieval/retrieval.module';
+import { LlmModule } from './llm/llm.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { RetrievalModule } from './retrieval/retrieval.module';
     QdrantModule,
     IndexingModule,
     RetrievalModule,
+    LlmModule,
   ],
   controllers: [AppController],
   providers: [AppService],

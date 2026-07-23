@@ -14,8 +14,8 @@ export class EmbeddingController {
   @Get()
   @ApiOperation({ summary: 'Ollama 임베딩 테스트' })
   async test() {
-    return this.ollamaService.embedding(
-      '푸른 눈의 백룡은 공격력 3000의 드래곤족 몬스터이다.',
-    );
+    // return this.ollamaService.embedding(
+    //   '푸른 눈의 백룡은 공격력 3000의 드래곤족 몬스터이다.',
+    // );
   }
 }

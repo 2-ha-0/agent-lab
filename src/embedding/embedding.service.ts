@@ -6,6 +6,6 @@ export class EmbeddingService {
   constructor(private readonly ollamaService: OllamaService) {}
 
   async embedding(text: string) {
-    return await this.ollamaService.embedding(text);
+    return await this.ollamaService.embedding('bge-m3', text);
   }
 }
