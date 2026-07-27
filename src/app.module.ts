@@ -10,6 +10,9 @@ import { RetrievalModule } from './retrieval/retrieval.module';
 import { LlmModule } from './llm/llm.module';
 import { RagModule } from './rag/rag.module';
 import { PromptModule } from './prompt/prompt.module';
+import { ChampionToolService } from './tools/champion-tool/champion-tool.service';
+import { ChampionService } from './champion/champion.service';
+import { ChampionModule } from './champion/champion.module';
 
 @Module({
   imports: [
@@ -24,8 +27,9 @@ import { PromptModule } from './prompt/prompt.module';
     LlmModule,
     RagModule,
     PromptModule,
+    ChampionModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ChampionToolService, ChampionService],
 })
 export class AppModule {}
