@@ -6,6 +6,12 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class ChampionService {
   constructor(private readonly prisma: PrismaService) {}
 
+  async findAll(): Promise<Champion[]> {
+    return this.prisma.champion.findMany({
+      orderBy: [{ cost: 'asc' }, { name: 'asc' }],
+    });
+  }
+
   async findAllByCost(cost: number): Promise<Champion[]> {
     const champions = await this.prisma.champion.findMany({
       where: {

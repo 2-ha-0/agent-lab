@@ -4,19 +4,19 @@ overview: npm 싱글 프로젝트를 pnpm workspace 모노레포로 전환하고
 todos:
   - id: monorepo-setup
     content: pnpm workspace 구조 생성, 기존 코드를 apps/api로 이동, 루트 package.json 및 pnpm-workspace.yaml 설정
-    status: pending
+    status: completed
   - id: nextjs-init
     content: apps/web에 Next.js + Tailwind + shadcn/ui 프로젝트 생성
-    status: pending
+    status: completed
   - id: champion-list
     content: 챔피언 목록 페이지 구현 (코스트별 색상, 시너지 뱃지, 필터링)
-    status: pending
+    status: completed
   - id: team-builder
     content: 팀 빌더 페이지 구현 (드래그앤드롭, 시너지 계산, 스탯 표시)
-    status: pending
+    status: completed
   - id: api-integration
     content: 프론트엔드에서 백엔드 API 연동 또는 데이터 직접 import 설정
-    status: pending
+    status: completed
 isProject: false
 ---
 

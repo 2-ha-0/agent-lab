@@ -20,6 +20,7 @@ import { AgentModule } from './agent/agent.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      envFilePath: ['.env', '../../.env'],
     }),
     OllamaModule,
     EmbeddingModule,
