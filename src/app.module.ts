@@ -13,6 +13,7 @@ import { PromptModule } from './prompt/prompt.module';
 import { ChampionToolService } from './tools/champion-tool/champion-tool.service';
 import { ChampionService } from './champion/champion.service';
 import { ChampionModule } from './champion/champion.module';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { ChampionModule } from './champion/champion.module';
     RagModule,
     PromptModule,
     ChampionModule,
+    PrismaModule,
   ],
   controllers: [AppController],
   providers: [AppService, ChampionToolService, ChampionService],
