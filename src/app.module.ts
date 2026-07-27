@@ -14,6 +14,7 @@ import { ChampionToolService } from './tools/champion-tool/champion-tool.service
 import { ChampionService } from './champion/champion.service';
 import { ChampionModule } from './champion/champion.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { AgentModule } from './agent/agent.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { PrismaModule } from './prisma/prisma.module';
     PromptModule,
     ChampionModule,
     PrismaModule,
+    AgentModule,
   ],
   controllers: [AppController],
   providers: [AppService, ChampionToolService, ChampionService],

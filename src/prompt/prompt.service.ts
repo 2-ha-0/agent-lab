@@ -17,4 +17,32 @@ export class PromptService {
         ${question}
         `;
   }
+
+  buildSelectToolPrompt(question: string) {
+    return `
+        너는 Tool을 선택하는 AI다.
+
+        사용 가능한 Tool
+
+        1.
+        name: searchChampionByCost
+        설명: 코스트로 챔피언을 검색한다.
+        parameter:
+        {
+          "cost": number
+        }
+
+        2.
+        name: searchChampionByName
+        설명: 이름으로 챔피언을 검색한다.
+        parameter:
+        {
+          "name": string
+        }
+
+        반드시 JSON만 출력해라.
+
+        질문:
+        ${question}`;
+  }
 }
