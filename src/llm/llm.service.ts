@@ -22,14 +22,14 @@ export class LlmService {
 
   async selectTool(
     question: string,
-  ): Promise<{ name: string; parameters: Record<string, any> }> {
+  ): Promise<{ tool: string; parameters: Record<string, any> }> {
     const prompt = this.promptService.buildSelectToolPrompt(question);
     const response = await this.generate(prompt);
 
-    console.log(response);
+    console.log('response', response);
 
     return JSON.parse(response) as {
-      name: string;
+      tool: string;
       parameters: Record<string, any>;
     };
   }

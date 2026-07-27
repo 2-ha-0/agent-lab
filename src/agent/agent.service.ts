@@ -13,8 +13,9 @@ export class AgentService {
 
   async selectTool(question: string) {
     const tool = await this.llmService.selectTool(question);
+    console.log('tool', tool);
 
-    switch (tool.name) {
+    switch (tool.tool) {
       case 'searchChampionByCost':
         return this.championToolService.searchByCost(tool.parameters.cost);
 
