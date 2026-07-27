@@ -1,0 +1,5306 @@
+{
+  "meta": {
+    "source": "https://raw.communitydragon.org/pbe/cdragon/tft/ko_kr.json",
+    "set": 17,
+    "mutator": "TFTSet17",
+    "locale": "ko_kr",
+    "extractedAt": "2026-07-20T05:28:17.848765+00:00",
+    "notes": [
+      "챔피언 base stats는 1성 기준. 2성/3성 HP·AD는 TFT 표준 배율 1 / 1.8 / 3.24 적용",
+      "스킬 변수 배열 index 1/2/3 = 1성/2성/3성",
+      "별돌보미는 게임마다 별자리가 달라지며 constellations에 각 별자리 수치 포함",
+      "아이템/증강은 Set17 mutator에 포함된 apiName만 수록"
+    ],
+    "counts": {
+      "champions": 63,
+      "mainTraits": 23,
+      "uniqueTraits": 12,
+      "stargazerConstellations": 8,
+      "emblems": 19,
+      "components": 10,
+      "completedItems": 39,
+      "set17SpecialItems": 20,
+      "augments": 275
+    }
+  },
+  "champions": {
+    "byCost": {
+      "1코스트": [
+        "나서스",
+        "레오나",
+        "렉사이",
+        "리산드라",
+        "베이가",
+        "브라이어",
+        "뽀삐",
+        "아트록스",
+        "이즈리얼",
+        "초가스",
+        "케이틀린",
+        "탈론",
+        "트위스티드 페이트",
+        "티모"
+      ],
+      "2코스트": [
+        "그라가스",
+        "그웬",
+        "꼬마 정령",
+        "나르",
+        "모데카이저",
+        "밀리오",
+        "벨베스",
+        "아칼리",
+        "잭스",
+        "조이",
+        "징크스",
+        "파이크",
+        "판테온"
+      ],
+      "3코스트": [
+        "다이애나",
+        "라아스트",
+        "룰루",
+        "마오카이",
+        "미스 포츈",
+        "빅토르",
+        "사미라",
+        "오로라",
+        "오른",
+        "우르곳",
+        "일라오이",
+        "카이사",
+        "피즈"
+      ],
+      "4코스트": [
+        "거대 메크 로봇",
+        "나미",
+        "누누와 윌럼프",
+        "람머스",
+        "르블랑",
+        "리븐",
+        "마스터 이",
+        "모르가나",
+        "아우렐리온 솔",
+        "자야",
+        "카르마",
+        "코르키",
+        "킨드레드",
+        "탐 켄치"
+      ],
+      "5코스트": [
+        "그레이브즈",
+        "바드",
+        "벡스",
+        "블리츠크랭크",
+        "소나",
+        "쉔",
+        "제드",
+        "진",
+        "피오라"
+      ]
+    },
+    "list": [
+      {
+        "name": "나서스",
+        "apiName": "TFT17_Nasus",
+        "cost": 1,
+        "role": "APTank",
+        "traits": [
+          "우주 그루브",
+          "선봉대"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 700,
+            "damage": 40.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 120.0,
+            "initialMana": 60.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1260,
+            "damage": 72.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 120.0,
+            "initialMana": 60.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2268,
+            "damage": 129.6,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 120.0,
+            "initialMana": 60.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "두둠칫 수잔",
+          "desc": "@Duration@초 동안 변신하여 일시적으로 최대 체력을 @MaxHealth@ 얻고  상태가 되며 인접한 적에게 매초 @ModifiedDamage@()의 마법 피해를 입힙니다.",
+          "variablesByStar": {
+            "MaxHealth": {
+              "1성": 300.0,
+              "2성": 400.0,
+              "3성": 600.0
+            },
+            "Duration": {
+              "1성": 6.0,
+              "2성": 6.0,
+              "3성": 6.0
+            },
+            "DamageAP": {
+              "1성": 30.0,
+              "2성": 45.0,
+              "3성": 70.0
+            },
+            "DamageHealth": {
+              "1성": 0.02,
+              "2성": 0.02,
+              "3성": 0.02
+            }
+          }
+        }
+      },
+      {
+        "name": "레오나",
+        "apiName": "TFT17_Leona",
+        "cost": 1,
+        "role": "APTank",
+        "traits": [
+          "중재자",
+          "선봉대"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 700,
+            "damage": 50.0,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 110.0,
+            "initialMana": 50.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1260,
+            "damage": 90.0,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 110.0,
+            "initialMana": 50.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2268,
+            "damage": 162.0,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 110.0,
+            "initialMana": 50.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "여명의 방패",
+          "desc": "@ShieldDuration@초 동안 @ModifiedShield@()의 보호막을 얻습니다. 현재 대상을 강타해 @ModifiedDamage@()의 마법 피해를 입히고 @StunDuration@초 동안 기절시킵니다.",
+          "variablesByStar": {
+            "ShieldAmount": {
+              "1성": 420.0,
+              "2성": 480.0,
+              "3성": 620.0
+            },
+            "Damage": {
+              "1성": 100.0,
+              "2성": 150.0,
+              "3성": 225.0
+            },
+            "StunDuration": {
+              "1성": 1.75,
+              "2성": 1.75,
+              "3성": 2.0
+            },
+            "DefenseToDamageRatio": {
+              "1성": 1.2,
+              "2성": 1.8,
+              "3성": 2.7
+            },
+            "ShieldDuration": {
+              "1성": 4.0,
+              "2성": 4.0,
+              "3성": 4.0
+            }
+          }
+        }
+      },
+      {
+        "name": "렉사이",
+        "apiName": "TFT17_RekSai",
+        "cost": 1,
+        "role": "APTank",
+        "traits": [
+          "태고족",
+          "싸움꾼"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 700,
+            "damage": 50.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1260,
+            "damage": 90.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2268,
+            "damage": 162.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "지반 돌출",
+          "desc": "체력을 @TotalHealing@ () 회복한 후 인접한 적을 잠시 공중에 띄우고 @ModifiedDamage@()의 마법 피해를 입힙니다.",
+          "variablesByStar": {
+            "PercentMaximumHealthHealing": {
+              "1성": 0.065,
+              "2성": 0.065,
+              "3성": 0.065
+            },
+            "APHealing": {
+              "1성": 200.0,
+              "2성": 220.0,
+              "3성": 260.0
+            },
+            "Damage": {
+              "1성": 80.0,
+              "2성": 120.0,
+              "3성": 180.0
+            },
+            "StunDuration": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            }
+          }
+        }
+      },
+      {
+        "name": "리산드라",
+        "apiName": "TFT17_Lissandra",
+        "cost": 1,
+        "role": "APCaster",
+        "traits": [
+          "암흑의 별",
+          "길잡이",
+          "복제자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 450,
+            "damage": 30.0,
+            "armor": 15.0,
+            "magicResist": 15.0,
+            "attackSpeed": 0.7,
+            "range": 4.0,
+            "mana": 30.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 810,
+            "damage": 54.0,
+            "armor": 15.0,
+            "magicResist": 15.0,
+            "attackSpeed": 0.7,
+            "range": 4.0,
+            "mana": 30.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 1458,
+            "damage": 97.2,
+            "armor": 15.0,
+            "magicResist": 15.0,
+            "attackSpeed": 0.7,
+            "range": 4.0,
+            "mana": 30.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "암흑 물질",
+          "desc": "현재 대상에게 파편을 던져 처음 적중한 대상에게 @ModifiedDamage@()의 마법 피해를 입힙니다. 처음 대상에게 적중하거나 사거리 끝에 도달하면 단검이 폭발하며 주변 대상에게 @ModifiedSecondaryDamage@()의 마법 피해를 입힙니다.",
+          "variablesByStar": {
+            "Damage": {
+              "1성": 250.0,
+              "2성": 375.0,
+              "3성": 600.0
+            },
+            "SecondaryDamage": {
+              "1성": 50.0,
+              "2성": 75.0,
+              "3성": 115.0
+            }
+          }
+        }
+      },
+      {
+        "name": "베이가",
+        "apiName": "TFT17_Veigar",
+        "cost": 1,
+        "role": "APCaster",
+        "traits": [
+          "정령족",
+          "복제자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 500,
+            "damage": 30.0,
+            "armor": 15.0,
+            "magicResist": 15.0,
+            "attackSpeed": 0.7,
+            "range": 4.0,
+            "mana": 50.0,
+            "initialMana": 10.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 900,
+            "damage": 54.0,
+            "armor": 15.0,
+            "magicResist": 15.0,
+            "attackSpeed": 0.7,
+            "range": 4.0,
+            "mana": 50.0,
+            "initialMana": 10.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 1620,
+            "damage": 97.2,
+            "armor": 15.0,
+            "magicResist": 15.0,
+            "attackSpeed": 0.7,
+            "range": 4.0,
+            "mana": 50.0,
+            "initialMana": 10.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "정령유성우",
+          "desc": "대상에게 정령유성을 떨어뜨려 @ModifiedDamage@()의 마법 피해를 입힙니다.\n\n정령 추가 효과: 주변 대상에게 미니 정령유성 @ModifiedMiniMeeps@()개를 떨어뜨려 각각 @ModifiedMiniDamage@()의 마법 피해를 입힙니다.",
+          "variablesByStar": {
+            "Damage": {
+              "1성": 330.0,
+              "2성": 495.0,
+              "3성": 750.0
+            },
+            "MiniMeepsPerAstro": {
+              "1성": 2.0,
+              "2성": 2.0,
+              "3성": 2.0
+            },
+            "MiniDamage": {
+              "1성": 31.0,
+              "2성": 47.0,
+              "3성": 70.0
+            }
+          }
+        }
+      },
+      {
+        "name": "브라이어",
+        "apiName": "TFT17_Briar",
+        "cost": 1,
+        "role": "ADFighter",
+        "traits": [
+          "동물특공대",
+          "태고족",
+          "불한당"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 650,
+            "damage": 35.0,
+            "armor": 35.0,
+            "magicResist": 35.0,
+            "attackSpeed": 0.75,
+            "range": 1.0,
+            "mana": 40.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1170,
+            "damage": 63.0,
+            "armor": 35.0,
+            "magicResist": 35.0,
+            "attackSpeed": 0.75,
+            "range": 1.0,
+            "mana": 40.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2106,
+            "damage": 113.4,
+            "armor": 35.0,
+            "magicResist": 35.0,
+            "attackSpeed": 0.75,
+            "range": 1.0,
+            "mana": 40.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "물고기 광분",
+          "desc": "기본 지속 효과: 잃은 체력 @PercentMissingHealth@%당 공격 속도를 @ModifiedAS@% () 얻습니다.\n\n사용 시: 대상에게 @ModifiedDamage@()의 물리 피해를 입힙니다. 대상이 탱커일 경우 피해량이 @PercentBonusDamage*100@% 증가합니다.",
+          "variablesByStar": {
+            "PercentMissingHealth": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            },
+            "ADDamage": {
+              "1성": 120.0,
+              "2성": 180.0,
+              "3성": 285.0
+            },
+            "APDamage": {
+              "1성": 10.0,
+              "2성": 15.0,
+              "3성": 25.0
+            },
+            "PercentBonusDamage": {
+              "1성": 0.5,
+              "2성": 0.5,
+              "3성": 0.5
+            },
+            "AS": {
+              "1성": 2.0,
+              "2성": 2.0,
+              "3성": 2.5
+            }
+          }
+        }
+      },
+      {
+        "name": "뽀삐",
+        "apiName": "TFT17_Poppy",
+        "cost": 1,
+        "role": "APTank",
+        "traits": [
+          "정령족",
+          "요새"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 700,
+            "damage": 60.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1260,
+            "damage": 108.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2268,
+            "damage": 194.4,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "다들 모여!",
+          "desc": "@ShieldDuration@초 동안 @ModifiedShield@()의 보호막을 얻습니다. 지속시간 동안 2칸 내 아군이 방어력 및 마법 저항력을 @ModifiedResists@ () 얻습니다.\n\n정령 추가 효과: 정령들이 가장 가까운 아군 @ModifiedNumMeeps@()명에게 @ShieldDuration@초 동안 @ModifiedMeepShield@()의 보호막을 부여합니다.",
+          "variablesByStar": {
+            "Shield": {
+              "1성": 400.0,
+              "2성": 475.0,
+              "3성": 575.0
+            },
+            "ShieldDuration": {
+              "1성": 4.0,
+              "2성": 4.0,
+              "3성": 4.0
+            },
+            "Resists": {
+              "1성": 15.0,
+              "2성": 25.0,
+              "3성": 60.0
+            },
+            "MeepShield": {
+              "1성": 125.0,
+              "2성": 160.0,
+              "3성": 210.0
+            },
+            "MeepsPerAstro": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            }
+          }
+        }
+      },
+      {
+        "name": "아트록스",
+        "apiName": "TFT17_Aatrox",
+        "cost": 1,
+        "role": "ADTank",
+        "traits": [
+          "N.O.V.A.",
+          "요새"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 700,
+            "damage": 50.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 90.0,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1260,
+            "damage": 90.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 90.0,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2268,
+            "damage": 162.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 90.0,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "별빛 베기",
+          "desc": "체력을 @ModifiedHeal@ () 회복한 후, 현재 대상에게 @ModifiedDamage@()의 물리 피해를 입힙니다.\n\nN.O.V.A. 타격: 전장을 갈라 모든 적을 공중에 띄우고 @ModifiedNovaDamage@()의 물리 피해를 입힙니다.",
+          "variablesByStar": {
+            "HealHP": {
+              "1성": 0.1,
+              "2성": 0.1,
+              "3성": 0.1
+            },
+            "HealAP": {
+              "1성": 325.0,
+              "2성": 400.0,
+              "3성": 650.0
+            },
+            "DamageAD": {
+              "1성": 80.0,
+              "2성": 120.0,
+              "3성": 180.0
+            },
+            "DamagePercentArmor": {
+              "1성": 1.8,
+              "2성": 2.7,
+              "3성": 4.05
+            },
+            "NOVAModifier": {
+              "1성": 0.65,
+              "2성": 0.65,
+              "3성": 0.65
+            }
+          }
+        }
+      },
+      {
+        "name": "이즈리얼",
+        "apiName": "TFT17_Ezreal",
+        "cost": 1,
+        "role": "ADCaster",
+        "traits": [
+          "시간 균열자",
+          "저격수"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 450,
+            "damage": 45.0,
+            "armor": 15.0,
+            "magicResist": 15.0,
+            "attackSpeed": 0.7,
+            "range": 6.0,
+            "mana": 30.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 810,
+            "damage": 81.0,
+            "armor": 15.0,
+            "magicResist": 15.0,
+            "attackSpeed": 0.7,
+            "range": 6.0,
+            "mana": 30.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 1458,
+            "damage": 145.8,
+            "armor": 15.0,
+            "magicResist": 15.0,
+            "attackSpeed": 0.7,
+            "range": 6.0,
+            "mana": 30.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "시간의 일격",
+          "desc": "사용 시: 현재 대상에게 파동을 방출해 @TotalDamage@()의 물리 피해를 입힙니다. 처치 관여 @TakedownsToDrone@회마다 드론을 획득합니다. 드론은 스킬 사용 시 현재 대상에게 @ModifiedDroneDamage@()의 물리 피해를 입힙니다. \n(처치 관여: 총 @TFTUnitProperty.:TFT17_Ezreal_Takedowns@)",
+          "variablesByStar": {
+            "ADDamage": {
+              "1성": 170.0,
+              "2성": 255.0,
+              "3성": 380.0
+            },
+            "APDamage": {
+              "1성": 14.0,
+              "2성": 21.0,
+              "3성": 32.0
+            },
+            "DroneDamage": {
+              "1성": 8.0,
+              "2성": 12.0,
+              "3성": 18.0
+            },
+            "TakedownsToDrone": {
+              "1성": 7.0,
+              "2성": 7.0,
+              "3성": 7.0
+            },
+            "TakedownsToForm3": {
+              "1성": 60.0,
+              "2성": 60.0,
+              "3성": 60.0
+            },
+            "TakedownTimerThreshold": {
+              "1성": 5.0,
+              "2성": 5.0,
+              "3성": 5.0
+            }
+          }
+        }
+      },
+      {
+        "name": "초가스",
+        "apiName": "TFT17_Chogath",
+        "cost": 1,
+        "role": "APTank",
+        "traits": [
+          "암흑의 별",
+          "싸움꾼"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 700,
+            "damage": 45.0,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 70.0,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1260,
+            "damage": 81.0,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 70.0,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2268,
+            "damage": 145.8,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 70.0,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "응축",
+          "desc": "사거리 내 체력이 가장 낮은 적에게 @TotalDamage@()의 마법 피해를 입히고 최대 체력을 영구적으로 @BonusHealthPerCast@ 얻습니다. 이 효과로 적을 처치하면 대신 최대 체력을 영구적으로 @BonusHealthOnKill@ 얻습니다.\n\n(현재 추가 효과: 체력 +@TFTUnitProperty.:TFT17_ChoGathBonusHealth@)",
+          "variablesByStar": {
+            "PercentMaximumHealthDamage": {
+              "1성": 0.08,
+              "2성": 0.08,
+              "3성": 0.08
+            },
+            "BonusDamage": {
+              "1성": 210.0,
+              "2성": 290.0,
+              "3성": 420.0
+            },
+            "BonusHealthOnKill": {
+              "1성": 30.0,
+              "2성": 40.0,
+              "3성": 70.0
+            },
+            "HPToTier2": {
+              "1성": 1000.0,
+              "2성": 1000.0,
+              "3성": 1000.0
+            },
+            "HPToTier3": {
+              "1성": 2000.0,
+              "2성": 2000.0,
+              "3성": 2000.0
+            },
+            "BonusHealthPerCast": {
+              "1성": 12.0,
+              "2성": 18.0,
+              "3성": 33.0
+            }
+          }
+        }
+      },
+      {
+        "name": "케이틀린",
+        "apiName": "TFT17_Caitlyn",
+        "cost": 1,
+        "role": "ADSpecialist",
+        "traits": [
+          "N.O.V.A.",
+          "운명술사"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 500,
+            "damage": 65.0,
+            "armor": 15.0,
+            "magicResist": 15.0,
+            "attackSpeed": 0.55,
+            "range": 4.0,
+            "mana": 0.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 900,
+            "damage": 117.0,
+            "armor": 15.0,
+            "magicResist": 15.0,
+            "attackSpeed": 0.55,
+            "range": 4.0,
+            "mana": 0.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 1620,
+            "damage": 210.6,
+            "armor": 15.0,
+            "magicResist": 15.0,
+            "attackSpeed": 0.55,
+            "range": 4.0,
+            "mana": 0.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "머리를 노려라",
+          "desc": "기본 지속 효과: 기본 공격 시 @ProcChance@% 행운 확률로 강화된 헤드샷을 발사해 @ModifiedHeadshotDamage@()의 물리 피해를 입힙니다.\n\nN.O.V.A. 타격: 모든 적에게 표식을 남겨 대상이 받는 피해를 @NovaMarkDamageAmp*100@% 증가시킵니다. 표식이 남은 대상의 체력이 처음으로 @NovaMarkThreshold*100@% 아래로 떨어지면 헤드샷을 날려 @ModifiedNovaHeadshotDamage@()의 물리 피해를 입힙니다.\n\n행운: 두 번 시도하고 더 나은 결과를 선택합니다.",
+          "variablesByStar": {
+            "ProcChance": {
+              "1성": 15.0,
+              "2성": 15.0,
+              "3성": 15.0
+            },
+            "Damage": {
+              "1성": 190.0,
+              "2성": 285.0,
+              "3성": 540.0
+            },
+            "BonusDamage": {
+              "1성": 20.0,
+              "2성": 30.0,
+              "3성": 45.0
+            },
+            "NovaMarkDamageAmp": {
+              "1성": 0.1,
+              "2성": 0.1,
+              "3성": 0.1
+            },
+            "NovaMarkThreshold": {
+              "1성": 0.5,
+              "2성": 0.5,
+              "3성": 0.5
+            },
+            "NovaHeadshotModifier": {
+              "1성": 0.5,
+              "2성": 0.5,
+              "3성": 0.5
+            }
+          }
+        }
+      },
+      {
+        "name": "탈론",
+        "apiName": "TFT17_Talon",
+        "cost": 1,
+        "role": "ADReaper",
+        "traits": [
+          "별돌보미",
+          "불한당"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 650,
+            "damage": 35.0,
+            "armor": 35.0,
+            "magicResist": 35.0,
+            "attackSpeed": 0.75,
+            "range": 1.0,
+            "mana": 30.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1170,
+            "damage": 63.0,
+            "armor": 35.0,
+            "magicResist": 35.0,
+            "attackSpeed": 0.75,
+            "range": 1.0,
+            "mana": 30.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2106,
+            "damage": 113.4,
+            "armor": 35.0,
+            "magicResist": 35.0,
+            "attackSpeed": 0.75,
+            "range": 1.0,
+            "mana": 30.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "점술가의 심판",
+          "desc": "대상을 찔러 @BleedDuration@초 동안 @ModifiedBleedDamage@()의 물리 피해를 입히는 출혈 효과를 적용합니다. 공격 후 @HexDistance@칸 내 체력 비율이 가장 높은 적에게 도약합니다.",
+          "variablesByStar": {
+            "HexDistance": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "BleedDuration": {
+              "1성": 18.0,
+              "2성": 18.0,
+              "3성": 18.0
+            },
+            "ADBleedDamage": {
+              "1성": 400.0,
+              "2성": 600.0,
+              "3성": 1100.0
+            },
+            "APBleedDamage": {
+              "1성": 60.0,
+              "2성": 90.0,
+              "3성": 135.0
+            }
+          }
+        }
+      },
+      {
+        "name": "트위스티드 페이트",
+        "apiName": "TFT17_TwistedFate",
+        "cost": 1,
+        "role": "APCaster",
+        "traits": [
+          "별돌보미",
+          "운명술사"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 500,
+            "damage": 30.0,
+            "armor": 15.0,
+            "magicResist": 15.0,
+            "attackSpeed": 0.7,
+            "range": 4.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 900,
+            "damage": 54.0,
+            "armor": 15.0,
+            "magicResist": 15.0,
+            "attackSpeed": 0.7,
+            "range": 4.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 1620,
+            "damage": 97.2,
+            "armor": 15.0,
+            "magicResist": 15.0,
+            "attackSpeed": 0.7,
+            "range": 4.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "운명의 한 수",
+          "desc": "행운 확률에 따라 1~9 카드 중 하나를 뽑은 후, 뽑은 카드를 대상에게 던집니다. 뽑은 카드에 따라 @ModifiedDamageMin@()~@ModifiedDamageMax@()의 마법 피해를 입힙니다. 대상 처치 후 남는 피해는 가장 가까운 적에게 입힙니다. \n\n3성 추가 효과: 9를 뽑으면 1골드를 생성합니다.\n\n행운: 두 번 시도하고 더 나은 결과를 선택합니다.",
+          "variablesByStar": {
+            "DamageMin": {
+              "1성": 205.0,
+              "2성": 305.0,
+              "3성": 460.0
+            },
+            "DamageMax": {
+              "1성": 410.0,
+              "2성": 610.0,
+              "3성": 920.0
+            }
+          }
+        }
+      },
+      {
+        "name": "티모",
+        "apiName": "TFT17_Teemo",
+        "cost": 1,
+        "role": "APCarry",
+        "traits": [
+          "우주 그루브",
+          "길잡이"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 450,
+            "damage": 15.0,
+            "armor": 15.0,
+            "magicResist": 15.0,
+            "attackSpeed": 0.7,
+            "range": 4.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 810,
+            "damage": 27.0,
+            "armor": 15.0,
+            "magicResist": 15.0,
+            "attackSpeed": 0.7,
+            "range": 4.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 1458,
+            "damage": 48.6,
+            "armor": 15.0,
+            "magicResist": 15.0,
+            "attackSpeed": 0.7,
+            "range": 4.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "더블 타임",
+          "desc": "기본 지속 효과: 기본 공격 시 @ModifiedHitDamage@()의 추가 마법 피해를 입히고, @PoisonDuration@초 동안 @ModifiedMagicDamage@()의 추가 마법 피해를 입힙니다. 지속 피해 효과는 중첩됩니다. 적의 중첩이 @GrooveStacks@ 이상이면 티모가  상태가 됩니다.\n\n사용 시: @ActiveAttacks@회의 기본 공격 동안 공격 속도를 @AttackSpeed*100@% 얻습니다.",
+          "variablesByStar": {
+            "HitDamage": {
+              "1성": 30.0,
+              "2성": 45.0,
+              "3성": 100.0
+            },
+            "MagicDamage": {
+              "1성": 70.0,
+              "2성": 105.0,
+              "3성": 190.0
+            },
+            "PoisonDuration": {
+              "1성": 6.0,
+              "2성": 6.0,
+              "3성": 6.0
+            },
+            "GrooveStacks": {
+              "1성": 5.0,
+              "2성": 5.0,
+              "3성": 5.0
+            },
+            "AttackSpeed": {
+              "1성": 1.5,
+              "2성": 1.5,
+              "3성": 1.5
+            },
+            "ActiveAttacks": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            }
+          }
+        }
+      },
+      {
+        "name": "그라가스",
+        "apiName": "TFT17_Gragas",
+        "cost": 2,
+        "role": "APTank",
+        "traits": [
+          "초능력",
+          "싸움꾼"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 950,
+            "damage": 50.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 80.0,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1710,
+            "damage": 90.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 80.0,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 3078,
+            "damage": 162.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 80.0,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "화학적 분노",
+          "desc": "@Duration@초 동안 체력을 @ModifiedHeal@ () 회복합니다. 이후 대상 및 인접한 적에게 @DamageTotal@()의 마법 피해를 입히고 @CCDuration@초 동안 @ASSlow*100@% 냉각을 적용합니다.",
+          "variablesByStar": {
+            "DURATION": {
+              "1성": 2.0,
+              "2성": 2.0,
+              "3성": 2.0
+            },
+            "HEALING": {
+              "1성": 415.0,
+              "2성": 470.0,
+              "3성": 630.0
+            },
+            "Damage": {
+              "1성": 200.0,
+              "2성": 300.0,
+              "3성": 450.0
+            },
+            "CCDuration": {
+              "1성": 2.0,
+              "2성": 2.0,
+              "3성": 2.0
+            },
+            "HealingPercentHealth": {
+              "1성": 0.085,
+              "2성": 0.085,
+              "3성": 0.085
+            },
+            "ASSlow": {
+              "1성": 0.3,
+              "2성": 0.3,
+              "3성": 0.3
+            }
+          }
+        }
+      },
+      {
+        "name": "그웬",
+        "apiName": "TFT17_Gwen",
+        "cost": 2,
+        "role": "APReaper",
+        "traits": [
+          "우주 그루브",
+          "불한당"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 750,
+            "damage": 50.0,
+            "armor": 50.0,
+            "magicResist": 50.0,
+            "attackSpeed": 0.8,
+            "range": 2.0,
+            "mana": 30.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1350,
+            "damage": 90.0,
+            "armor": 50.0,
+            "magicResist": 50.0,
+            "attackSpeed": 0.8,
+            "range": 2.0,
+            "mana": 30.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2430,
+            "damage": 162.0,
+            "armor": 50.0,
+            "magicResist": 50.0,
+            "attackSpeed": 0.8,
+            "range": 2.0,
+            "mana": 30.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "춤추고 토막내기",
+          "desc": "기본 지속 효과: 기본 공격 시 마법 피해를 입힙니다. 그웬이 체력이 @GrooveThreshold*100@% 아래인 적을 대상으로 지정하는 동안  상태가 됩니다.\n\n기본 지속 효과: 주변 칸으로 돌진해 체력 비율이 가장 낮은 적을 가위질하여 대상에게 @ModifiedDamage@()의 마법 피해를 입히고 원뿔 범위 내 적에게 @ModifiedAreaDamage@()의 마법 피해를 입힙니다. 이 스킬로 적을 처치하면 다시 돌진해 가위질하여 @ResetDamage*100@%의 피해를 입힙니다!",
+          "variablesByStar": {
+            "GrooveThreshold": {
+              "1성": 0.4,
+              "2성": 0.4,
+              "3성": 0.4
+            },
+            "BonusDashRange": {
+              "1성": null,
+              "2성": null,
+              "3성": null
+            },
+            "Damage": {
+              "1성": 145.0,
+              "2성": 220.0,
+              "3성": 410.0
+            },
+            "AreaDamage": {
+              "1성": 75.0,
+              "2성": 110.0,
+              "3성": 215.0
+            },
+            "ResetDamage": {
+              "1성": 0.65,
+              "2성": 0.65,
+              "3성": 0.65
+            }
+          }
+        }
+      },
+      {
+        "name": "꼬마 정령",
+        "apiName": "TFT17_IvernMinion",
+        "cost": 2,
+        "role": "APTank",
+        "traits": [
+          "정령족",
+          "길잡이",
+          "여행자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 950,
+            "damage": 65.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.55,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 50.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1710,
+            "damage": 117.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.55,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 50.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 3078,
+            "damage": 210.6,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.55,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 50.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "정령 충격",
+          "desc": "@HealDuration@초 동안 체력을 @ModifiedHeal@ () 회복합니다. 대상을 강타해 @ModifiedDamage@()의 마법 피해를 입히고 @StunDuration@초 동안 공중으로 띄워 올립니다. 적중 시 정령 파동을 생성해 대상이 위치한 열에 이 효과의 @PercentEffects*100@%만큼 피해를 입힙니다.\n\n정령 추가 효과: 정령들이 꼬마 정령의 꽃에 물을 뿌려 모든 받는 체력 회복 및 보호막 효과를 @ModifiedHealingAndShielding@ () 증가시킵니다.",
+          "variablesByStar": {
+            "HealingPercentHealth": {
+              "1성": 0.08,
+              "2성": 0.08,
+              "3성": 0.08
+            },
+            "HealingAP": {
+              "1성": 380.0,
+              "2성": 430.0,
+              "3성": 600.0
+            },
+            "HealDuration": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "Damage": {
+              "1성": 160.0,
+              "2성": 240.0,
+              "3성": 360.0
+            },
+            "StunDuration": {
+              "1성": 1.5,
+              "2성": 1.75,
+              "3성": 2.0
+            },
+            "PercentEffects": {
+              "1성": 0.5,
+              "2성": 0.5,
+              "3성": 0.5
+            },
+            "HealingAndShieldingPerAstro": {
+              "1성": 0.12,
+              "2성": 0.12,
+              "3성": 0.12
+            },
+            "MeepsPerAstro": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            }
+          }
+        }
+      },
+      {
+        "name": "나르",
+        "apiName": "TFT17_Gnar",
+        "cost": 2,
+        "role": "ADSpecialist",
+        "traits": [
+          "정령족",
+          "저격수"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 550,
+            "damage": 48.0,
+            "armor": 20.0,
+            "magicResist": 20.0,
+            "attackSpeed": 0.75,
+            "range": 6.0,
+            "mana": 5.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 990,
+            "damage": 86.4,
+            "armor": 20.0,
+            "magicResist": 20.0,
+            "attackSpeed": 0.75,
+            "range": 6.0,
+            "mana": 5.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 1782,
+            "damage": 155.52,
+            "armor": 20.0,
+            "magicResist": 20.0,
+            "attackSpeed": 0.75,
+            "range": 6.0,
+            "mana": 5.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "새총 기동",
+          "desc": "기본 지속 효과: 기본 공격 5회마다 대상에게 부메랑을 던집니다. 부메랑은 처음 적중한 적을 관통해 2칸 더 날아갔다가 돌아오며, @ModifiedDamage@()의 물리 피해를 입힙니다. 적중할 때마다 피해량이 @DamageReductionPerHit*100@% 감소합니다.\n\n정령 추가 효과: @ModifiedNumMeeps@ () 정령들이 나르와 함께 공격해 매초 @ModifiedMeepDPS@()의 물리 피해를 입힙니다.",
+          "variablesByStar": {
+            "DamageAD": {
+              "1성": 225.0,
+              "2성": 340.0,
+              "3성": 560.0
+            },
+            "DamageAP": {
+              "1성": 20.0,
+              "2성": 30.0,
+              "3성": 45.0
+            },
+            "DamageReductionPerHit": {
+              "1성": 0.75,
+              "2성": 0.75,
+              "3성": 0.75
+            },
+            "NumMeepsPerAstro": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            },
+            "MeepPercentBAD": {
+              "1성": 0.23,
+              "2성": 0.23,
+              "3성": 0.23
+            },
+            "MeepASScaling": {
+              "1성": 0.4,
+              "2성": 0.4,
+              "3성": 0.4
+            }
+          }
+        }
+      },
+      {
+        "name": "모데카이저",
+        "apiName": "TFT17_Mordekaiser",
+        "cost": 2,
+        "role": "APTank",
+        "traits": [
+          "암흑의 별",
+          "전달자",
+          "선봉대"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 950,
+            "damage": 40.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1710,
+            "damage": 72.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 3078,
+            "damage": 129.6,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "불멸",
+          "desc": "@ModifiedInitialShield@()의 보호막을 얻습니다. 다음 @AugmentedDuration@@Duration@초 동안 매초 @ModifiedShieldPerProc@()의 보호막을 더 얻고 인접한 적에게 @ModifiedDamagePerProc@()의 마법 피해를 입힙니다. 이 스킬이 끝나면 남은 보호막을 소모하고 보호막 수치의 @HealRefund*100@%만큼 체력을 회복합니다.",
+          "variablesByStar": {
+            "InitialShield": {
+              "1성": 350.0,
+              "2성": 450.0,
+              "3성": 625.0
+            },
+            "ShieldPerProc": {
+              "1성": 75.0,
+              "2성": 100.0,
+              "3성": 115.0
+            },
+            "DamagePerProc": {
+              "1성": 45.0,
+              "2성": 70.0,
+              "3성": 100.0
+            },
+            "HealRefund": {
+              "1성": 0.4,
+              "2성": 0.4,
+              "3성": 0.4
+            },
+            "Duration": {
+              "1성": 4.0,
+              "2성": 4.0,
+              "3성": 4.0
+            },
+            "AugmentedDuration": {
+              "1성": 6.0,
+              "2성": 6.0,
+              "3성": 6.0
+            }
+          }
+        }
+      },
+      {
+        "name": "밀리오",
+        "apiName": "TFT17_Milio",
+        "cost": 2,
+        "role": "APCaster",
+        "traits": [
+          "시간 균열자",
+          "운명술사"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 550,
+            "damage": 30.0,
+            "armor": 20.0,
+            "magicResist": 20.0,
+            "attackSpeed": 0.7,
+            "range": 4.0,
+            "mana": 30.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 990,
+            "damage": 54.0,
+            "armor": 20.0,
+            "magicResist": 20.0,
+            "attackSpeed": 0.7,
+            "range": 4.0,
+            "mana": 30.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 1782,
+            "damage": 97.2,
+            "armor": 20.0,
+            "magicResist": 20.0,
+            "attackSpeed": 0.7,
+            "range": 4.0,
+            "mana": 30.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "특급 시간 킥",
+          "desc": "현재 대상에게 공을 차 @ModifiedDamage@()의 마법 피해를 입힙니다. 적중 시, 공은 100% 행운 확률로 새로운 대상에게 튕겨 @ModifiedBounceDamage@()의 마법 피해를 입힙니다. 튕겨 나온 공 또한 추가로 튕길 수 있지만, 튕길 때마다 확률이 절반으로 줄어듭니다.\n\n행운: 두 번 시도하고 더 나은 결과를 선택합니다.",
+          "variablesByStar": {
+            "Damage": {
+              "1성": 255.0,
+              "2성": 380.0,
+              "3성": 575.0
+            },
+            "BounceDamage": {
+              "1성": 85.0,
+              "2성": 130.0,
+              "3성": 190.0
+            }
+          }
+        }
+      },
+      {
+        "name": "벨베스",
+        "apiName": "TFT17_Belveth",
+        "cost": 2,
+        "role": "ADFighter",
+        "traits": [
+          "태고족",
+          "도전자",
+          "습격자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 750,
+            "damage": 47.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.75,
+            "range": 2.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1350,
+            "damage": 84.6,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.75,
+            "range": 2.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2430,
+            "damage": 152.28,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.75,
+            "range": 2.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "파도 가르기",
+          "desc": "현재 대상을 @SlashDuration@초 동안 연속 @TotalNumSlashes@()회 베어 각각 @TotalDamage@()의 물리 피해를 입힙니다.",
+          "variablesByStar": {
+            "ADDamage": {
+              "1성": 22.0,
+              "2성": 33.0,
+              "3성": 50.0
+            },
+            "APDamage": {
+              "1성": 3.0,
+              "2성": 5.0,
+              "3성": 7.0
+            },
+            "BaseNumSlashes": {
+              "1성": 12.0,
+              "2성": 12.0,
+              "3성": 12.0
+            },
+            "BonusASBreakpoint": {
+              "1성": 25.0,
+              "2성": 25.0,
+              "3성": 25.0
+            },
+            "SlashDuration": {
+              "1성": 2.0,
+              "2성": 2.0,
+              "3성": 2.0
+            },
+            "NumProcsPerSimulatedAttack": {
+              "1성": 4.0,
+              "2성": 4.0,
+              "3성": 4.0
+            }
+          }
+        }
+      },
+      {
+        "name": "아칼리",
+        "apiName": "TFT17_Akali",
+        "cost": 2,
+        "role": "ADFighter",
+        "traits": [
+          "N.O.V.A.",
+          "습격자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 750,
+            "damage": 45.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.8,
+            "range": 1.0,
+            "mana": 30.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1350,
+            "damage": 81.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.8,
+            "range": 1.0,
+            "mana": 30.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2430,
+            "damage": 145.8,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.8,
+            "range": 1.0,
+            "mana": 30.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "별의 일격",
+          "desc": "가장 많은 적을 타격할 수 있는 대상 옆으로 위치를 이동한 후, 관통하는 단검 @NumShurikens@개를 던져 각각 처음 적중하는 적에게 @ModifiedDamage@()의 물리 피해를, 이후 적중하는 대상에게 각각 @ModifiedSecondaryDamage@()의 피해를 입힙니다. 단검은 방어력을 @ArmorShred@ 감소시키며, 치명타 적용 시 @ArmorShredCrit@ 감소시킵니다.\n\nN.O.V.A. 타격: 모든 적을 베어 상처를 적용하고 매초 @ModifiedNovaDamage@()의 물리 피해를 입히는 출혈 효과를 부여합니다. 단검은 출혈 피해량을 @NovaShurikenBonusDamage*100@% 증가시킵니다.",
+          "variablesByStar": {
+            "NumShurikens": {
+              "1성": 5.0,
+              "2성": 5.0,
+              "3성": 5.0
+            },
+            "DamageAP": {
+              "1성": 4.0,
+              "2성": 6.0,
+              "3성": 9.0
+            },
+            "DamageAD": {
+              "1성": 39.0,
+              "2성": 59.0,
+              "3성": 88.0
+            },
+            "SecondaryDamageModifier": {
+              "1성": 0.4,
+              "2성": 0.4,
+              "3성": 0.4
+            },
+            "ArmorShred": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            },
+            "ArmorShredCrit": {
+              "1성": 2.0,
+              "2성": 2.0,
+              "3성": 2.0
+            },
+            "NovaDamagePerSecond": {
+              "1성": 15.0,
+              "2성": 22.0,
+              "3성": 28.0
+            },
+            "NovaShurikenBonusDamage": {
+              "1성": 0.12,
+              "2성": 0.12,
+              "3성": 0.12
+            }
+          }
+        }
+      },
+      {
+        "name": "잭스",
+        "apiName": "TFT17_Jax",
+        "cost": 2,
+        "role": "APTank",
+        "traits": [
+          "별돌보미",
+          "요새"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 950,
+            "damage": 50.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 80.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1710,
+            "damage": 90.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 80.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 3078,
+            "damage": 162.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 80.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "별의 반격",
+          "desc": "@Duration@초 동안 방어 태세에 들어가 받는 피해량이 @ModifiedFlatDR@ 감소하고 @ModifiedShield@()의 보호막을 얻습니다. 방어 태세가 끝나면 주변 적을 후려쳐 @ModifiedDamage@()의 마법 피해를 입히고 @StunDuration@초 동안 기절시킵니다.",
+          "variablesByStar": {
+            "Duration": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "ArmorMRScale": {
+              "1성": 0.75,
+              "2성": 1.15,
+              "3성": 1.7
+            },
+            "AttackRadius": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            },
+            "StunDuration": {
+              "1성": 1.0,
+              "2성": 1.25,
+              "3성": 1.5
+            },
+            "FlatDR": {
+              "1성": 20.0,
+              "2성": 25.0,
+              "3성": 30.0
+            },
+            "ShieldAP": {
+              "1성": 400.0,
+              "2성": 450.0,
+              "3성": 500.0
+            }
+          }
+        }
+      },
+      {
+        "name": "조이",
+        "apiName": "TFT17_Zoe",
+        "cost": 2,
+        "role": "APCaster",
+        "traits": [
+          "중재자",
+          "전달자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 550,
+            "damage": 30.0,
+            "armor": 20.0,
+            "magicResist": 20.0,
+            "attackSpeed": 0.7,
+            "range": 4.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 990,
+            "damage": 54.0,
+            "armor": 20.0,
+            "magicResist": 20.0,
+            "attackSpeed": 0.7,
+            "range": 4.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 1782,
+            "damage": 97.2,
+            "armor": 20.0,
+            "magicResist": 20.0,
+            "attackSpeed": 0.7,
+            "range": 4.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "통통별",
+          "desc": "현재 대상에 통통별을 날려 처음 적중한 대상에게 @ModifiedDamage@()의 마법 피해를 입히고, 그 외에는 관통하며 @ModifiedSecondaryDamage@()의 피해를 입힙니다. 투사체는 목표 지점에 도달하면 방향을 전환해 멀리 있는 적에게 날아가고, 이동 속도가 증가하며 동일한 피해를 입힙니다. 방향 전환은 @AugmentedNumRedirects@@NumRedirects@회 발동됩니다.",
+          "variablesByStar": {
+            "Damage": {
+              "1성": 68.0,
+              "2성": 102.0,
+              "3성": 180.0
+            },
+            "SecondaryDamage": {
+              "1성": 36.0,
+              "2성": 54.0,
+              "3성": 88.0
+            },
+            "NumRedirects": {
+              "1성": 4.0,
+              "2성": 4.0,
+              "3성": 4.0
+            },
+            "AugmentedNumRedirects": {
+              "1성": 5.0,
+              "2성": 5.0,
+              "3성": 5.0
+            },
+            "BaseSpeed": {
+              "1성": 1600.0,
+              "2성": 1600.0,
+              "3성": 1600.0
+            },
+            "SpeedPerBounce": {
+              "1성": 800.0,
+              "2성": 800.0,
+              "3성": 800.0
+            }
+          }
+        }
+      },
+      {
+        "name": "징크스",
+        "apiName": "TFT17_Jinx",
+        "cost": 2,
+        "role": "ADCarry",
+        "traits": [
+          "동물특공대",
+          "도전자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 550,
+            "damage": 55.0,
+            "armor": 20.0,
+            "magicResist": 20.0,
+            "attackSpeed": 0.75,
+            "range": 4.0,
+            "mana": 80.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 990,
+            "damage": 99.0,
+            "armor": 20.0,
+            "magicResist": 20.0,
+            "attackSpeed": 0.75,
+            "range": 4.0,
+            "mana": 80.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 1782,
+            "damage": 178.2,
+            "armor": 20.0,
+            "magicResist": 20.0,
+            "attackSpeed": 0.75,
+            "range": 4.0,
+            "mana": 80.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "폭발적 성향",
+          "desc": "원뿔 범위에 로켓 @ModifiedNumRockets@()발을 발사해 각각 처음 적중한 대상에게 @TotalDamage@()의 물리 피해를 입힙니다.",
+          "variablesByStar": {
+            "BaseBullets": {
+              "1성": 16.0,
+              "2성": 16.0,
+              "3성": 16.0
+            },
+            "ASPerBullet": {
+              "1성": 0.35,
+              "2성": 0.35,
+              "3성": 0.35
+            },
+            "ADDamage": {
+              "1성": 29.0,
+              "2성": 44.0,
+              "3성": 70.0
+            },
+            "TotalSpellTime": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            },
+            "BulletTravelDistance": {
+              "1성": 1500.0,
+              "2성": 1500.0,
+              "3성": 1500.0
+            },
+            "APDamage": {
+              "1성": 3.0,
+              "2성": 5.0,
+              "3성": 7.0
+            },
+            "MinimumNumTargets": {
+              "1성": 2.0,
+              "2성": 2.0,
+              "3성": 2.0
+            },
+            "RocketsPerLaunchAttack": {
+              "1성": 6.0,
+              "2성": 6.0,
+              "3성": 6.0
+            }
+          }
+        }
+      },
+      {
+        "name": "파이크",
+        "apiName": "TFT17_Pyke",
+        "cost": 2,
+        "role": "ADReaper",
+        "traits": [
+          "초능력",
+          "여행자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 700,
+            "damage": 45.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.8,
+            "range": 1.0,
+            "mana": 40.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1260,
+            "damage": 81.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.8,
+            "range": 1.0,
+            "mana": 40.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2268,
+            "damage": 145.8,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.8,
+            "range": 1.0,
+            "mana": 40.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "죽음의 표식",
+          "desc": "위치를 최대 1칸 이동하여 가장 멀리 있는 적에게 작살을 던집니다. 작살은 처음 적중하는 적을 1칸 앞으로 끌어당기고 @ModifiedDamage@()의 물리 피해를 입힙니다. 이후 대상 뒤로 순간이동하여 베어 가르며 대상에게 @ModifiedTargetDamage@()의 물리 피해를 입히고 주변 적에게 @ModifiedAreaDamage@() 의 물리 피해를 입힙니다.",
+          "variablesByStar": {
+            "SpearDamage": {
+              "1성": 60.0,
+              "2성": 90.0,
+              "3성": 135.0
+            },
+            "AoEDamage": {
+              "1성": 120.0,
+              "2성": 180.0,
+              "3성": 360.0
+            },
+            "TargetDamage": {
+              "1성": 210.0,
+              "2성": 315.0,
+              "3성": 720.0
+            }
+          }
+        }
+      },
+      {
+        "name": "판테온",
+        "apiName": "TFT17_Pantheon",
+        "cost": 2,
+        "role": "ADTank",
+        "traits": [
+          "시간 균열자",
+          "싸움꾼",
+          "복제자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 900,
+            "damage": 50.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 80.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1620,
+            "damage": 90.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 80.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2916,
+            "damage": 162.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 80.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "고급 방어술",
+          "desc": "@Duration@초 동안 보호막을 @ModifiedShield@(), 내구력을 @Durability*100@% 얻습니다. 지속시간 동안 원뿔 범위 내 적에게 매초 @ModifiedDamage@()의 물리 피해를 입힙니다.",
+          "variablesByStar": {
+            "APShield": {
+              "1성": 275.0,
+              "2성": 300.0,
+              "3성": 500.0
+            },
+            "Duration": {
+              "1성": 4.0,
+              "2성": 4.0,
+              "3성": 4.0
+            },
+            "Durability": {
+              "1성": 0.15,
+              "2성": 0.15,
+              "3성": 0.15
+            },
+            "TrueDamagePerSecond": {
+              "1성": 30.0,
+              "2성": 45.0,
+              "3성": 70.0
+            },
+            "PercentHealthShield": {
+              "1성": 0.06,
+              "2성": 0.06,
+              "3성": 0.06
+            }
+          }
+        }
+      },
+      {
+        "name": "다이애나",
+        "apiName": "TFT17_Diana",
+        "cost": 3,
+        "role": "APFighter",
+        "traits": [
+          "중재자",
+          "도전자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 850,
+            "damage": null,
+            "armor": 50.0,
+            "magicResist": 50.0,
+            "attackSpeed": 0.8,
+            "range": 1.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1530,
+            "damage": null,
+            "armor": 50.0,
+            "magicResist": 50.0,
+            "attackSpeed": 0.8,
+            "range": 1.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2754,
+            "damage": null,
+            "armor": 50.0,
+            "magicResist": 50.0,
+            "attackSpeed": 0.8,
+            "range": 1.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "은빛 가호",
+          "desc": "기본 지속 효과: 기본 공격 시 @ModifiedBonusDamageToAttacks@()의 추가 마법 피해를 입힙니다.\n\n사용 시: @ShieldDuration@초 동안 @ModifiedShield@()의 보호막을 얻고 주변을 맴도는 구체 3개를 소환합니다. 구체는 적을 관통하며 @ModifiedDamage@()의 마법 피해를 입히고 공격 속도에 비례해 더 빠르게 회전합니다.",
+          "variablesByStar": {
+            "ASDuration": {
+              "1성": 4.0,
+              "2성": 4.0,
+              "3성": 4.0
+            },
+            "Shield": {
+              "1성": 275.0,
+              "2성": 325.0,
+              "3성": 515.0
+            },
+            "ShieldPercent": {
+              "1성": 0.05,
+              "2성": 0.07,
+              "3성": 0.1
+            },
+            "NumAttacks": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "BaseAttackDamagePercent": {
+              "1성": 0.5,
+              "2성": 0.5,
+              "3성": 0.5
+            },
+            "AttackSpeed": {
+              "1성": 0.5,
+              "2성": 0.5,
+              "3성": 0.5
+            },
+            "CleaveDamage": {
+              "1성": 100.0,
+              "2성": 150.0,
+              "3성": 240.0
+            },
+            "ShieldDuration": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "BaseDamage": {
+              "1성": 60.0,
+              "2성": 90.0,
+              "3성": 160.0
+            },
+            "BonusDamageToAttacks": {
+              "1성": 52.0,
+              "2성": 78.0,
+              "3성": 135.0
+            }
+          }
+        }
+      },
+      {
+        "name": "라아스트",
+        "apiName": "TFT17_Rhaast",
+        "cost": 3,
+        "role": "ADTank",
+        "traits": [
+          "구원자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 1200,
+            "damage": 60.0,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 90.0,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 2160,
+            "damage": 108.0,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 90.0,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 3888,
+            "damage": 194.4,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 90.0,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "신성한 낫",
+          "desc": "@Duration@초 동안 내구력을 @Durability*100@% 얻고 지속시간 동안 체력을 @ModifiedHeal@ () 회복합니다. 이후 전방을 일직선으로 베어 적중한 적에게 @ModifiedDamage@()의 물리 피해를 입히고 @KnockupDuration@초 동안 공중에 띄웁니다.",
+          "variablesByStar": {
+            "Duration": {
+              "1성": 2.0,
+              "2성": 2.0,
+              "3성": 2.0
+            },
+            "Durability": {
+              "1성": 0.2,
+              "2성": 0.2,
+              "3성": 0.2
+            },
+            "HealAmount": {
+              "1성": 500.0,
+              "2성": 550.0,
+              "3성": 650.0
+            },
+            "KnockupDuration": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            },
+            "Damage": {
+              "1성": 120.0,
+              "2성": 180.0,
+              "3성": 300.0
+            }
+          }
+        }
+      },
+      {
+        "name": "룰루",
+        "apiName": "TFT17_Lulu",
+        "cost": 3,
+        "role": "APCaster",
+        "traits": [
+          "별돌보미",
+          "복제자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 650,
+            "damage": 30.0,
+            "armor": 25.0,
+            "magicResist": 25.0,
+            "attackSpeed": 0.75,
+            "range": 4.0,
+            "mana": 55.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1170,
+            "damage": 54.0,
+            "armor": 25.0,
+            "magicResist": 25.0,
+            "attackSpeed": 0.75,
+            "range": 4.0,
+            "mana": 55.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2106,
+            "damage": 97.2,
+            "armor": 25.0,
+            "magicResist": 25.0,
+            "attackSpeed": 0.75,
+            "range": 4.0,
+            "mana": 55.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "쏟아지는 별",
+          "desc": "기본 지속 효과: 별돌보미 별자리에 따라 게임마다 다른 부가 효과를 가집니다.\n\n사용 시: 하늘에서 무언가를 떨어뜨려 주변 적 @NumEnemies@명에게 @ModifiedDamage@()의 마법 피해를 입힙니다. 또한 이번 게임의 별돌보미 별자리에 따라 특별한 효과를 발동시킵니다.",
+          "variablesByStar": {
+            "Damage": {
+              "1성": 150.0,
+              "2성": 225.0,
+              "3성": 360.0
+            },
+            "NumEnemies": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            }
+          }
+        }
+      },
+      {
+        "name": "마오카이",
+        "apiName": "TFT17_Maokai",
+        "cost": 3,
+        "role": "APTank",
+        "traits": [
+          "N.O.V.A.",
+          "싸움꾼"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 1100,
+            "damage": 60.0,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1980,
+            "damage": 108.0,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 3564,
+            "damage": 194.4,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.6,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "교차의 마수",
+          "desc": "기본 지속 효과: 모든 요소로부터 최대 체력을 @PassiveRatio*100@% 더 얻습니다.\n\n사용 시: 대상에게 X자 형태 덩굴을 교차시켜 적중한 적에게 @DamageTotal@()의 마법 피해를 입히고 @StunDuration@초 동안 기절시킵니다. \n\nN.O.V.A. 타격: 드래곤 무리를 내보내 모든 적을 @NovaStunDuration@초 동안 기절시킵니다. 전투가 끝날 때까지 마오카이의 기본 공격이 @ModifiedNovaDamage@()의 추가 물리 피해를 입힙니다.",
+          "variablesByStar": {
+            "PassiveRatio": {
+              "1성": 0.5,
+              "2성": 0.5,
+              "3성": 0.5
+            },
+            "Damage": {
+              "1성": 100.0,
+              "2성": 150.0,
+              "3성": 225.0
+            },
+            "StunDuration": {
+              "1성": 1.5,
+              "2성": 1.5,
+              "3성": 1.75
+            },
+            "NovaStunDuration": {
+              "1성": 1.5,
+              "2성": 1.5,
+              "3성": 1.75
+            },
+            "NovaHealthDamage": {
+              "1성": 0.08,
+              "2성": 0.08,
+              "3성": 0.08
+            }
+          }
+        }
+      },
+      {
+        "name": "미스 포츈",
+        "apiName": "TFT17_MissFortune",
+        "cost": 3,
+        "role": null,
+        "traits": [
+          "기동총격여신",
+          "특성 선택"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 650,
+            "damage": 50.0,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.75,
+            "range": 6.0,
+            "mana": 100,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1170,
+            "damage": 90.0,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.75,
+            "range": 6.0,
+            "mana": 100,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2106,
+            "damage": 162.0,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.75,
+            "range": 6.0,
+            "mana": 100,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "기동총격여신 무기고",
+          "desc": "미스 포츈을 배치하고 전달자 모드, 도전자 모드, 복제자 모드 중 어떤 모드를 활성화할지 선택하세요. 선택한 모드에 따라 스킬 및 특성이 결정됩니다.",
+          "variablesByStar": {
+            "Tier1Damage": {
+              "1성": 2.0,
+              "2성": 2.0,
+              "3성": 2.0
+            },
+            "Tier2Damage": {
+              "1성": 2.5,
+              "2성": 2.5,
+              "3성": 2.5
+            },
+            "Tier3Damage": {
+              "1성": 3.3,
+              "2성": 3.3,
+              "3성": 3.3
+            },
+            "Tier4Damage": {
+              "1성": 4.5,
+              "2성": 4.5,
+              "3성": 9.0
+            },
+            "Tier5Damage": {
+              "1성": 6.0,
+              "2성": 6.0,
+              "3성": 60.0
+            }
+          }
+        }
+      },
+      {
+        "name": "빅토르",
+        "apiName": "TFT17_Viktor",
+        "cost": 3,
+        "role": "APCaster",
+        "traits": [
+          "초능력",
+          "전달자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 650,
+            "damage": 30.0,
+            "armor": 25.0,
+            "magicResist": 25.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 80.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1170,
+            "damage": 54.0,
+            "armor": 25.0,
+            "magicResist": 25.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 80.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2106,
+            "damage": 97.2,
+            "armor": 25.0,
+            "magicResist": 25.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 80.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "초능력 폭풍",
+          "desc": "정신을 집중해 @AugmentedDuration@@Duration@초 동안 적을 따라다니는 1칸 범위 초능력 폭풍을 소환합니다. 폭풍은 매초 크기가 커지며 범위 내 적에게 @ModifiedDamage@()의 마법 피해를 입힙니다. 피해량은 중심으로부터 1칸 멀어질 때마다 @FalloffPerHex*100@% 감소합니다.",
+          "variablesByStar": {
+            "Duration": {
+              "1성": 4.0,
+              "2성": 4.0,
+              "3성": 4.0
+            },
+            "AugmentedDuration": {
+              "1성": 5.0,
+              "2성": 5.0,
+              "3성": 5.0
+            },
+            "Damage": {
+              "1성": 200.0,
+              "2성": 300.0,
+              "3성": 530.0
+            },
+            "RadiusIncreasePerSecond": {
+              "1성": 0.3,
+              "2성": 0.3,
+              "3성": 0.3
+            },
+            "FalloffPerHex": {
+              "1성": 0.6,
+              "2성": 0.6,
+              "3성": 0.6
+            }
+          }
+        }
+      },
+      {
+        "name": "사미라",
+        "apiName": "TFT17_Samira",
+        "cost": 3,
+        "role": "ADCaster",
+        "traits": [
+          "우주 그루브",
+          "저격수"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 650,
+            "damage": 50.0,
+            "armor": 25.0,
+            "magicResist": 25.0,
+            "attackSpeed": 0.75,
+            "range": 6.0,
+            "mana": 65.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1170,
+            "damage": 90.0,
+            "armor": 25.0,
+            "magicResist": 25.0,
+            "attackSpeed": 0.75,
+            "range": 6.0,
+            "mana": 65.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2106,
+            "damage": 162.0,
+            "armor": 25.0,
+            "magicResist": 25.0,
+            "attackSpeed": 0.75,
+            "range": 6.0,
+            "mana": 65.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "도약 난무",
+          "desc": "기본 지속 효과: 적이 공중에 뜰 때마다 @ModifiedPassiveDamage@()의 물리 피해를 입히고 @GrooveDuration@초 동안  상태가 됩니다.\n\n사용 시: 대상에게 탄환을 퍼부어 @ModifiedDamage@()의 물리 피해를 입히고 @StunDuration@초 동안 공중으로 띄워 올립니다.",
+          "variablesByStar": {
+            "PassiveAD": {
+              "1성": 55.0,
+              "2성": 80.0,
+              "3성": 130.0
+            },
+            "PassiveAP": {
+              "1성": 10.0,
+              "2성": 15.0,
+              "3성": 25.0
+            },
+            "GrooveDuration": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "Damage": {
+              "1성": 375.0,
+              "2성": 560.0,
+              "3성": 900.0
+            },
+            "StunDuration": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            }
+          }
+        }
+      },
+      {
+        "name": "오로라",
+        "apiName": "TFT17_Aurora",
+        "cost": 3,
+        "role": "APCaster",
+        "traits": [
+          "동물특공대",
+          "여행자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 700,
+            "damage": 30.0,
+            "armor": 25.0,
+            "magicResist": 25.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 80.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1260,
+            "damage": 54.0,
+            "armor": 25.0,
+            "magicResist": 25.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 80.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2268,
+            "damage": 97.2,
+            "armor": 25.0,
+            "magicResist": 25.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 80.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "고양된 해킹",
+          "desc": "대상이 포함된 @SpellHexRadius@칸 균열을 열어 범위 내 적을 @HexDuration@초 동안 해킹하고 각각 @ModifiedDamage@()의 마법 피해를 입힙니다. 또한 적중한 모든 적에게 @ModifiedSplitDamage@()의 마법 피해를 나누어 입힙니다.\n\n해킹당한 적은 받는 모든 피해의 @HexPercent*100@%를 저장합니다. 해킹이 끝나면 저장된 피해량만큼 고정 피해를 입습니다. 대상이 처치될 경우 해킹이 일찍 종료됩니다.",
+          "variablesByStar": {
+            "SplitDamage": {
+              "1성": 400.0,
+              "2성": 600.0,
+              "3성": 960.0
+            },
+            "Damage": {
+              "1성": 80.0,
+              "2성": 120.0,
+              "3성": 190.0
+            },
+            "HexPercent": {
+              "1성": 0.1,
+              "2성": 0.1,
+              "3성": 0.1
+            },
+            "HexDuration": {
+              "1성": 4.0,
+              "2성": 4.0,
+              "3성": 4.0
+            },
+            "SpellHexRadius": {
+              "1성": 2.0,
+              "2성": 2.0,
+              "3성": 2.0
+            }
+          }
+        }
+      },
+      {
+        "name": "오른",
+        "apiName": "TFT17_Ornn",
+        "cost": 3,
+        "role": "APTank",
+        "traits": [
+          "우주 그루브",
+          "요새"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 950,
+            "damage": 50.0,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1710,
+            "damage": 90.0,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 3078,
+            "damage": 162.0,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "디스코 지옥불",
+          "desc": "기본 지속 효과: 전투 시작 시 임시 완성 아이템 1개를 제작합니다. 이미 아이템 3개를 장착한 경우, 대신 무작위 완성 아이템 하나가 이번 전투에서 찬란한 아이템이 됩니다.\n\n사용 시: @ShieldDuration@초 동안 @ModifiedShield@()의 보호막을 얻습니다. 이후 원뿔 범위에 불을 내뿜어 @ModifiedDamage@()의 마법 피해를 입힙니다. 오른에게 부여된 보호막이 사라지면 오른은 @GrooveDuration@초 동안  상태가 됩니다.",
+          "variablesByStar": {
+            "Shield": {
+              "1성": 125.0,
+              "2성": 200.0,
+              "3성": 500.0
+            },
+            "ShieldDuration": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "Damage": {
+              "1성": 180.0,
+              "2성": 270.0,
+              "3성": 430.0
+            },
+            "GrooveDuration": {
+              "1성": 2.5,
+              "2성": 2.5,
+              "3성": 2.5
+            }
+          }
+        }
+      },
+      {
+        "name": "우르곳",
+        "apiName": "TFT17_Urgot",
+        "cost": 3,
+        "role": "ADFighter",
+        "traits": [
+          "메카",
+          "싸움꾼",
+          "습격자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 600,
+            "damage": 60.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.8,
+            "range": 2.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1080,
+            "damage": 108.0,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.8,
+            "range": 2.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 1944,
+            "damage": 194.4,
+            "armor": 45.0,
+            "magicResist": 45.0,
+            "attackSpeed": 0.8,
+            "range": 2.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "멈출 수 없는 살상 병기",
+          "desc": "기본 지속 효과 - 근접 폭발: 적이 반경 @ShotgunRange@()칸 내로 들어올 때마다 가장 가까운 인접 칸을 향해 원뿔 범위 폭발 탄환을 발사하여 @ModifiedShotgunDamage@()의 물리 피해를 입힙니다. 피해량은 칸마다 @FalloffPerHex*100@% 감소합니다. 인접한 칸마다 @ShotgunCooldown@초의 재사용 대기시간이 적용되며, 재사용 대기 상태로 전투를 시작합니다.\n\n사용 시: @ShieldDuration@초 동안 @ModifiedShield@()의 보호막을 얻고, 근접 폭발 반경에 최대한 많은 대상이 포함되도록 최대 1칸 이동합니다. 근접 폭발의 재사용 대기시간이 초기화됩니다.",
+          "variablesByStar": {
+            "ShotgunDamage": {
+              "1성": 85.0,
+              "2성": 125.0,
+              "3성": 200.0
+            },
+            "ShotgunCooldown": {
+              "1성": 5.0,
+              "2성": 5.0,
+              "3성": 5.0
+            },
+            "ShieldAmount": {
+              "1성": 150.0,
+              "2성": 175.0,
+              "3성": 200.0
+            },
+            "ShieldDuration": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "FalloffPerHex": {
+              "1성": 0.3,
+              "2성": 0.3,
+              "3성": 0.3
+            }
+          }
+        }
+      },
+      {
+        "name": "일라오이",
+        "apiName": "TFT17_Illaoi",
+        "cost": 3,
+        "role": "APTank",
+        "traits": [
+          "동물특공대",
+          "선봉대",
+          "길잡이"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 1100,
+            "damage": 50.0,
+            "armor": 50.0,
+            "magicResist": 50.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1980,
+            "damage": 90.0,
+            "armor": 50.0,
+            "magicResist": 50.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 3564,
+            "damage": 162.0,
+            "armor": 50.0,
+            "magicResist": 50.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "영혼의 시험",
+          "desc": "@Duration@초 동안 @ModifiedShield@()의 보호막을 얻습니다. 지속시간 동안 가장 가까운 적 @NumEnemies@명으로부터 체력을 @ModifiedHealthDrain@ () 흡수합니다. 이후 땅을 내려찍어 2칸 내 모든 적에게 @ModifiedDamage@()의 마법 피해를 입힙니다.",
+          "variablesByStar": {
+            "Shield": {
+              "1성": 450.0,
+              "2성": 525.0,
+              "3성": 650.0
+            },
+            "Duration": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "HealthDrain": {
+              "1성": 55.0,
+              "2성": 85.0,
+              "3성": 130.0
+            },
+            "NumEnemies": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "Damage": {
+              "1성": 80.0,
+              "2성": 120.0,
+              "3성": 180.0
+            }
+          }
+        }
+      },
+      {
+        "name": "카이사",
+        "apiName": "TFT17_Kaisa",
+        "cost": 3,
+        "role": "ADCaster",
+        "traits": [
+          "암흑의 별",
+          "불한당"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 650,
+            "damage": 45.0,
+            "armor": 25.0,
+            "magicResist": 25.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1170,
+            "damage": 81.0,
+            "armor": 25.0,
+            "magicResist": 25.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2106,
+            "damage": 145.8,
+            "armor": 25.0,
+            "magicResist": 25.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "탄환 세례",
+          "desc": "기본 지속 효과: 처치 관여 시 마나를 @ManaPerKill@ 얻습니다.\n\n사용 시: 현재 대상 주변 반경 @HexRange@칸에 미사일 @BaseNumMissiles@개를 발사하여 각각 @TotalDamage@()의 물리 피해를 입힙니다.",
+          "variablesByStar": {
+            "BaseNumMissiles": {
+              "1성": 16.0,
+              "2성": 16.0,
+              "3성": 16.0
+            },
+            "HexRange": {
+              "1성": 2.0,
+              "2성": 2.0,
+              "3성": 2.0
+            },
+            "ADDamage": {
+              "1성": 30.0,
+              "2성": 45.0,
+              "3성": 72.0
+            },
+            "APDamage": {
+              "1성": 3.0,
+              "2성": 5.0,
+              "3성": 7.0
+            },
+            "SpellDuration": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            },
+            "ManaPerKill": {
+              "1성": 10.0,
+              "2성": 10.0,
+              "3성": 10.0
+            },
+            "PercentTargetedMissiles": {
+              "1성": 0.5,
+              "2성": 0.5,
+              "3성": 0.5
+            }
+          }
+        }
+      },
+      {
+        "name": "피즈",
+        "apiName": "TFT17_Fizz",
+        "cost": 3,
+        "role": "APReaper",
+        "traits": [
+          "정령족",
+          "불한당"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 850,
+            "damage": 30.0,
+            "armor": 55.0,
+            "magicResist": 55.0,
+            "attackSpeed": 0.85,
+            "range": 1.0,
+            "mana": 20.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1530,
+            "damage": 54.0,
+            "armor": 55.0,
+            "magicResist": 55.0,
+            "attackSpeed": 0.85,
+            "range": 1.0,
+            "mana": 20.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2754,
+            "damage": 97.2,
+            "armor": 55.0,
+            "magicResist": 55.0,
+            "attackSpeed": 0.85,
+            "range": 1.0,
+            "mana": 20.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "정령 미끼",
+          "desc": "현재 대상을 관통해 돌진하며 @ModifiedDamage@()의 마법 피해를 입힙니다. 스킬을 3회 사용할 때마다 추가로 잠시 후 초강력 정령을 소환해 대상을 잠시 공중에 띄우고 @ModifiedChompDamage@()의 마법 피해를 입힙니다. 인접한 적은 @SecondaryDamage*100@%의 피해를 입습니다.\n\n정령 추가 효과: 미끼에 정령 @ModifiedNumMeeps@()마리가 추가되고 초강력 정령 피해량이 @ModifiedMeepBonusDamage@ () 증가합니다.",
+          "variablesByStar": {
+            "DashDamage": {
+              "1성": 140.0,
+              "2성": 210.0,
+              "3성": 310.0
+            },
+            "BiteDamageAP": {
+              "1성": 185.0,
+              "2성": 280.0,
+              "3성": 445.0
+            },
+            "BiteDamageMeep": {
+              "1성": 75.0,
+              "2성": 115.0,
+              "3성": 180.0
+            },
+            "MeepsPerAstro": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            },
+            "MegaMeepStunDuration": {
+              "1성": 1.25,
+              "2성": 1.25,
+              "3성": 1.25
+            },
+            "SecondaryDamage": {
+              "1성": 0.5,
+              "2성": 0.5,
+              "3성": 0.5
+            }
+          }
+        }
+      },
+      {
+        "name": "거대 메크 로봇",
+        "apiName": "TFT17_Galio",
+        "cost": 4,
+        "role": "ADTank",
+        "traits": [
+          "메카",
+          "여행자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 1300,
+            "damage": 70.0,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 2340,
+            "damage": 126.0,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 4212,
+            "damage": 226.8,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "중력 매트릭스",
+          "desc": "@DurabilityDuration@초 동안 방어 태세에 진입해 내구력을 @Durability*100@% 얻습니다. 방어 태세일 때 주변 적 투사체를 끌어당기고 지속 시간 동안 체력을 @ModifiedHeal@() 회복합니다. 이 효과가 끝나면 충격파를 방출해 @HexRange@칸 내에 @ModifiedDamage@()의 물리 피해를 입힙니다.",
+          "variablesByStar": {
+            "HexRange": {
+              "1성": 2.0,
+              "2성": 2.0,
+              "3성": 2.0
+            },
+            "Durability": {
+              "1성": 0.2,
+              "2성": 0.2,
+              "3성": 0.6
+            },
+            "DurabilityDuration": {
+              "1성": 4.0,
+              "2성": 4.0,
+              "3성": 4.0
+            },
+            "ARMARScaling": {
+              "1성": 0.8,
+              "2성": 1.2,
+              "3성": 30.0
+            },
+            "Heal": {
+              "1성": 900.0,
+              "2성": 1300.0,
+              "3성": 3000.0
+            }
+          }
+        }
+      },
+      {
+        "name": "나미",
+        "apiName": "TFT17_Nami",
+        "cost": 4,
+        "role": "APCaster",
+        "traits": [
+          "우주 그루브",
+          "복제자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 850,
+            "damage": 40.0,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 65.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1530,
+            "damage": 72.0,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 65.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2754,
+            "damage": 129.6,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 65.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "버블 팝",
+          "desc": "대상에게 디스코 방울을 던져 반경 1칸 내 적에게 @ModifiedDamage@()의 피해를 나누어 입힙니다. 폭발 시 주변 적에게 작은 방울 @NumProjectiles@개가 날아가 @ModifiedFirstBounceDamage@()의 마법 피해를 입힙니다. 스킬 사용 시 나미가 @GrooveDuration@초 동안  상태가 됩니다.",
+          "variablesByStar": {
+            "Damage": {
+              "1성": 460.0,
+              "2성": 690.0,
+              "3성": 5000.0
+            },
+            "NumProjectiles": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "FirstBounceDamage": {
+              "1성": 125.0,
+              "2성": 185.0,
+              "3성": 1000.0
+            },
+            "GrooveDuration": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            }
+          }
+        }
+      },
+      {
+        "name": "누누와 윌럼프",
+        "apiName": "TFT17_Nunu",
+        "cost": 4,
+        "role": "APTank",
+        "traits": [
+          "별돌보미",
+          "선봉대"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 1300,
+            "damage": 60.0,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 145.0,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 2340,
+            "damage": 108.0,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 145.0,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 4212,
+            "damage": 194.4,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 145.0,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "재앙",
+          "desc": "@ShieldDuration@초 동안 @ModifiedShield@()의 보호막을 얻습니다. 주변 칸에 아스트롤라베를 소환하고 떨어뜨려 2칸 내 적에게 @ModifiedInitialDamage@() 의 마법 피해를 입힙니다. 이후 아스트롤라베를 전장 끝으로 밀어 @ModifiedFollowupDamage@()의 마법 피해를 입힙니다. 아스트롤라베에 적중당한 모든 적은 @StunDuration@초 동안 공중으로 띄워 올려집니다.",
+          "variablesByStar": {
+            "Shield": {
+              "1성": 475.0,
+              "2성": 575.0,
+              "3성": 2000.0
+            },
+            "InitialDamage": {
+              "1성": 120.0,
+              "2성": 180.0,
+              "3성": 2000.0
+            },
+            "StunDuration": {
+              "1성": 1.5,
+              "2성": 1.75,
+              "3성": 8.0
+            },
+            "FollowupDamage": {
+              "1성": 100.0,
+              "2성": 150.0,
+              "3성": 2000.0
+            },
+            "LockoutTime": {
+              "1성": 2.5,
+              "2성": 2.5,
+              "3성": 2.5
+            },
+            "ShieldDuration": {
+              "1성": 4.0,
+              "2성": 4.0,
+              "3성": 4.0
+            }
+          }
+        }
+      },
+      {
+        "name": "람머스",
+        "apiName": "TFT17_Rammus",
+        "cost": 4,
+        "role": "APTank",
+        "traits": [
+          "정령족",
+          "요새"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 1300,
+            "damage": 60.0,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 80.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 2340,
+            "damage": 108.0,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 80.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 4212,
+            "damage": 194.4,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 80.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "중력 회전",
+          "desc": "@ShieldDuration@초 동안 @ModifiedShield@()의 보호막을 얻습니다. 이후 일직선 3칸 내 적을 타격해 @ModifiedDamage@()의 마법 피해를 입힙니다.\n\n정령 추가 효과: 받는 공격 피해량이 @ModifiedFlatDR@ () 감소합니다. @AttacksPerPassiveTrigger@회 공격받은 후 반경 2칸에 @ModifiedPassiveDamage@()의 마법 피해를 입힙니다.",
+          "variablesByStar": {
+            "ShieldAP": {
+              "1성": 675.0,
+              "2성": 825.0,
+              "3성": 2000.0
+            },
+            "ShieldDuration": {
+              "1성": 4.0,
+              "2성": 4.0,
+              "3성": 4.0
+            },
+            "DamageAP": {
+              "1성": 50.0,
+              "2성": 75.0,
+              "3성": 700.0
+            },
+            "DamageArmor": {
+              "1성": 0.5,
+              "2성": 0.75,
+              "3성": 11.0
+            },
+            "AttacksPerPassiveTrigger": {
+              "1성": 20.0,
+              "2성": 20.0,
+              "3성": 20.0
+            },
+            "PassivePercentArmor": {
+              "1성": 0.2,
+              "2성": 0.3,
+              "3성": 5.0
+            },
+            "FlatDRPerMeep": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "MeepsPerAstro": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            }
+          }
+        }
+      },
+      {
+        "name": "르블랑",
+        "apiName": "TFT17_Leblanc",
+        "cost": 4,
+        "role": "APCarry",
+        "traits": [
+          "중재자",
+          "길잡이"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 850,
+            "damage": 0.0,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 40.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1530,
+            "damage": 0.0,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 40.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2754,
+            "damage": 0.0,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 40.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "현실 분열",
+          "desc": "기본 지속 효과: 기본 공격 시 대신 @ModifiedBaseAttackDamage@()의 마법 피해를 입힙니다.\n\n사용 시: 분신 @NumClones@명을 소환합니다. 분신은 함께 @NumAttacks@회 공격하며 @CloneDamageMultiplier*100@%의 피해를 입힙니다. 마지막 공격 시 분신이 투사체를 발사해 @ModifiedBoltDamage@()의 마법 피해를 입힙니다.",
+          "variablesByStar": {
+            "BasicAttackDamage": {
+              "1성": 66.0,
+              "2성": 99.0,
+              "3성": 250.0
+            },
+            "CloneDamageMultiplier": {
+              "1성": 0.25,
+              "2성": 0.25,
+              "3성": 1.5
+            },
+            "BoltDamage": {
+              "1성": 95.0,
+              "2성": 145.0,
+              "3성": 750.0
+            },
+            "NumClones": {
+              "1성": 5.0,
+              "2성": 5.0,
+              "3성": 5.0
+            },
+            "NumAttacks": {
+              "1성": 5.0,
+              "2성": 5.0,
+              "3성": 5.0
+            }
+          }
+        }
+      },
+      {
+        "name": "리븐",
+        "apiName": "TFT17_Riven",
+        "cost": 4,
+        "role": "HFighter",
+        "traits": [
+          "시간 균열자",
+          "불한당"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 1100,
+            "damage": 0.0,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.85,
+            "range": 1.0,
+            "mana": 20.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1980,
+            "damage": 0.0,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.85,
+            "range": 1.0,
+            "mana": 20.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 3564,
+            "damage": 0.0,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.85,
+            "range": 1.0,
+            "mana": 20.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "시간 왜곡",
+          "desc": "기본 지속 효과: 이 스킬은 공격력 또는 주문력 중 더 높은 능력치에 따라 변화합니다. 기본 공격 시 @ModifiedPassiveAPDamage@()의 마법@ModifiedPassiveADDamage@()의 물리 피해를 입힙니다.\n\n사용 시: 주변 칸으로 돌진해 @ShieldDuration@초 동안 @Shield@의 보호막을 얻고 인접한 적을 베어 @ModifiedAPDamage@()의 마법@ModifiedADDamage@()의 물리 피해를 입힙니다. 스킬을 3회 사용할 때마다 공중으로 도약한 후 커다란 에너지 파동을 발사해 일직선상의 적에게 @ModifiedAPWaveDamage@()의 마법@ModifiedADWaveDamage@()의 물리 피해를 입힙니다.",
+          "variablesByStar": {
+            "PassiveDamage": {
+              "1성": 75.0,
+              "2성": 115.0,
+              "3성": 300.0
+            },
+            "DashRange": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            },
+            "Shield": {
+              "1성": 100.0,
+              "2성": 150.0,
+              "3성": 1200.0
+            },
+            "ShieldDuration": {
+              "1성": 2.0,
+              "2성": 2.0,
+              "3성": 2.0
+            },
+            "Damage": {
+              "1성": 90.0,
+              "2성": 135.0,
+              "3성": 1000.0
+            },
+            "WaveDamage": {
+              "1성": 160.0,
+              "2성": 240.0,
+              "3성": 2000.0
+            },
+            "SpecialCastCount": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "ThirdCastConeHexRange": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            }
+          }
+        }
+      },
+      {
+        "name": "마스터 이",
+        "apiName": "TFT17_MasterYi",
+        "cost": 4,
+        "role": "ADFighter",
+        "traits": [
+          "초능력",
+          "습격자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 1100,
+            "damage": 60.0,
+            "armor": 65.0,
+            "magicResist": 65.0,
+            "attackSpeed": 0.85,
+            "range": 1.0,
+            "mana": 60.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1980,
+            "damage": 108.0,
+            "armor": 65.0,
+            "magicResist": 65.0,
+            "attackSpeed": 0.85,
+            "range": 1.0,
+            "mana": 60.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 3564,
+            "damage": 194.4,
+            "armor": 65.0,
+            "magicResist": 65.0,
+            "attackSpeed": 0.85,
+            "range": 1.0,
+            "mana": 60.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "일격 초필살",
+          "desc": "기본 지속 효과: 기본 공격 3회마다 연속으로 베어 날려 @ModifiedPassiveDamage@()의 추가 물리 피해를 입힙니다.\n\n사용 시: 잠시 명상한 후 @Duration@초 동안 초필살 상태에 돌입하여 모든 피해 흡혈을 @Omnivamp*100@%, 공격 속도를 @AttackSpeed*100@% 얻고 이동 속도가 상승합니다. 초당 두 번, 무작위 주변 적 1명에게 초능력 잔상을 날려 @ModifiedDamage@()의 물리 피해를 입힙니다.",
+          "variablesByStar": {
+            "PassiveDamage": {
+              "1성": 70.0,
+              "2성": 105.0,
+              "3성": 550.0
+            },
+            "DamageAD": {
+              "1성": 55.0,
+              "2성": 85.0,
+              "3성": 600.0
+            },
+            "DamageAP": {
+              "1성": 20.0,
+              "2성": 30.0,
+              "3성": 200.0
+            },
+            "Omnivamp": {
+              "1성": 0.1,
+              "2성": 0.1,
+              "3성": 0.1
+            },
+            "AttackSpeed": {
+              "1성": 0.7,
+              "2성": 0.7,
+              "3성": 0.7
+            },
+            "Duration": {
+              "1성": 5.0,
+              "2성": 5.0,
+              "3성": 5.0
+            }
+          }
+        }
+      },
+      {
+        "name": "모르가나",
+        "apiName": "TFT17_Morgana",
+        "cost": 4,
+        "role": "APTank",
+        "traits": [
+          "어둠의 여인"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 1300,
+            "damage": 60.0,
+            "armor": 70.0,
+            "magicResist": 70.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 80.0,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 2340,
+            "damage": 108.0,
+            "armor": 70.0,
+            "magicResist": 70.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 80.0,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 4212,
+            "damage": 194.4,
+            "armor": 70.0,
+            "magicResist": 70.0,
+            "attackSpeed": 0.65,
+            "range": 1.0,
+            "mana": 80.0,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "어둠의 형상",
+          "desc": "@HealthGainDuration@초 동안 변신하여 체력을 @ModifiedHealthGain@ () 얻고 주변 챔피언에게 사슬을 연결합니다. 지속시간 동안 가장 가까운 적 @NumEnemies@명에게 @ModifiedDamage@()의 마법 피해를 입히고, 가장 가까운 부상당한 아군 @NumAllies@명의 체력을 @ModifiedHeal@ () 회복시킵니다.",
+          "variablesByStar": {
+            "APHealthGain": {
+              "1성": 600.0,
+              "2성": 700.0,
+              "3성": 2500.0
+            },
+            "PercentHPHealthGain": {
+              "1성": 0.15,
+              "2성": 0.15,
+              "3성": 0.5
+            },
+            "HealthGainDuration": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "NumEnemies": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "NumAllies": {
+              "1성": 2.0,
+              "2성": 2.0,
+              "3성": 2.0
+            },
+            "APDamage": {
+              "1성": 100.0,
+              "2성": 150.0,
+              "3성": 3000.0
+            },
+            "APHealing": {
+              "1성": 125.0,
+              "2성": 185.0,
+              "3성": 3000.0
+            }
+          }
+        }
+      },
+      {
+        "name": "아우렐리온 솔",
+        "apiName": "TFT17_AurelionSol",
+        "cost": 4,
+        "role": "APCaster",
+        "traits": [
+          "메카",
+          "전달자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 850,
+            "damage": 30.0,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.75,
+            "range": 6.0,
+            "mana": 75.0,
+            "initialMana": 15.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1530,
+            "damage": 54.0,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.75,
+            "range": 6.0,
+            "mana": 75.0,
+            "initialMana": 15.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2754,
+            "damage": 97.2,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.75,
+            "range": 6.0,
+            "mana": 75.0,
+            "initialMana": 15.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "죽음의 광선",
+          "desc": "현재 대상을 향해 일직선으로 @AugmentedDuration@@Duration@초 동안 죽음의 광선을 발사합니다. 광선은 매초 @ModifiedDamage@()의 마법 피해를 입힙니다. 관통한 적 하나당 피해량이 @DamageReductionPerTarget*100@%씩 감소합니다. 죽음의 광선은 적의 마법 저항력을 @MagicPen*100@% 무시합니다.",
+          "variablesByStar": {
+            "Duration": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "AugmentedDuration": {
+              "1성": 4.0,
+              "2성": 4.0,
+              "3성": 4.0
+            },
+            "DamagePerSecond": {
+              "1성": 335.0,
+              "2성": 505.0,
+              "3성": 2000.0
+            },
+            "MagicPen": {
+              "1성": 0.3,
+              "2성": 0.3,
+              "3성": 0.3
+            },
+            "DamageReductionPerTarget": {
+              "1성": 0.8,
+              "2성": 0.8,
+              "3성": 0.8
+            }
+          }
+        }
+      },
+      {
+        "name": "자야",
+        "apiName": "TFT17_Xayah",
+        "cost": 4,
+        "role": "ADCarry",
+        "traits": [
+          "별돌보미",
+          "저격수"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 850,
+            "damage": 49.0,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.75,
+            "range": 6.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1530,
+            "damage": 88.2,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.75,
+            "range": 6.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2754,
+            "damage": 158.76,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.75,
+            "range": 6.0,
+            "mana": 50.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "별빛 튕기는 깃털",
+          "desc": "기본 지속 효과: 기본 공격이 튕기며 @AttackNumEnemies@회 타격하고 대상에게 적중할 때마다 @PassivePercentReducedDamage*100@% 감소한 피해를 입힙니다. 또한 마지막 대상 뒤에 깃털을 남깁니다.\n\n사용 시: 다음 기본 공격 @NumAttacks@회 동안 공격 속도를 @AttackSpeed*100@% 얻습니다. 지속시간이 끝나면 모든 깃털을 불러들여 가장 가까운 적 @RecallFeatherTargets@명에게 각각 @TotalDamage@()의 물리 피해를 입힙니다. 자야의 현재 대상은 깃털 하나당 @ModifiedPrimaryTargetBonusDamage@()의 추가 물리 피해를 입습니다.",
+          "variablesByStar": {
+            "AttackNumEnemies": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 5.0
+            },
+            "PassivePercentReducedDamage": {
+              "1성": 0.6,
+              "2성": 0.6,
+              "3성": 0.3
+            },
+            "ADDamage": {
+              "1성": 45.0,
+              "2성": 68.0,
+              "3성": 900.0
+            },
+            "APDamage": {
+              "1성": 6.0,
+              "2성": 9.0,
+              "3성": 60.0
+            },
+            "ActivePercentReducedDamage": {
+              "1성": 0.2,
+              "2성": 0.2,
+              "3성": 0.2
+            },
+            "RecallFeatherTargets": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "AttackSpeed": {
+              "1성": 0.75,
+              "2성": 0.75,
+              "3성": 0.75
+            },
+            "Duration": {
+              "1성": 4.0,
+              "2성": 4.0,
+              "3성": 4.0
+            },
+            "NumAttacks": {
+              "1성": 6.0,
+              "2성": 6.0,
+              "3성": 6.0
+            },
+            "PrimaryTargetBonusDamage": {
+              "1성": 25.0,
+              "2성": 40.0,
+              "3성": 200.0
+            }
+          }
+        }
+      },
+      {
+        "name": "카르마",
+        "apiName": "TFT17_Karma",
+        "cost": 4,
+        "role": "APCaster",
+        "traits": [
+          "암흑의 별",
+          "여행자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 850,
+            "damage": 40.0,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 55.0,
+            "initialMana": 10.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1530,
+            "damage": 72.0,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 55.0,
+            "initialMana": 10.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2754,
+            "damage": 129.6,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 55.0,
+            "initialMana": 10.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "특이점",
+          "desc": "블랙홀의 힘을 모아 대상 및 대상과 가장 가까운 적 @NumEnemies@명에게 @ModifiedDamage@()의 마법 피해를 나누어 입힙니다. 대상은 추가로 @ModifiedSecondaryDamage@()의 마법 피해를 입습니다.",
+          "variablesByStar": {
+            "Damage": {
+              "1성": 630.0,
+              "2성": 945.0,
+              "3성": 5000.0
+            },
+            "SecondaryDamage": {
+              "1성": 180.0,
+              "2성": 270.0,
+              "3성": 1000.0
+            },
+            "BaseHexRange": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            },
+            "NumCastsToExpand": {
+              "1성": 2.0,
+              "2성": 2.0,
+              "3성": 2.0
+            },
+            "HexPerExpansion": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            },
+            "MaximumHexes": {
+              "1성": 8.0,
+              "2성": 8.0,
+              "3성": 8.0
+            },
+            "NumEnemies": {
+              "1성": 2.0,
+              "2성": 2.0,
+              "3성": 4.0
+            }
+          }
+        }
+      },
+      {
+        "name": "코르키",
+        "apiName": "TFT17_Corki",
+        "cost": 4,
+        "role": "ADCaster",
+        "traits": [
+          "정령족",
+          "운명술사"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 850,
+            "damage": 45.0,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 60.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1530,
+            "damage": 81.0,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 60.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2754,
+            "damage": 145.8,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.8,
+            "range": 4.0,
+            "mana": 60.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "소행성 발사기",
+          "desc": "주변 위치로 저공 비행한 뒤 대상 및 2칸 이내 모든 적에게 미사일을 @BaseMissiles@개 나누어 발사합니다. 미사일은 @ModifiedDamage@()의 물리 피해를 입히며 @ProcChance@% 행운 확률로 초강력 미사일을 발사해 대신 @ModifiedProcDamage@()의 피해를 입힙니다.\n\n정령 추가 효과: @ModifiedMeepCooldown@()초마다 대상에게 폭발성 정령을 날려 적중 시 반경 1칸에 @ModifiedMeepDamage@()의 물리 피해를 입힙니다.\n\n행운: 두 번 시도하고 더 나은 결과를 선택합니다.",
+          "variablesByStar": {
+            "BaseMissiles": {
+              "1성": 21.0,
+              "2성": 21.0,
+              "3성": 21.0
+            },
+            "MissileAD": {
+              "1성": 28.0,
+              "2성": 42.0,
+              "3성": 280.0
+            },
+            "MissileAP": {
+              "1성": 5.0,
+              "2성": 7.0,
+              "3성": 24.0
+            },
+            "ProcChance": {
+              "1성": 20.0,
+              "2성": 20.0,
+              "3성": 20.0
+            },
+            "ProcDamageMult": {
+              "1성": 3.5,
+              "2성": 3.5,
+              "3성": 3.5
+            },
+            "MissilesPerLaunchAttack": {
+              "1성": 5.0,
+              "2성": 5.0,
+              "3성": 5.0
+            },
+            "BaseMeepCooldown": {
+              "1성": 8.0,
+              "2성": 8.0,
+              "3성": 8.0
+            },
+            "CooldownReductionPerAstro": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            },
+            "MeepDamage": {
+              "1성": 110.0,
+              "2성": 165.0,
+              "3성": 900.0
+            },
+            "CDRPerMeep": {
+              "1성": 0.1,
+              "2성": 0.1,
+              "3성": 0.1
+            }
+          }
+        }
+      },
+      {
+        "name": "킨드레드",
+        "apiName": "TFT17_Kindred",
+        "cost": 4,
+        "role": "ADCarry",
+        "traits": [
+          "N.O.V.A.",
+          "도전자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 850,
+            "damage": 58.0,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.8,
+            "range": 6.0,
+            "mana": 40.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1530,
+            "damage": 104.4,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.8,
+            "range": 6.0,
+            "mana": 40.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2754,
+            "damage": 187.92,
+            "armor": 30.0,
+            "magicResist": 30.0,
+            "attackSpeed": 0.8,
+            "range": 6.0,
+            "mana": 40.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "우주의 추적",
+          "desc": "기본 지속 효과: 기본 공격 및 스킬이 대상에게 표식을 남깁니다. 적이 @MaxMarks@표식에 도달하면 늑대가 표식을 소모하고 @TotalDamage@() 의 물리 피해를 입힙니다. \n\n사용 시: 최대 @HexDistance@칸 멀리 도약한 후 가장 가까운 적 @NumTargets@명에게 화살을 발사해 각각 @ModifiedDamage@()의 물리 피해를 입힙니다. \n\nN.O.V.A. 타격: 피해 증폭을 @NovaDamageAmp*100@% 얻습니다. 즉시 및 @NovaRepeatTimer@초마다 모든 적에게 표식을 남깁니다.",
+          "variablesByStar": {
+            "MaxMarks": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "NumTargets": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 5.0
+            },
+            "SpellDamage": {
+              "1성": 75.0,
+              "2성": 115.0,
+              "3성": 600.0
+            },
+            "ADDamage": {
+              "1성": 115.0,
+              "2성": 175.0,
+              "3성": 900.0
+            },
+            "APDamage": {
+              "1성": 10.0,
+              "2성": 15.0,
+              "3성": 100.0
+            },
+            "HexDistance": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            },
+            "NovaRepeatTimer": {
+              "1성": 4.5,
+              "2성": 4.5,
+              "3성": 4.5
+            },
+            "NovaDamageAmp": {
+              "1성": 0.15,
+              "2성": 0.15,
+              "3성": 0.15
+            }
+          }
+        }
+      },
+      {
+        "name": "탐 켄치",
+        "apiName": "TFT17_TahmKench",
+        "cost": 4,
+        "role": "APTank",
+        "traits": [
+          "예언자",
+          "싸움꾼"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 1300,
+            "damage": 75.0,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.5,
+            "range": 1.0,
+            "mana": 110.0,
+            "initialMana": 50.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 2340,
+            "damage": 135.0,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.5,
+            "range": 1.0,
+            "mana": 110.0,
+            "initialMana": 50.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 4212,
+            "damage": 243.0,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.5,
+            "range": 1.0,
+            "mana": 110.0,
+            "initialMana": 50.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "혀 채찍",
+          "desc": "기본 지속 효과: 전투당 1회 체력이 @HPThreshold*100@% 아래로 떨어지면 @ShieldDuration@초 동안 이번 전투에서 받은 체력 회복량의 @PercentHealingToShield*100@%에 해당하는 보호막을 얻습니다.\n\n사용 시: 체력을 @ModifiedHeal@ () 회복한 후 2칸 내 모든 적에게 혀 채찍을 날려 @ModifiedDamage@()의 마법 피해를 입힙니다.",
+          "variablesByStar": {
+            "PercentHealingToShield": {
+              "1성": 0.4,
+              "2성": 0.4,
+              "3성": 0.4
+            },
+            "HealHP": {
+              "1성": 0.085,
+              "2성": 0.085,
+              "3성": 0.085
+            },
+            "HealAP": {
+              "1성": 300.0,
+              "2성": 360.0,
+              "3성": 1500.0
+            },
+            "DamageHP": {
+              "1성": 0.02,
+              "2성": 0.02,
+              "3성": 0.02
+            },
+            "DamageAP": {
+              "1성": 45.0,
+              "2성": 60.0,
+              "3성": 1500.0
+            },
+            "HPThreshold": {
+              "1성": 0.35,
+              "2성": 0.35,
+              "3성": 0.35
+            },
+            "ShieldDuration": {
+              "1성": 4.0,
+              "2성": 4.0,
+              "3성": 4.0
+            }
+          }
+        }
+      },
+      {
+        "name": "그레이브즈",
+        "apiName": "TFT17_Graves",
+        "cost": 5,
+        "role": "ADCarry",
+        "traits": [
+          "최신상"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 900,
+            "damage": 60.0,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.75,
+            "range": 4.0,
+            "mana": 60.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1620,
+            "damage": 108.0,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.75,
+            "range": 4.0,
+            "mana": 60.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2916,
+            "damage": 194.4,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.75,
+            "range": 4.0,
+            "mana": 60.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "무고한 희생자",
+          "desc": "기본 지속 효과: 기본 공격 시 원뿔 범위에 투사체 @NumProjectiles@개를 발사해 각각 @ModifiedPassiveDamage@()의 물리 피해를 입힙니다.\n\n사용 시: 폭발성 탄환을 발사해 대상에게 @ModifiedDamage@()의 물리 피해를 입히고, 인접한 적에게 @ModifiedSecondaryDamage@()의 물리 피해를 입힙니다.",
+          "variablesByStar": {
+            "NumProjectiles": {
+              "1성": 5.0,
+              "2성": 5.0,
+              "3성": 5.0
+            },
+            "PassivePercentBAD": {
+              "1성": 0.33,
+              "2성": 0.33,
+              "3성": 0.33
+            },
+            "Damage": {
+              "1성": 390.0,
+              "2성": 585.0,
+              "3성": 5555.0
+            },
+            "SecondaryDamageAD": {
+              "1성": 135.0,
+              "2성": 200.0,
+              "3성": 3333.0
+            },
+            "SecondaryDamageAP": {
+              "1성": 30.0,
+              "2성": 45.0,
+              "3성": 777.0
+            }
+          }
+        }
+      },
+      {
+        "name": "바드",
+        "apiName": "TFT17_Bard",
+        "cost": 5,
+        "role": "APCaster",
+        "traits": [
+          "정령족",
+          "전달자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 900,
+            "damage": 30.0,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.85,
+            "range": 4.0,
+            "mana": 65.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1620,
+            "damage": 54.0,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.85,
+            "range": 4.0,
+            "mana": 65.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2916,
+            "damage": 97.2,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.85,
+            "range": 4.0,
+            "mana": 65.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "미확인 친절 물체",
+          "desc": "현재 대상 위에 @AugmentedDuration@@Duration@초 동안 유지되는 비행접시를 소환합니다. 비행접시는 매초 대상에게 @ModifiedDamagePerSecond@()의 마법 피해를 입히고, @SecondaryHexRange@칸 내 모든 적에게 @ModifiedSplitDamagePerSecond@()의 마법 피해를 나누어 입힙니다. 비행접시는 탱커에게 @TankDamageIncrease*100@% 증가한 피해를 입힙니다.\n\n비행접시 아래에 있는 적이 사망하면 바드가 @AbductChance*100@% 확률로 해당 적을 납치하고 대기석에 1성 복사본을 생성합니다.\n\n정령 추가 효과: 전투 시작 시, 가장 가까운 아군 정령족 @ModifiedNumAllies@()명에게 추가 정령 1마리를 부여합니다.\n\n납치한 친구: @TFTUnitProperty.:TFT17_Bard_FriendsAbducted@",
+          "variablesByStar": {
+            "DamagePerSecond": {
+              "1성": 240.0,
+              "2성": 360.0,
+              "3성": 3000.0
+            },
+            "SplitDamagePerSecond": {
+              "1성": 135.0,
+              "2성": 205.0,
+              "3성": 1500.0
+            },
+            "Duration": {
+              "1성": 4.0,
+              "2성": 4.0,
+              "3성": 4.0
+            },
+            "AugmentedDuration": {
+              "1성": 5.0,
+              "2성": 5.0,
+              "3성": 5.0
+            },
+            "AbductChance": {
+              "1성": 0.15,
+              "2성": 0.2,
+              "3성": 1.0
+            },
+            "PVEAbductionChanceModifier": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            },
+            "MeepsPerMeep": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            },
+            "TankDamageIncrease": {
+              "1성": 0.3,
+              "2성": 0.3,
+              "3성": 0.3
+            },
+            "SecondaryHexRange": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            },
+            "CanAbductSecondaryTargets": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            }
+          }
+        }
+      },
+      {
+        "name": "벡스",
+        "apiName": "TFT17_Vex",
+        "cost": 5,
+        "role": "APCarry",
+        "traits": [
+          "파멸자",
+          "별돌보미"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 900,
+            "damage": 15.0,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.8,
+            "range": 6.0,
+            "mana": 60.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1620,
+            "damage": 27.0,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.8,
+            "range": 6.0,
+            "mana": 60.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2916,
+            "damage": 48.6,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.8,
+            "range": 6.0,
+            "mana": 60.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "그림자야, 도와줘!",
+          "desc": "기본 지속 효과: 벡스가 기본 공격을 가할 때마다 그림자가 주변 적을 타격해 @ModifiedShadowHandDamage@()의 마법 피해를 입힙니다. 적이 그림자에게 @NumStrikesForPassive@회 타격당할 때마다 그림자가 해당 적을 다시 타격합니다.\n\n사용 시: 그림자가 강화 타격을 @NumActiveStrikes@회 날려 대신@ModifiedShadowHandMagicDamage@()의 마법 피해를 입힙니다.",
+          "variablesByStar": {
+            "ShadowHandDamage": {
+              "1성": 27.0,
+              "2성": 40.0,
+              "3성": 250.0
+            },
+            "ShadowHandMagicDamage": {
+              "1성": 130.0,
+              "2성": 195.0,
+              "3성": 1000.0
+            },
+            "NumActiveStrikes": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "NumStrikesForPassive": {
+              "1성": 5.0,
+              "2성": 5.0,
+              "3성": 5.0
+            }
+          }
+        }
+      },
+      {
+        "name": "블리츠크랭크",
+        "apiName": "TFT17_Blitzcrank",
+        "cost": 5,
+        "role": "APFighter",
+        "traits": [
+          "파티광",
+          "우주 그루브",
+          "선봉대"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 1000,
+            "damage": 50.0,
+            "armor": 50.0,
+            "magicResist": 50.0,
+            "attackSpeed": 0.9,
+            "range": 1.0,
+            "mana": 120.0,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1800,
+            "damage": 90.0,
+            "armor": 50.0,
+            "magicResist": 50.0,
+            "attackSpeed": 0.9,
+            "range": 1.0,
+            "mana": 120.0,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 3240,
+            "damage": 162.0,
+            "armor": 50.0,
+            "magicResist": 50.0,
+            "attackSpeed": 0.9,
+            "range": 1.0,
+            "mana": 120.0,
+            "initialMana": 30.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "불청객",
+          "desc": "기본 지속 효과: @BoltCooldown@초마다 체력이 가장 높은 주변 적에게 번개를 내려 @ModifiedBoltDamage@()의 마법 피해를 입힙니다.\n\n사용 시: 가장 큰 적 무리에 디스코 볼을 소환한 후, 현재 대상을 디스코 볼로 띄워 올려 @ModifiedUppercutDamage@()의 마법 피해를 입힙니다. 해당 적이 디스코 볼과 충돌해 떨어지며 반경 3칸에 @ModifiedExplosionDamage@()의 마법 피해를 입힙니다. 적중한 적 하나당 @GrooveDurationPerTarget@초 동안  상태가 됩니다.",
+          "variablesByStar": {
+            "BoltCooldown": {
+              "1성": 2.0,
+              "2성": 2.0,
+              "3성": 0.5
+            },
+            "BoltDamage": {
+              "1성": 60.0,
+              "2성": 90.0,
+              "3성": 150.0
+            },
+            "UppercutDamage": {
+              "1성": 150.0,
+              "2성": 225.0,
+              "3성": 999.0
+            },
+            "ExplosionDamage": {
+              "1성": 175.0,
+              "2성": 265.0,
+              "3성": 5000.0
+            },
+            "GrooveDurationPerTarget": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            }
+          }
+        }
+      },
+      {
+        "name": "소나",
+        "apiName": "TFT17_Sona",
+        "cost": 5,
+        "role": "APCaster",
+        "traits": [
+          "지휘관",
+          "초능력",
+          "길잡이"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 900,
+            "damage": 35.0,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.9,
+            "range": 4.0,
+            "mana": 25.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1620,
+            "damage": 63.0,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.9,
+            "range": 4.0,
+            "mana": 25.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2916,
+            "damage": 113.4,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.9,
+            "range": 4.0,
+            "mana": 25.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "초능력 분쇄",
+          "desc": "자성 파편이 없는 가장 가까운 대상에게 자성 파편 덩어리를 던져 부착시키고 @ModifiedDebrisDamage@()의 마법 피해를 입힙니다. 파편이 부착된 적이 사망하면 파편이 없는 가장 가까운 적에게 파편이 이전됩니다.\n\n스킬을 @NumCasts@회 사용할 때마다 대신 모든 파편을 뜯어내 @ModifiedDebrisRipDamage@()의 마법 피해를 입힙니다. 이후 모든 파편을 대상에게 내리꽂아 @ModifiedSlamDamage@()의 마법 피해를 입히고 잠시 기절시킵니다.",
+          "variablesByStar": {
+            "DebrisDamage": {
+              "1성": 300.0,
+              "2성": 450.0,
+              "3성": 999.0
+            },
+            "SlamDamage": {
+              "1성": 720.0,
+              "2성": 1100.0,
+              "3성": 9999.0
+            },
+            "NumCasts": {
+              "1성": 5.0,
+              "2성": 5.0,
+              "3성": 5.0
+            },
+            "DebrisRipDamage": {
+              "1성": 120.0,
+              "2성": 180.0,
+              "3성": 999.0
+            },
+            "StunDuration": {
+              "1성": 1.0,
+              "2성": 1.0,
+              "3성": 1.0
+            }
+          }
+        }
+      },
+      {
+        "name": "쉔",
+        "apiName": "TFT17_Shen",
+        "cost": 5,
+        "role": "APFighter",
+        "traits": [
+          "보루",
+          "시간 균열자",
+          "요새"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 1300,
+            "damage": 50.0,
+            "armor": 65.0,
+            "magicResist": 65.0,
+            "attackSpeed": 0.9,
+            "range": 1.0,
+            "mana": 70.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 2340,
+            "damage": 90.0,
+            "armor": 65.0,
+            "magicResist": 65.0,
+            "attackSpeed": 0.9,
+            "range": 1.0,
+            "mana": 70.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 4212,
+            "damage": 162.0,
+            "armor": 65.0,
+            "magicResist": 65.0,
+            "attackSpeed": 0.9,
+            "range": 1.0,
+            "mana": 70.0,
+            "initialMana": 20.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "현실 절단",
+          "desc": "기본 지속 효과: 스킬 사용 시 기본 공격이 @ModifiedBonusDamage@()의 추가 마법 피해를 입힙니다. 이 효과는 중첩됩니다. 스킬 사용 3회째부터 대신 고정 피해를 입힙니다.\n\n사용 시: @ShieldDuration@초 동안 @ModifiedShield@()의 보호막을 얻습니다. 이후 가장 큰 챔피언 무리에 균열을 열어 범위 내 모든 적에게 기본 지속 효과의 추가 피해를 입힙니다. 영향을 받은 적은 공격 속도가 @ASSlow*100@% 둔화되고, 아군은 공격 속도를 @BonusAS*100@% 얻습니다. 두 효과 모두 @BuffDebuffDuration@초에 걸쳐 빠르게 사라집니다. 쉔은 지속시간 동안 항상 균열의 추가 효과를 최대로 받습니다.",
+          "variablesByStar": {
+            "BonusDamageOnAttack": {
+              "1성": 25.0,
+              "2성": 40.0,
+              "3성": 777.0
+            },
+            "ShieldHP": {
+              "1성": 0.15,
+              "2성": 0.15,
+              "3성": 0.15
+            },
+            "ShieldAP": {
+              "1성": 200.0,
+              "2성": 250.0,
+              "3성": 3456.0
+            },
+            "ShieldDuration": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "ASSlow": {
+              "1성": 0.5,
+              "2성": 0.5,
+              "3성": 0.99
+            },
+            "BonusAS": {
+              "1성": 0.8,
+              "2성": 0.8,
+              "3성": 9.99
+            },
+            "BuffDebuffDuration": {
+              "1성": 3.0,
+              "2성": 3.0,
+              "3성": 3.0
+            },
+            "DamageHP": {
+              "1성": 0.01,
+              "2성": 0.01,
+              "3성": 0.01
+            }
+          }
+        }
+      },
+      {
+        "name": "제드",
+        "apiName": "TFT17_Zed",
+        "cost": 5,
+        "role": "ADFighter",
+        "traits": [
+          "은하계 사냥꾼"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 1300,
+            "damage": 85.0,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.85,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 2340,
+            "damage": 153.0,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.85,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 4212,
+            "damage": 275.4,
+            "armor": 60.0,
+            "magicResist": 60.0,
+            "attackSpeed": 0.85,
+            "range": 1.0,
+            "mana": 100,
+            "initialMana": 40.0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "양자 분신",
+          "desc": "대상 뒤에 @HPPenalty*100@% 감소한 최대 체력과 @ManaCostIncrease@ 증가한 마나 소모량을 지닌 분신을 생성합니다. 분신은 제드와 동일한 아이템, 능력치, 현재 체력을 가지며 양자 분신을 사용할 수 있습니다.",
+          "variablesByStar": {
+            "HPPenalty": {
+              "1성": 0.33,
+              "2성": 0.4,
+              "3성": 0.4
+            },
+            "ManaCostIncrease": {
+              "1성": 30.0,
+              "2성": 30.0,
+              "3성": 30.0
+            }
+          }
+        }
+      },
+      {
+        "name": "진",
+        "apiName": "TFT17_Jhin",
+        "cost": 5,
+        "role": "ADCarry",
+        "traits": [
+          "암흑의 별",
+          "말살자",
+          "저격수"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 900,
+            "damage": 80.0,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.9,
+            "range": 6.0,
+            "mana": 44.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 1620,
+            "damage": 144.0,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.9,
+            "range": 6.0,
+            "mana": 44.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 2916,
+            "damage": 259.2,
+            "armor": 40.0,
+            "magicResist": 40.0,
+            "attackSpeed": 0.9,
+            "range": 6.0,
+            "mana": 44.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "우주 활극",
+          "desc": "기본 지속 효과: 진은 @FixedAS@의 고정된 공격 속도를 가지며 모든 추가 공격 속도의 @PercentBonusASToConvert*100@%를 @ADConversionRate@의 추가 공격력으로 전환합니다.\n\n사용 시: 잔상 손 @NumAttacks@개를 소환합니다. 잔상 손은 다음 @NumHands@회의 기본 공격 동안 진과 함께 사격합니다. 각 손은 사격마다 @TotalDamage@()의 물리 피해를 입힙니다. 마지막 사격은 일직선상 적이 가장 많은 방향으로 관통하며 @FinalShotPercentDamageIncrease*100@% 증가한 피해를 입힙니다. 대상에게 적중할 때마다 피해량이 @PercentDamageReductionPerTargetHit*100@%씩 감소합니다.",
+          "variablesByStar": {
+            "FixedAS": {
+              "1성": 0.9,
+              "2성": 0.9,
+              "3성": 1.4
+            },
+            "PercentBonusASToConvert": {
+              "1성": 0.01,
+              "2성": 0.01,
+              "3성": 0.01
+            },
+            "ADConversionRate": {
+              "1성": 0.75,
+              "2성": 0.75,
+              "3성": 0.75
+            },
+            "NumHands": {
+              "1성": 4.0,
+              "2성": 4.0,
+              "3성": 4.0
+            },
+            "NumAttacks": {
+              "1성": 4.0,
+              "2성": 4.0,
+              "3성": 4.0
+            },
+            "APDamage": {
+              "1성": 4.0,
+              "2성": 6.0,
+              "3성": 44.0
+            },
+            "ADDamage": {
+              "1성": 41.0,
+              "2성": 62.0,
+              "3성": 644.0
+            },
+            "ArmorReduction": {
+              "1성": null,
+              "2성": null,
+              "3성": null
+            },
+            "FinalShotPercentDamageIncrease": {
+              "1성": 2.44,
+              "2성": 2.44,
+              "3성": 2.44
+            },
+            "PercentDamageReductionPerTargetHit": {
+              "1성": 0.44,
+              "2성": 0.44,
+              "3성": 0.44
+            }
+          }
+        }
+      },
+      {
+        "name": "피오라",
+        "apiName": "TFT17_Fiora",
+        "cost": 5,
+        "role": "ADFighter",
+        "traits": [
+          "신성 결투가",
+          "동물특공대",
+          "습격자"
+        ],
+        "statsByStar": {
+          "1성": {
+            "hp": 1200,
+            "damage": 80.0,
+            "armor": 65.0,
+            "magicResist": 65.0,
+            "attackSpeed": 0.9,
+            "range": 1.0,
+            "mana": 70.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "2성": {
+            "hp": 2160,
+            "damage": 144.0,
+            "armor": 65.0,
+            "magicResist": 65.0,
+            "attackSpeed": 0.9,
+            "range": 1.0,
+            "mana": 70.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          },
+          "3성": {
+            "hp": 3888,
+            "damage": 259.2,
+            "armor": 65.0,
+            "magicResist": 65.0,
+            "attackSpeed": 0.9,
+            "range": 1.0,
+            "mana": 70.0,
+            "initialMana": 0,
+            "critChance": 0.25,
+            "critMultiplier": 1.4
+          }
+        },
+        "ability": {
+          "name": "완벽한 대가의 검술",
+          "desc": "기본 지속 효과: 기본 공격 @NumAttacks@회마다 대상의 급소를 드러냅니다. 급소가 드러나 있다면, 돌진하여 급소를 공격해 @ModifiedVitalDamage@()의 추가 고정 피해를 입히고, 입힌 피해량의 @PercentHealing*100@%만큼 체력을 회복합니다.\n\n사용 시: 대상의 급소 @NumVitals@개를 드러내고 모든 급소를 빠르게 공격합니다. 대상이 사망하면 남은 급소가 가장 가까운 적에게 이전됩니다. 마지막 급소를 타격하면 주변 2칸에 오라를 생성하여 범위 내 아군의 체력을 @AuraDuration@초 동안 @ModifiedHealing@ () 회복시킵니다.",
+          "variablesByStar": {
+            "NumAttacks": {
+              "1성": 2.0,
+              "2성": 2.0,
+              "3성": 2.0
+            },
+            "VitalDamage": {
+              "1성": 37.0,
+              "2성": 56.0,
+              "3성": 777.0
+            },
+            "PercentHealing": {
+              "1성": 0.15,
+              "2성": 0.15,
+              "3성": 0.15
+            },
+            "NumVitals": {
+              "1성": 6.0,
+              "2성": 6.0,
+              "3성": 6.0
+            },
+            "AuraHealing": {
+              "1성": 200.0,
+              "2성": 250.0,
+              "3성": 999.0
+            },
+            "AuraDuration": {
+              "1성": 5.0,
+              "2성": 5.0,
+              "3성": 5.0
+            }
+          }
+        }
+      }
+    ]
+  }
+}
