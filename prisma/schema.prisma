@@ -77,7 +77,7 @@ model Champion {
   stat_2star     Json
   stat_3star     Json
   ability   Json
-  version   String
+  version   String  // 일단 항상 최신 버전 데이터만 저장한다 가정함.
   description String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
