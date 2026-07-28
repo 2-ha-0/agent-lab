@@ -1,5 +1,6 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
+import OpenAI from 'openai';
 import { firstValueFrom } from 'rxjs';
 
 interface OllamaEmbedResponse {
@@ -11,19 +12,16 @@ interface OllamaMessage {
   content: string;
 }
 
-interface OllamaChatResponse {
-  model: string;
-  created_at: string;
-  message: {
-    role: 'assistant';
-    content: string;
-  };
-  done: boolean;
-}
-
 @Injectable()
 export class OllamaService {
-  constructor(private readonly http: HttpService) {}
+  private readonly openai: OpenAI;
+
+  constructor(private readonly http: HttpService) {
+    this.openai = new OpenAI({
+      apiKey: process.env.LLM_API_KEY ?? 'not-needed',
+      baseURL: process.env.LLM_BASE_URL ?? 'http://192.168.14.248:12001/v1',
+    });
+  }
 
   async embedding(model: string, text: string) {
     const { data } = await firstValueFrom(
@@ -37,15 +35,14 @@ export class OllamaService {
   }
 
   async chat(model: string, messages: OllamaMessage[]) {
-    const { data } = await firstValueFrom(
-      this.http.post<OllamaChatResponse>('http://localhost:11434/api/chat', {
-        model,
-        messages,
-        stream: false,
-      }),
-    );
+    const response = await this.openai.chat.completions.create({
+      model,
+      messages,
+      stream: false,
+    });
 
-    console.log('chat', data);
-    return data.message.content;
+    const content = response.choices[0]?.message?.content;
+    console.log('chat', content);
+    return content ?? '';
   }
 }

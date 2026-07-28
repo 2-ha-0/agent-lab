@@ -10,7 +10,7 @@ export class LlmService {
   ) {}
 
   async generate(prompt: string) {
-    const response = await this.ollamaService.chat('qwen3:4b', [
+    const response = await this.ollamaService.chat('Qwen/Qwen3.5-35B-A3B-FP8', [
       {
         role: 'user',
         content: prompt,
