@@ -45,4 +45,16 @@ export class PromptService {
         질문:
         ${question}`;
   }
+
+  buildAnswerPrompt(question: string, toolResult: any) {
+    return `
+        질문:
+        ${question}
+
+        검색 결과:
+        ${JSON.stringify(toolResult)}
+
+        검색 결과를 이용해서 자연스럽게 답변해줘.
+    `;
+  }
 }

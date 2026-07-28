@@ -33,4 +33,11 @@ export class LlmService {
       parameters: Record<string, any>;
     };
   }
+
+  async answer(question: string, toolResult: any) {
+    const prompt = this.promptService.buildAnswerPrompt(question, toolResult);
+    const response = await this.generate(prompt);
+
+    return response;
+  }
 }
