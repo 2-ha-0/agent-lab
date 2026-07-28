@@ -9,6 +9,6 @@ export class AgentController {
 
   @Post('select-tool')
   async selectTool(@Body() body: SelectToolDto) {
-    return this.agentService.selectTool(body.question);
+    return this.agentService.test(body.question);
   }
 }
