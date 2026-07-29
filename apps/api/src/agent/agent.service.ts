@@ -40,6 +40,8 @@ export class AgentService {
         return await this.itemToolService.searchByAD();
       case 'searchItemByAP':
         return await this.itemToolService.searchByAP();
+      case 'searchItemAll':
+        return await this.itemToolService.searchAll();
     }
 
     return 'Tool을 선택할 수 없습니다.';

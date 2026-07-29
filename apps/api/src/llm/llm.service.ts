@@ -28,7 +28,7 @@ export class LlmService {
 
     console.log('response', response);
 
-    return JSON.parse(response) as {
+    return this.parseJsonResponse(response) as {
       tool: string;
       parameters: Record<string, any>;
     }[];
@@ -56,11 +56,30 @@ export class LlmService {
     const prompt = this.promptService.buildDecidePrompt(question, histories);
     const response = await this.generate(prompt);
 
-    return JSON.parse(response) as {
+    return this.parseJsonResponse(response) as {
       type: 'tool' | 'answer';
       tool?: string;
       parameters?: Record<string, any>;
       answer?: string;
     };
+  }
+
+  /** LLM이 마크다운 코드펜스나 부가 텍스트를 붙여도 JSON만 추출해 파싱한다. */
+  private parseJsonResponse(raw: string): unknown {
+    const trimmed = raw.trim();
+    const fenced = trimmed.match(/^```(?:json)?\s*([\s\S]*?)\s*```$/i);
+    const candidate = (fenced?.[1] ?? trimmed).trim();
+
+    try {
+      return JSON.parse(candidate);
+    } catch {
+      const objectMatch = candidate.match(/\{[\s\S]*\}/);
+      const arrayMatch = candidate.match(/\[[\s\S]*\]/);
+      const embedded = objectMatch?.[0] ?? arrayMatch?.[0];
+      if (!embedded) {
+        throw new Error(`LLM 응답을 JSON으로 파싱할 수 없습니다: ${raw}`);
+      }
+      return JSON.parse(embedded);
+    }
   }
 }

@@ -21,4 +21,8 @@ export class ItemToolService {
   async searchByAP(): Promise<Item[]> {
     return this.itemService.findByAP();
   }
+
+  async searchAll(): Promise<Item[]> {
+    return this.itemService.findAll();
+  }
 }
