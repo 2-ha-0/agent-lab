@@ -93,6 +93,36 @@ export class PromptService {
           "name": string
         }
 
+        3.
+        tool: searchItemByName
+        설명: 이름으로 아이템을 검색한다.
+        parameter:
+        {
+          "name": string
+        }
+
+        4.
+        tool: searchItemByType
+        설명: 타입으로 아이템을 검색한다.
+        parameter:
+        {
+          "type": string
+        }
+
+        5.
+        tool: searchItemByAD
+        설명: AD 아이템 목록을 검색한다.
+        parameter:
+        {
+        }
+
+        6.
+        tool: searchItemByAP
+        설명: AP 아이템 목록을 검색한다.
+        parameter:
+        {
+        }
+
         규칙
         1. 아직 필요한 정보가 없으면 Tool을 호출해라.
         2. 정보가 충분하면 answer를 반환해라.

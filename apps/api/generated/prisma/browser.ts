@@ -22,3 +22,8 @@ export * from './enums.js';
  * 
  */
 export type Champion = Prisma.ChampionModel
+/**
+ * Model Item
+ * 
+ */
+export type Item = Prisma.ItemModel

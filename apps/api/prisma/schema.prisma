@@ -68,6 +68,12 @@ enum Trait {
   별돌보미
 }
 
+enum ItemType {
+  AMBLEM
+  COMPONENT
+  COMPLETED_ITEM
+  SET17_SPECIAL_ITEM
+}
 model Champion {
   id        String   @id @default(uuid())
   cost      Int
@@ -83,3 +89,17 @@ model Champion {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Item{
+  id        String   @id @default(uuid())
+  type      ItemType
+  name      String
+  effects   Json
+  composition Json[]
+  unique Boolean
+  associatedTraits Trait[]
+  version   String  // 일단 항상 최신 버전 데이터만 저장한다 가정함.
+  description String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+} 

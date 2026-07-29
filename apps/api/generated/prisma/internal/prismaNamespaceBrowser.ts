@@ -51,7 +51,8 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Champion: 'Champion'
+  Champion: 'Champion',
+  Item: 'Item'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -87,6 +88,23 @@ export const ChampionScalarFieldEnum = {
 } as const
 
 export type ChampionScalarFieldEnum = (typeof ChampionScalarFieldEnum)[keyof typeof ChampionScalarFieldEnum]
+
+
+export const ItemScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  name: 'name',
+  effects: 'effects',
+  composition: 'composition',
+  unique: 'unique',
+  associatedTraits: 'associatedTraits',
+  version: 'version',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ItemScalarFieldEnum = (typeof ItemScalarFieldEnum)[keyof typeof ItemScalarFieldEnum]
 
 
 export const SortOrder = {

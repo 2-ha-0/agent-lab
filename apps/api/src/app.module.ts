@@ -15,6 +15,7 @@ import { ChampionService } from './champion/champion.service';
 import { ChampionModule } from './champion/champion.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { AgentModule } from './agent/agent.module';
+import { ItemModule } from './item/item.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { AgentModule } from './agent/agent.module';
     ChampionModule,
     PrismaModule,
     AgentModule,
+    ItemModule,
   ],
   controllers: [AppController],
   providers: [AppService, ChampionToolService, ChampionService],

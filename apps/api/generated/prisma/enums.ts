@@ -68,3 +68,13 @@ export const Trait = {
 } as const
 
 export type Trait = (typeof Trait)[keyof typeof Trait]
+
+
+export const ItemType = {
+  AMBLEM: 'AMBLEM',
+  COMPONENT: 'COMPONENT',
+  COMPLETED_ITEM: 'COMPLETED_ITEM',
+  SET17_SPECIAL_ITEM: 'SET17_SPECIAL_ITEM'
+} as const
+
+export type ItemType = (typeof ItemType)[keyof typeof ItemType]

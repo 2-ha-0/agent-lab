@@ -44,3 +44,8 @@ export { Prisma }
  * 
  */
 export type Champion = Prisma.ChampionModel
+/**
+ * Model Item
+ * 
+ */
+export type Item = Prisma.ItemModel
