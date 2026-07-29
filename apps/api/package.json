@@ -21,7 +21,8 @@
     "prisma:seed": "prisma db seed",
     "prisma:seed:all": "prisma db seed -- all",
     "prisma:seed:champions": "prisma db seed -- champions",
-    "prisma:seed:items": "prisma db seed -- items"
+    "prisma:seed:items": "prisma db seed -- items",
+    "prisma:seed:traits": "prisma db seed -- traits"
   },
   "dependencies": {
     "@nestjs/axios": "^4.0.1",

@@ -1,41 +1,41 @@
 import { Injectable } from '@nestjs/common';
-import { Item, ItemType } from 'generated/prisma/client';
+import type { ItemType } from '../../generated/prisma/enums';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class ItemService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async findAll(): Promise<Item[]> {
-    return this.prisma.item.findMany({
+  findAll() {
+    return this.prisma.itemInfo.findMany({
       orderBy: [{ name: 'asc' }],
     });
   }
 
-  async findByName(name: string): Promise<Item | null> {
-    return this.prisma.item.findFirst({
+  findByName(name: string) {
+    return this.prisma.itemInfo.findFirst({
       where: { name },
     });
   }
 
-  async findByType(type: ItemType): Promise<Item[]> {
-    return this.prisma.item.findMany({
+  findByType(type: ItemType) {
+    return this.prisma.itemInfo.findMany({
       where: { type },
     });
   }
 
-  async findByAD(): Promise<Item[]> {
-    return this.prisma.$queryRaw<Item[]>`
+  findByAD() {
+    return this.prisma.$queryRaw`
       SELECT *
-      FROM "Item"
+      FROM "ItemInfo"
       WHERE effects::text LIKE ${'%AD%'}
     `;
   }
 
-  async findByAP(): Promise<Item[]> {
-    return this.prisma.$queryRaw<Item[]>`
+  findByAP() {
+    return this.prisma.$queryRaw`
       SELECT *
-      FROM "Item"
+      FROM "ItemInfo"
       WHERE effects::text LIKE ${'%AP%'}
     `;
   }

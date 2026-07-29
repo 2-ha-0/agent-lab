@@ -28,7 +28,11 @@ type ChampionDataFile = {
 
 export async function seedChampions(prisma: PrismaClient) {
   const version = '17.7';
-  const filePath = join(process.cwd(), 'data', `tft_set${version}_champion.json`);
+  const filePath = join(
+    process.cwd(),
+    'data',
+    `tft_set${version}_champion.json`,
+  );
   const raw = readFileSync(filePath, 'utf8');
   const data = JSON.parse(raw) as ChampionDataFile;
   const label = data.meta.mutator ?? `TFTSet${data.meta.set}`;
@@ -47,8 +51,8 @@ export async function seedChampions(prisma: PrismaClient) {
   }));
 
   await prisma.$transaction(async (tx) => {
-    await tx.champion.deleteMany();
-    await tx.champion.createMany({ data: champions });
+    await tx.championInfo.deleteMany();
+    await tx.championInfo.createMany({ data: champions });
   });
 
   console.log(`Seeded ${champions.length} champions (${label})`);

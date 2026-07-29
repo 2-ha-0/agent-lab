@@ -32,6 +32,9 @@ export default tseslint.config(
       '@typescript-eslint/no-unsafe-call': 'off',
       '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/no-unsafe-member-access': 'off',
+      // Prisma generated client types can resolve as error via circular re-exports
+      '@typescript-eslint/no-unsafe-return': 'off',
+      '@typescript-eslint/no-redundant-type-constituents': 'off',
       "prettier/prettier": ["error", { endOfLine: "auto" }],
     },
   },

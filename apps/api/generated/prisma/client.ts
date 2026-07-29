@@ -29,8 +29,8 @@ export * from "./enums.js"
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more Champions
- * const champions = await prisma.champion.findMany()
+ * // Fetch zero or more ChampionInfos
+ * const championInfos = await prisma.championInfo.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -40,12 +40,17 @@ export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts exten
 export { Prisma }
 
 /**
- * Model Champion
+ * Model ChampionInfo
  * 
  */
-export type Champion = Prisma.ChampionModel
+export type ChampionInfo = Prisma.ChampionInfoModel
 /**
- * Model Item
+ * Model ItemInfo
  * 
  */
-export type Item = Prisma.ItemModel
+export type ItemInfo = Prisma.ItemInfoModel
+/**
+ * Model TraitInfo
+ * 
+ */
+export type TraitInfo = Prisma.TraitInfoModel

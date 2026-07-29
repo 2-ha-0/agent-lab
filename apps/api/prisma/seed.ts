@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import { seedChampions } from './seeds/champions.seed';
 import { seedItems } from './seeds/items.seed';
+import { seedTraits } from './seeds/traits.seed';
 import { createPrismaClient } from './seeds/shared';
 
 async function main() {
@@ -16,9 +17,13 @@ async function main() {
       await seedItems(prisma);
     }
 
-    if (!['all', 'champions', 'items'].includes(target)) {
+    if (target === 'all' || target === 'traits') {
+      await seedTraits(prisma);
+    }
+
+    if (!['all', 'champions', 'items', 'traits'].includes(target)) {
       throw new Error(
-        `Unknown seed target: ${target}. Use one of: all, champions, items`,
+        `Unknown seed target: ${target}. Use one of: all, champions, items, traits`,
       );
     }
   } finally {

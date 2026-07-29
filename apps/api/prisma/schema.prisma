@@ -74,7 +74,14 @@ enum ItemType {
   COMPLETED_ITEM
   SET17_SPECIAL_ITEM
 }
-model Champion {
+
+enum TraitKind {
+  MAIN
+  UNIQUE
+  STARGAZER
+}
+
+model ChampionInfo {
   id        String   @id @default(uuid())
   cost      Int
   name      String
@@ -90,16 +97,34 @@ model Champion {
   updatedAt DateTime @updatedAt
 }
 
-model Item{
-  id        String   @id @default(uuid())
-  type      ItemType
-  name      String
-  effects   Json
-  composition Json[]
-  unique Boolean
+model ItemInfo {
+  id               String    @id @default(uuid())
+  type             ItemType
+  name             String
+  effects          Json
+  composition      Json[]
+  unique           Boolean
   associatedTraits Trait[]
-  version   String  // 일단 항상 최신 버전 데이터만 저장한다 가정함.
-  description String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-} 
+  version          String // 일단 항상 최신 버전 데이터만 저장한다 가정함.
+  description      String
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+}
+
+model TraitInfo {
+  id            String    @id @default(uuid())
+  apiName       String
+  name          Trait
+  kind          TraitKind
+  description   String
+  breakpoints   Json
+  champions     Json
+  constellation String?
+  version       String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@unique([apiName, version])
+  @@index([kind, version])
+  @@index([name, version])
+}

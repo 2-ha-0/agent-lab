@@ -51,8 +51,9 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Champion: 'Champion',
-  Item: 'Item'
+  ChampionInfo: 'ChampionInfo',
+  ItemInfo: 'ItemInfo',
+  TraitInfo: 'TraitInfo'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -71,7 +72,7 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const ChampionScalarFieldEnum = {
+export const ChampionInfoScalarFieldEnum = {
   id: 'id',
   cost: 'cost',
   name: 'name',
@@ -87,10 +88,10 @@ export const ChampionScalarFieldEnum = {
   updatedAt: 'updatedAt'
 } as const
 
-export type ChampionScalarFieldEnum = (typeof ChampionScalarFieldEnum)[keyof typeof ChampionScalarFieldEnum]
+export type ChampionInfoScalarFieldEnum = (typeof ChampionInfoScalarFieldEnum)[keyof typeof ChampionInfoScalarFieldEnum]
 
 
-export const ItemScalarFieldEnum = {
+export const ItemInfoScalarFieldEnum = {
   id: 'id',
   type: 'type',
   name: 'name',
@@ -104,7 +105,24 @@ export const ItemScalarFieldEnum = {
   updatedAt: 'updatedAt'
 } as const
 
-export type ItemScalarFieldEnum = (typeof ItemScalarFieldEnum)[keyof typeof ItemScalarFieldEnum]
+export type ItemInfoScalarFieldEnum = (typeof ItemInfoScalarFieldEnum)[keyof typeof ItemInfoScalarFieldEnum]
+
+
+export const TraitInfoScalarFieldEnum = {
+  id: 'id',
+  apiName: 'apiName',
+  name: 'name',
+  kind: 'kind',
+  description: 'description',
+  breakpoints: 'breakpoints',
+  champions: 'champions',
+  constellation: 'constellation',
+  version: 'version',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TraitInfoScalarFieldEnum = (typeof TraitInfoScalarFieldEnum)[keyof typeof TraitInfoScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -137,4 +155,12 @@ export const JsonNullValueFilter = {
 } as const
 
 export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

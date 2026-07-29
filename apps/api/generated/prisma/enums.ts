@@ -78,3 +78,12 @@ export const ItemType = {
 } as const
 
 export type ItemType = (typeof ItemType)[keyof typeof ItemType]
+
+
+export const TraitKind = {
+  MAIN: 'MAIN',
+  UNIQUE: 'UNIQUE',
+  STARGAZER: 'STARGAZER'
+} as const
+
+export type TraitKind = (typeof TraitKind)[keyof typeof TraitKind]

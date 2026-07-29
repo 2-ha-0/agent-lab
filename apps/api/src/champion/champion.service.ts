@@ -1,37 +1,26 @@
 import { Injectable } from '@nestjs/common';
-import { Champion } from 'generated/prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class ChampionService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async findAll(): Promise<Champion[]> {
-    return this.prisma.champion.findMany({
+  findAll() {
+    return this.prisma.championInfo.findMany({
       orderBy: [{ cost: 'asc' }, { name: 'asc' }],
     });
   }
 
-  async findAllByCost(cost: number): Promise<Champion[]> {
-    const champions = await this.prisma.champion.findMany({
-      where: {
-        cost,
-      },
-      orderBy: {
-        cost: 'asc',
-      },
+  findAllByCost(cost: number) {
+    return this.prisma.championInfo.findMany({
+      where: { cost },
+      orderBy: { cost: 'asc' },
     });
-
-    return champions;
   }
 
-  async findByName(name: string): Promise<Champion | null> {
-    const champion = await this.prisma.champion.findFirst({
-      where: {
-        name,
-      },
+  findByName(name: string) {
+    return this.prisma.championInfo.findFirst({
+      where: { name },
     });
-
-    return champion;
   }
 }

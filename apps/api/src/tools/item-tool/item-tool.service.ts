@@ -1,28 +1,28 @@
 import { Injectable } from '@nestjs/common';
-import { Item, ItemType } from 'generated/prisma/client';
+import type { ItemType } from '../../../generated/prisma/enums';
 import { ItemService } from 'src/item/item.service';
 
 @Injectable()
 export class ItemToolService {
   constructor(private readonly itemService: ItemService) {}
 
-  async searchByName(name: string): Promise<Item | null> {
+  searchByName(name: string) {
     return this.itemService.findByName(name);
   }
 
-  async searchByType(type: ItemType): Promise<Item[]> {
+  searchByType(type: ItemType) {
     return this.itemService.findByType(type);
   }
 
-  async searchByAD(): Promise<Item[]> {
+  searchByAD() {
     return this.itemService.findByAD();
   }
 
-  async searchByAP(): Promise<Item[]> {
+  searchByAP() {
     return this.itemService.findByAP();
   }
 
-  async searchAll(): Promise<Item[]> {
+  searchAll() {
     return this.itemService.findAll();
   }
 }

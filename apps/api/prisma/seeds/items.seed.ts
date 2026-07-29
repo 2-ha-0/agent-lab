@@ -44,8 +44,8 @@ export async function seedItems(prisma: PrismaClient) {
   );
 
   await prisma.$transaction(async (tx) => {
-    await tx.item.deleteMany();
-    await tx.item.createMany({ data: items });
+    await tx.itemInfo.deleteMany();
+    await tx.itemInfo.createMany({ data: items });
   });
 
   console.log(`Seeded ${items.length} items (${version})`);
