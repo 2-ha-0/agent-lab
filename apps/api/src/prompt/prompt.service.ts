@@ -95,6 +95,14 @@ export class PromptService {
         }
 
         3.
+        tool: searchChampionByTrait
+        설명: 특성으로 챔피언을 검색한다.
+        parameter:
+        {
+          "trait": string
+        }
+
+        4.
         tool: searchItemByName
         설명: 이름으로 아이템을 검색한다.
         parameter:
@@ -102,11 +110,26 @@ export class PromptService {
           "name": string
         }
 
-        4.
+        5.
         tool: searchItemAll
         설명: 챔피언이 사용할 수 있는 모든 아이템 목록을 조회한다.
         parameter:
         {
+        }
+
+        6.
+        tool: searchTraitAll
+        설명: 모든 특성 목록을 조회한다.
+        parameter:
+        {
+        }
+
+        7.
+        tool: searchTraitByName
+        설명: 이름으로 특성을 검색한다.
+        parameter:
+        {
+          "name": string
         }
 
         규칙

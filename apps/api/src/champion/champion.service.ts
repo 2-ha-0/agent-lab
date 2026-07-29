@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { Trait } from 'generated/prisma/enums';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
@@ -21,6 +22,13 @@ export class ChampionService {
   findByName(name: string) {
     return this.prisma.championInfo.findFirst({
       where: { name },
+    });
+  }
+
+  findByTrait(trait: Trait) {
+    return this.prisma.championInfo.findMany({
+      where: { traits: { has: trait } },
+      orderBy: { cost: 'asc' },
     });
   }
 }

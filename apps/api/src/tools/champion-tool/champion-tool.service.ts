@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { Trait } from 'generated/prisma/enums';
 import { ChampionService } from 'src/champion/champion.service';
 
 @Injectable()
@@ -11,5 +12,9 @@ export class ChampionToolService {
 
   searchByName(name: string) {
     return this.championService.findByName(name);
+  }
+
+  searchByTrait(trait: Trait) {
+    return this.championService.findByTrait(trait);
   }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { LlmService } from 'src/llm/llm.service';
 import { ChampionToolService } from 'src/tools/champion-tool/champion-tool.service';
 import { ItemToolService } from 'src/tools/item-tool/item-tool.service';
+import { TraitToolService } from 'src/tools/trait-tool/trait-tool.service';
 
 @Injectable()
 export class AgentService {
@@ -9,6 +10,7 @@ export class AgentService {
     private readonly llmService: LlmService,
     private readonly championToolService: ChampionToolService,
     private readonly itemToolService: ItemToolService,
+    private readonly traitToolService: TraitToolService,
   ) {}
 
   async selectTool(tool: { tool: string; parameters: Record<string, any> }) {
@@ -27,11 +29,10 @@ export class AgentService {
         return await this.championToolService.searchByName(
           tool.parameters.name,
         );
-      // case 'searchItemByChampion':
-      //   toolResults.push(
-      //     await this.itemTool.searchByChampion(tool.parameters.champion),
-      //   );
-      //   break;
+      case 'searchChampionByTrait':
+        return await this.championToolService.searchByTrait(
+          tool.parameters.trait,
+        );
       case 'searchItemByName':
         return await this.itemToolService.searchByName(tool.parameters.name);
       case 'searchItemByType':
@@ -42,6 +43,10 @@ export class AgentService {
         return await this.itemToolService.searchByAP();
       case 'searchItemAll':
         return await this.itemToolService.searchAll();
+      case 'searchTraitAll':
+        return await this.traitToolService.searchAll();
+      case 'searchTraitByName':
+        return await this.traitToolService.searchByName(tool.parameters.name);
     }
 
     return 'Tool을 선택할 수 없습니다.';
