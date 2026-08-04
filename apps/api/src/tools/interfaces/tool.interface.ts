@@ -3,5 +3,7 @@ export interface Tool {
 
   description: string;
 
-  execute(input: string): Promise<any>;
+  parameters: Record<string, string>;
+
+  execute(parameters: Record<string, any>): Promise<any>;
 }

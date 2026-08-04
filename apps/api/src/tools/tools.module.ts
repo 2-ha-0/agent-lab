@@ -5,10 +5,16 @@ import { ItemToolService } from './item-tool/item-tool.service';
 import { ItemModule } from 'src/item/item.module';
 import { TraitToolService } from './trait-tool/trait-tool.service';
 import { TraitModule } from 'src/trait/trait.module';
+import { ToolRegistry } from './tools.registry';
 
 @Module({
-  providers: [ChampionToolService, ItemToolService, TraitToolService],
-  exports: [ChampionToolService, ItemToolService, TraitToolService],
+  providers: [
+    ChampionToolService,
+    ItemToolService,
+    TraitToolService,
+    ToolRegistry,
+  ],
+  exports: [ToolRegistry],
   imports: [ChampionModule, ItemModule, TraitModule],
 })
 export class ToolsModule {}

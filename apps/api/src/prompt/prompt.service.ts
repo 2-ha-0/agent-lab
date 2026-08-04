@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { Tool } from 'src/tools/interfaces/tool.interface';
 
 @Injectable()
 export class PromptService {
@@ -69,68 +70,28 @@ export class PromptService {
   buildDecidePrompt(
     question: string,
     histories: {
-      tool: string;
+      toolName: string;
       result: unknown;
     }[],
+    tools: Tool[],
   ) {
+    const toolDescriptions = tools
+      .map(
+        (tool) => `
+          이름: ${tool.name}
+          설명: ${tool.description}
+          파라미터:
+          ${JSON.stringify(tool.parameters)}
+          `,
+      )
+      .join('\n');
+
     return `
         너는 AI Agent다.
 
         사용 가능한 Tool
 
-        1.
-        tool: searchChampionByCost
-        설명: 코스트로 챔피언을 검색한다.
-        parameter:
-        {
-          "cost": number
-        }
-
-        2.
-        tool: searchChampionByName
-        설명: 이름으로 챔피언을 검색한다.
-        parameter:
-        {
-          "name": string
-        }
-
-        3.
-        tool: searchChampionByTrait
-        설명: 특성으로 챔피언을 검색한다.
-        parameter:
-        {
-          "trait": string
-        }
-
-        4.
-        tool: searchItemByName
-        설명: 이름으로 아이템을 검색한다.
-        parameter:
-        {
-          "name": string
-        }
-
-        5.
-        tool: searchItemAll
-        설명: 챔피언이 사용할 수 있는 모든 아이템 목록을 조회한다.
-        parameter:
-        {
-        }
-
-        6.
-        tool: searchTraitAll
-        설명: 모든 특성 목록을 조회한다.
-        parameter:
-        {
-        }
-
-        7.
-        tool: searchTraitByName
-        설명: 이름으로 특성을 검색한다.
-        parameter:
-        {
-          "name": string
-        }
+        ${toolDescriptions}
 
         규칙
         1. 아직 필요한 정보가 없으면 Tool을 호출해라.

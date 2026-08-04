@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { OllamaService } from 'src/ollama/ollama.service';
 import { PromptService } from 'src/prompt/prompt.service';
+import { Tool } from 'src/tools/interfaces/tool.interface';
 
 @Injectable()
 export class LlmService {
@@ -44,16 +45,21 @@ export class LlmService {
   async decide(
     question: string,
     histories: {
-      tool: string;
+      toolName: string;
       result: unknown;
     }[],
+    tools: Tool[],
   ): Promise<{
     type: 'tool' | 'answer';
     tool?: string;
     parameters?: Record<string, any>;
     answer?: string;
   }> {
-    const prompt = this.promptService.buildDecidePrompt(question, histories);
+    const prompt = this.promptService.buildDecidePrompt(
+      question,
+      histories,
+      tools,
+    );
     const response = await this.generate(prompt);
 
     return this.parseJsonResponse(response) as {

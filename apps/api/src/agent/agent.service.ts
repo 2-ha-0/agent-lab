@@ -1,80 +1,46 @@
 import { Injectable } from '@nestjs/common';
 import { LlmService } from 'src/llm/llm.service';
-import { ChampionToolService } from 'src/tools/champion-tool/champion-tool.service';
-import { ItemToolService } from 'src/tools/item-tool/item-tool.service';
-import { TraitToolService } from 'src/tools/trait-tool/trait-tool.service';
+import { ToolRegistry } from 'src/tools/tools.registry';
 
 @Injectable()
 export class AgentService {
   constructor(
     private readonly llmService: LlmService,
-    private readonly championToolService: ChampionToolService,
-    private readonly itemToolService: ItemToolService,
-    private readonly traitToolService: TraitToolService,
+    private readonly toolRegistry: ToolRegistry,
   ) {}
 
-  async selectTool(tool: { tool: string; parameters: Record<string, any> }) {
-    // const tools = await this.llmService.selectTools(question);
-    // console.log('tools', tools);
+  async selectTool(toolName: string, parameters: Record<string, any>) {
+    const tool = this.toolRegistry.get(toolName);
 
-    // let toolResults: any;
-
-    switch (tool.tool) {
-      case 'searchChampionByCost':
-        return await this.championToolService.searchByCost(
-          tool.parameters.cost,
-        );
-
-      case 'searchChampionByName':
-        return await this.championToolService.searchByName(
-          tool.parameters.name,
-        );
-      case 'searchChampionByTrait':
-        return await this.championToolService.searchByTrait(
-          tool.parameters.trait,
-        );
-      case 'searchItemByName':
-        return await this.itemToolService.searchByName(tool.parameters.name);
-      case 'searchItemByType':
-        return await this.itemToolService.searchByType(tool.parameters.type);
-      case 'searchItemByAD':
-        return await this.itemToolService.searchByAD();
-      case 'searchItemByAP':
-        return await this.itemToolService.searchByAP();
-      case 'searchItemAll':
-        return await this.itemToolService.searchAll();
-      case 'searchTraitAll':
-        return await this.traitToolService.searchAll();
-      case 'searchTraitByName':
-        return await this.traitToolService.searchByName(tool.parameters.name);
+    if (!tool) {
+      return 'Tool을 선택할 수 없습니다.';
     }
 
-    return 'Tool을 선택할 수 없습니다.';
+    return tool.execute(parameters);
   }
 
   async test(question: string) {
     const histories: {
-      tool: string;
+      toolName: string;
       result: unknown;
     }[] = [];
 
+    const tools = this.toolRegistry.getAll();
+
     while (true) {
-      const action = await this.llmService.decide(question, histories);
+      const action = await this.llmService.decide(question, histories, tools);
       console.log('action', action);
 
       if (action.type === 'answer') {
         return action.answer;
       }
 
-      const tool = action.tool ?? '';
+      const toolName = action.tool ?? '';
       const parameters = action.parameters ?? {};
-      const result = await this.selectTool({
-        tool,
-        parameters,
-      });
+      const result = await this.selectTool(toolName, parameters);
 
       histories.push({
-        tool,
+        toolName,
         result,
       });
     }
