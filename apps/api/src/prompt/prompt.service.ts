@@ -95,7 +95,7 @@ export class PromptService {
         ${toolDescriptions}
 
         규칙
-        1. Context만으로 답 가능하면 answer를 반환해라. 아직 필요한 정보가 없으면 Tool을 호출해라.
+        1. Context만으로 답 가능하면 answer를 반환하고 아직 필요한 정보가 없거나 부족하면 Tool을 호출해라.
         2. 정보가 충분하면 answer를 반환해라.
         3. 반드시 JSON 객체로만 출력해라. 마크다운 코드블록, 설명 문장, 주석 없이 raw JSON만 출력해라.
         객체 타입은 { "type": "tool" | "answer", "tool"?: string, "parameters"?: { [string]: any }, "answer"?: string } 이다.
@@ -121,6 +121,7 @@ export class PromptService {
            - 챔피언의 role, ability, description과 아이템의 type, effects, description을 비교해 추천한다.
            - 추천 아이템은 searchItemAll 결과 중 type이 COMPLETED_ITEM인 것만 고른다. COMPONENT, AMBLEM, SET17_SPECIAL_ITEM은 추천하지 마라.
            - 추천 이유를 쓸 때도 Tool 결과에 있는 수치/설명만 근거로 써라.
+        7. 딜러는 딜 아이템, 탱커는 방어 아이템을 추천해라
 
         이전 실행 결과
         ${JSON.stringify(histories)}
