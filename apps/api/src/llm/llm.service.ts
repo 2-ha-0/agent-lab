@@ -49,16 +49,19 @@ export class LlmService {
       result: unknown;
     }[],
     tools: Tool[],
+    context: string,
   ): Promise<{
     type: 'tool' | 'answer';
     tool?: string;
     parameters?: Record<string, any>;
     answer?: string;
+    context?: string;
   }> {
     const prompt = this.promptService.buildDecidePrompt(
       question,
       histories,
       tools,
+      context,
     );
     const response = await this.generate(prompt);
 

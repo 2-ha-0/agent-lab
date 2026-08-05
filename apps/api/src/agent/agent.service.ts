@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { LlmService } from 'src/llm/llm.service';
+import { RetrievalService } from 'src/retrieval/retrieval.service';
 import { ToolRegistry } from 'src/tools/tools.registry';
 
 @Injectable()
@@ -7,6 +8,7 @@ export class AgentService {
   constructor(
     private readonly llmService: LlmService,
     private readonly toolRegistry: ToolRegistry,
+    private readonly retrievalService: RetrievalService,
   ) {}
 
   async selectTool(toolName: string, parameters: Record<string, any>) {
@@ -20,6 +22,10 @@ export class AgentService {
   }
 
   async test(question: string) {
+    const context = await this.retrievalService.retrieval(question);
+
+    console.log('context', context);
+
     const histories: {
       toolName: string;
       result: unknown;
@@ -28,7 +34,12 @@ export class AgentService {
     const tools = this.toolRegistry.getAll();
 
     while (true) {
-      const action = await this.llmService.decide(question, histories, tools);
+      const action = await this.llmService.decide(
+        question,
+        histories,
+        tools,
+        context.map((item) => item.payload?.text).join('\n'),
+      );
       console.log('action', action);
 
       if (action.type === 'answer') {
