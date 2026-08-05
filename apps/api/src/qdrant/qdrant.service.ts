@@ -1,6 +1,20 @@
 import { Injectable } from '@nestjs/common';
 import { QdrantClient } from '@qdrant/js-client-rest';
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4, v5 as uuidv5 } from 'uuid';
+
+const COLLECTION = 'test';
+const VECTOR_SIZE = 1024;
+/** Fixed namespace for deterministic point IDs */
+const POINT_NAMESPACE = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
+
+export type UpsertPayload = {
+  name: string;
+  text: string;
+  type?: string;
+  version?: string;
+  championId?: string;
+  pointKey?: string;
+};
 
 @Injectable()
 export class QdrantService {
@@ -10,35 +24,67 @@ export class QdrantService {
   });
 
   async createCollection() {
-    await this.client.createCollection('test', {
+    await this.client.createCollection(COLLECTION, {
       vectors: {
-        size: 1024, //임베딩 모델의 벡터 차원(dimension)과 같아야 한다.
+        size: VECTOR_SIZE,
         distance: 'Cosine',
       },
     });
   }
 
-  async upsert(embedding: any[], name: string, text: string) {
-    const id = uuidv4();
+  async ensureCollection() {
+    const exists = await this.client.collectionExists(COLLECTION);
+    if (!exists.exists) {
+      await this.createCollection();
+    }
+  }
 
-    await this.client.upsert('test', {
+  async deleteByType(type: string) {
+    await this.ensureCollection();
+    await this.client.delete(COLLECTION, {
+      wait: true,
+      filter: {
+        must: [
+          {
+            key: 'type',
+            match: { value: type },
+          },
+        ],
+      },
+    });
+  }
+
+  async upsert(embedding: number[], payload: UpsertPayload) {
+    const type = payload.type ?? 'manual';
+    const id = payload.pointKey
+      ? uuidv5(payload.pointKey, POINT_NAMESPACE)
+      : uuidv4();
+
+    await this.client.upsert(COLLECTION, {
       wait: true,
       points: [
         {
-          id: id,
+          id,
           vector: embedding,
           payload: {
-            id: id,
-            name: name,
-            text: text,
+            id,
+            name: payload.name,
+            text: payload.text,
+            type,
+            ...(payload.version !== undefined
+              ? { version: payload.version }
+              : {}),
+            ...(payload.championId !== undefined
+              ? { championId: payload.championId }
+              : {}),
           },
         },
       ],
     });
   }
 
-  async search(embedding: any[]) {
-    const result = await this.client.search('test', {
+  async search(embedding: number[]) {
+    const result = await this.client.search(COLLECTION, {
       vector: embedding,
       limit: 5,
     });

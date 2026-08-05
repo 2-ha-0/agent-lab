@@ -1,7 +1,7 @@
-import { Controller, Body, Post } from '@nestjs/common';
-import { IndexingService } from './indexing.service';
+import { Body, Controller, Post } from '@nestjs/common';
 import { ApiOperation } from '@nestjs/swagger';
 import { IndexingDto } from './dto/indexing.dto';
+import { IndexingService } from './indexing.service';
 
 @Controller('indexing')
 export class IndexingController {
@@ -11,5 +11,11 @@ export class IndexingController {
   @ApiOperation({ summary: '인덱싱' })
   async indexing(@Body() body: IndexingDto) {
     return this.indexingService.indexing(body.name, body.text);
+  }
+
+  @Post('champions')
+  @ApiOperation({ summary: '챔피언 DB → Qdrant 벡터 인덱싱' })
+  async indexChampions() {
+    return this.indexingService.indexChampions();
   }
 }

@@ -1,7 +1,15 @@
+import { config as loadEnv } from 'dotenv';
 import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 import { PrismaClient } from '../../generated/prisma/client';
+// import {
+//   createChampionIndexerDeps,
+//   indexChampionRecords,
+// } from '../../src/indexing/champion-indexer';
+// import { QdrantService } from '../../src/qdrant/qdrant.service';
 import { mapRole, mapTrait, toInputJsonValue } from './shared';
+
+loadEnv({ path: resolve(__dirname, '../../../.env') });
 
 type ChampionJson = {
   name: string;
@@ -25,6 +33,27 @@ type ChampionDataFile = {
     list: ChampionJson[];
   };
 };
+
+// type OllamaEmbedResponse = {
+//   embeddings: number[][];
+// };
+
+// async function embedWithOllama(text: string): Promise<number[]> {
+//   const response = await fetch('http://localhost:11434/api/embed', {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify({ model: 'bge-m3', input: text }),
+//   });
+
+//   if (!response.ok) {
+//     throw new Error(
+//       `Ollama embed failed: ${response.status} ${response.statusText}`,
+//     );
+//   }
+
+//   const data = (await response.json()) as OllamaEmbedResponse;
+//   return data.embeddings[0];
+// }
 
 export async function seedChampions(prisma: PrismaClient) {
   const version = '17.7';
@@ -56,4 +85,15 @@ export async function seedChampions(prisma: PrismaClient) {
   });
 
   console.log(`Seeded ${champions.length} champions (${label})`);
+
+  // vector indexing
+  // const saved = await prisma.championInfo.findMany({
+  //   orderBy: [{ cost: 'asc' }, { name: 'asc' }],
+  // });
+
+  // const qdrantService = new QdrantService();
+  // const deps = createChampionIndexerDeps(qdrantService, embedWithOllama);
+  // const result = await indexChampionRecords(saved, deps);
+
+  // console.log(`Qdrant indexed ${result.indexed} champions`);
 }
