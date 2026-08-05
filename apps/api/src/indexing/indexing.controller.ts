@@ -18,4 +18,16 @@ export class IndexingController {
   async indexChampions() {
     return this.indexingService.indexChampions();
   }
+
+  @Post('items')
+  @ApiOperation({ summary: '아이템 DB → Qdrant 벡터 인덱싱' })
+  async indexItems() {
+    return this.indexingService.indexItems();
+  }
+
+  @Post('traits')
+  @ApiOperation({ summary: '특성 DB → Qdrant 벡터 인덱싱' })
+  async indexTraits() {
+    return this.indexingService.indexTraits();
+  }
 }

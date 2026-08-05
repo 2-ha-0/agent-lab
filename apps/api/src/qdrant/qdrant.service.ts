@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { QdrantClient } from '@qdrant/js-client-rest';
 import { v4 as uuidv4, v5 as uuidv5 } from 'uuid';
 
-const COLLECTION = 'test';
+const COLLECTION = 'TFT17';
 const VECTOR_SIZE = 1024;
 /** Fixed namespace for deterministic point IDs */
 const POINT_NAMESPACE = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
@@ -13,6 +13,8 @@ export type UpsertPayload = {
   type?: string;
   version?: string;
   championId?: string;
+  itemId?: string;
+  traitId?: string;
   pointKey?: string;
 };
 
@@ -76,6 +78,10 @@ export class QdrantService {
               : {}),
             ...(payload.championId !== undefined
               ? { championId: payload.championId }
+              : {}),
+            ...(payload.itemId !== undefined ? { itemId: payload.itemId } : {}),
+            ...(payload.traitId !== undefined
+              ? { traitId: payload.traitId }
               : {}),
           },
         },
