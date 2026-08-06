@@ -3,17 +3,17 @@ import { Injectable } from '@nestjs/common';
 import OpenAI from 'openai';
 import { firstValueFrom } from 'rxjs';
 
-interface OllamaEmbedResponse {
+interface EmbedResponse {
   embeddings: number[][];
 }
 
-interface OllamaMessage {
+interface ChatMessage {
   role: 'system' | 'user' | 'assistant';
   content: string;
 }
 
 @Injectable()
-export class OllamaService {
+export class LlmClientService {
   private readonly openai: OpenAI;
 
   constructor(private readonly http: HttpService) {
@@ -25,7 +25,7 @@ export class OllamaService {
 
   async embedding(model: string, text: string) {
     const { data } = await firstValueFrom(
-      this.http.post<OllamaEmbedResponse>('http://localhost:11434/api/embed', {
+      this.http.post<EmbedResponse>('http://localhost:11434/api/embed', {
         model: model,
         input: text,
       }),
@@ -34,7 +34,7 @@ export class OllamaService {
     return data.embeddings[0];
   }
 
-  async chat(model: string, messages: OllamaMessage[]) {
+  async chat(model: string, messages: ChatMessage[]) {
     const response = await this.openai.chat.completions.create({
       model,
       messages,

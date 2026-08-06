@@ -1,12 +1,11 @@
 import { Module } from '@nestjs/common';
-import { HttpModule } from '@nestjs/axios';
 import { EmbeddingService } from './embedding.service';
-import { OllamaService } from 'src/ollama/ollama.service';
+import { LlmClientModule } from 'src/llm-client/llm-client.module';
 import { EmbeddingController } from './embedding.controller';
 
 @Module({
-  imports: [HttpModule],
-  providers: [EmbeddingService, OllamaService],
+  imports: [LlmClientModule],
+  providers: [EmbeddingService],
   controllers: [EmbeddingController],
   exports: [EmbeddingService],
 })

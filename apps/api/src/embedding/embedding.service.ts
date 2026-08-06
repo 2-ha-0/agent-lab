@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { OllamaService } from 'src/ollama/ollama.service';
+import { LlmClientService } from 'src/llm-client/llm-client.service';
 
 @Injectable()
 export class EmbeddingService {
-  constructor(private readonly ollamaService: OllamaService) {}
+  constructor(private readonly llmClientService: LlmClientService) {}
 
   async embedding(text: string) {
-    return await this.ollamaService.embedding('bge-m3', text);
+    return await this.llmClientService.embedding('bge-m3', text);
   }
 }

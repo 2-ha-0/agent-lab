@@ -1,22 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { OllamaService } from 'src/ollama/ollama.service';
+import { LlmClientService } from 'src/llm-client/llm-client.service';
 import { PromptService } from 'src/prompt/prompt.service';
 import { Tool } from 'src/tools/interfaces/tool.interface';
 
 @Injectable()
 export class LlmService {
   constructor(
-    private readonly ollamaService: OllamaService,
+    private readonly llmClientService: LlmClientService,
     private readonly promptService: PromptService,
   ) {}
 
   async generate(prompt: string) {
-    const response = await this.ollamaService.chat('Qwen/Qwen3.5-35B-A3B-FP8', [
-      {
-        role: 'user',
-        content: prompt,
-      },
-    ]);
+    const response = await this.llmClientService.chat(
+      'Qwen/Qwen3.5-35B-A3B-FP8',
+      [
+        {
+          role: 'user',
+          content: prompt,
+        },
+      ],
+    );
 
     return response;
   }
