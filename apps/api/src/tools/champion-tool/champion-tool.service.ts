@@ -1,41 +1,51 @@
 import { Injectable } from '@nestjs/common';
 import { Trait } from 'generated/prisma/enums';
 import { ChampionService } from 'src/champion/champion.service';
-import { Tool } from '../interfaces/tool.interface';
+import { tool } from '@langchain/core/tools';
+import z from 'zod/v3';
 
 @Injectable()
 export class ChampionToolService {
   constructor(private readonly championService: ChampionService) {}
 
-  getTools(): Tool[] {
+  getTools() {
     return [
-      {
-        name: 'searchByCost',
-        description: 'Search champions by cost',
-        parameters: {
-          cost: 'number',
+      tool(
+        async ({ cost }) => {
+          return this.championService.findAllByCost(cost);
         },
-        execute: ({ cost }: { cost: number }) =>
-          this.championService.findAllByCost(cost),
-      },
-      {
-        name: 'searchByName',
-        description: 'Search champions by name',
-        parameters: {
-          name: 'string',
+        {
+          name: 'searchChampionsByCost',
+          description: '코스트를 기준으로 챔피언을 검색합니다.',
+          schema: z.object({
+            cost: z.number(),
+          }),
         },
-        execute: ({ name }: { name: string }) =>
-          this.championService.findByName(name),
-      },
-      {
-        name: 'searchByTrait',
-        description: 'Search champions by trait',
-        parameters: {
-          trait: 'string',
+      ),
+      tool(
+        async ({ name }) => {
+          return this.championService.findByName(name);
         },
-        execute: ({ trait }: { trait: Trait }) =>
-          this.championService.findByTrait(trait),
-      },
+        {
+          name: 'searchChampionsByName',
+          description: '이름을 기준으로 챔피언을 검색합니다.',
+          schema: z.object({
+            name: z.string(),
+          }),
+        },
+      ),
+      tool(
+        async ({ trait }) => {
+          return this.championService.findByTrait(trait);
+        },
+        {
+          name: 'searchChampionsByTrait',
+          description: '트레잇을 기준으로 챔피언을 검색합니다.',
+          schema: z.object({
+            trait: z.nativeEnum(Trait),
+          }),
+        },
+      ),
     ];
   }
 }

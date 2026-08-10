@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { ChampionToolService } from './champion-tool/champion-tool.service';
 import { ItemToolService } from './item-tool/item-tool.service';
-import { Tool } from './interfaces/tool.interface';
 import { TraitToolService } from './trait-tool/trait-tool.service';
+import { DynamicStructuredTool } from '@langchain/core/tools';
 
 @Injectable()
 export class ToolRegistry {
-  private readonly tools = new Map<string, Tool>();
+  private readonly tools = new Map<string, DynamicStructuredTool>();
 
   constructor(
     private readonly championTool: ChampionToolService,
@@ -20,17 +20,17 @@ export class ToolRegistry {
     this.register(this.traitTool.getTools());
   }
 
-  register(tools: Tool[]) {
+  register(tools: DynamicStructuredTool[]) {
     for (const tool of tools) {
       this.tools.set(tool.name, tool);
     }
   }
 
-  getAll(): Tool[] {
-    return [...this.tools.values()];
+  getAll() {
+    return Array.from(this.tools.values());
   }
 
-  get(name: string): Tool | undefined {
+  get(name: string): DynamicStructuredTool | undefined {
     return this.tools.get(name);
   }
 }

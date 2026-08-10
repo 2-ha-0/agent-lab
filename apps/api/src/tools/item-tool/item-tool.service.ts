@@ -1,50 +1,69 @@
 import { Injectable } from '@nestjs/common';
-import type { ItemType } from '../../../generated/prisma/enums';
+import { ItemType } from 'generated/prisma/enums';
 import { ItemService } from 'src/item/item.service';
-import { Tool } from '../interfaces/tool.interface';
+import { tool } from '@langchain/core/tools';
+import z from 'zod/v3';
 
 @Injectable()
 export class ItemToolService {
   constructor(private readonly itemService: ItemService) {}
 
-  getTools(): Tool[] {
+  getTools() {
     return [
-      {
-        name: 'searchByName',
-        description: 'Search items by name',
-        parameters: {
-          name: 'string',
+      tool(
+        async ({ name }) => {
+          return this.itemService.findByName(name);
         },
-        execute: ({ name }: { name: string }) =>
-          this.itemService.findByName(name),
-      },
-      {
-        name: 'searchByType',
-        description: 'Search items by type',
-        parameters: {
-          type: 'string',
+        {
+          name: 'searchItemsByName',
+          description: '이름을 기준으로 아이템을 검색합니다.',
+          schema: z.object({
+            name: z.string(),
+          }),
         },
-        execute: ({ type }: { type: ItemType }) =>
-          this.itemService.findByType(type),
-      },
-      {
-        name: 'searchByAD',
-        description: 'Search items by AD',
-        parameters: {},
-        execute: () => this.itemService.findByAD(),
-      },
-      {
-        name: 'searchByAP',
-        description: 'Search items by AP',
-        parameters: {},
-        execute: () => this.itemService.findByAP(),
-      },
-      {
-        name: 'searchAll',
-        description: 'Search all items',
-        parameters: {},
-        execute: () => this.itemService.findAll(),
-      },
+      ),
+      tool(
+        async ({ type }) => {
+          return this.itemService.findByType(type);
+        },
+        {
+          name: 'searchItemsByType',
+          description: '타입을 기준으로 아이템을 검색합니다.',
+          schema: z.object({
+            type: z.nativeEnum(ItemType),
+          }),
+        },
+      ),
+      tool(
+        async () => {
+          return this.itemService.findByAD();
+        },
+        {
+          name: 'searchItemsByAD',
+          description: 'AD 아이템을 검색합니다.',
+          schema: z.object({}),
+        },
+      ),
+      tool(
+        async () => {
+          return this.itemService.findByAP();
+        },
+        {
+          name: 'searchItemsByAP',
+          description: 'AP 아이템을 검색합니다.',
+          schema: z.object({}),
+        },
+      ),
+      tool(
+        async () => {
+          return this.itemService.findAll();
+        },
+        {
+          name: 'searchAllItems',
+          description: '모든 아이템을 검색합니다.',
+          schema: z.object({}),
+        },
+      ),
     ];
   }
 }

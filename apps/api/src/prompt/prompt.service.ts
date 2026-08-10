@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Tool } from 'src/tools/interfaces/tool.interface';
 import { ChatPromptTemplate } from '@langchain/core/prompts';
+import { DynamicStructuredTool } from '@langchain/core/tools';
 
 @Injectable()
 export class PromptService {
@@ -17,41 +17,11 @@ export class PromptService {
         규칙
         1. Context만으로 답 가능하면 answer를 반환하고 아직 필요한 정보가 없거나 부족하면 Tool을 호출해라.
         2. 정보가 충분하면 answer를 반환해라.
-        3. 반드시 JSON 객체로만 출력해라. 마크다운 코드블록, 설명 문장, 주석 없이 raw JSON만 출력해라.
-        
-        객체 타입은 다음과 같다.
-
-        {{
-          "type": "tool" | "answer",
-          "tool"?: string,
-          "parameters"?: {{ [string]: any }},
-          "answer"?: string
-        }}
-
-        예시1
-
-        {{
-          "type": "tool",
-          "tool": "searchChampionByCost",
-          "parameters": {{
-            "cost": 4
-          }}
-        }}
-
-        예시2
-
-        {{
-          "type": "answer",
-          "answer": "가렌을 추천합니다."
-        }}
-
-        4. 답변은 이전 실행 결과(Tool 결과)에 있는 데이터만 사용해라.
+        3. 답변은 이전 실행 결과(Tool 결과)에 있는 데이터만 사용해라.
           사전 지식, 메타 정보, 기억으로 챔피언/아이템을 추가하거나 추측하지 마라.
-
-        5. answer에 등장하는 챔피언 이름, 아이템 이름은
+        4. answer에 등장하는 챔피언 이름, 아이템 이름은
           반드시 이전 실행 결과에 실제로 존재하는 것만 써라.
-
-        6. 특정 챔피언 아이템 추천 요청이면 아래 순서를 반드시 지켜라.
+        5. 특정 챔피언 아이템 추천 요청이면 아래 순서를 반드시 지켜라.
 
           - 이전 실행 결과에 해당 챔피언 정보가 없으면
             먼저 searchChampionByName을 호출한다.
@@ -69,8 +39,7 @@ export class PromptService {
 
           - 추천 이유를 쓸 때도 Tool 결과에 있는
             수치/설명만 근거로 써라.
-
-        7. 딜러는 딜 아이템, 탱커는 방어 아이템을 추천해라.
+        6. 딜러는 딜 아이템, 탱커는 방어 아이템을 추천해라.
       `,
     ],
     [
@@ -157,7 +126,7 @@ export class PromptService {
       toolName: string;
       result: unknown;
     }[],
-    tools: Tool[],
+    tools: DynamicStructuredTool[],
     context: string,
   ) {
     const toolDescriptions = tools
@@ -166,7 +135,7 @@ export class PromptService {
           이름: ${tool.name}
           설명: ${tool.description}
           파라미터:
-          ${JSON.stringify(tool.parameters)}
+          ${JSON.stringify(tool.schema)}
           `,
       )
       .join('\n');

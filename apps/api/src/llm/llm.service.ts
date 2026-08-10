@@ -1,9 +1,9 @@
 import { ChatOpenAI } from '@langchain/openai';
-import { BaseMessage } from '@langchain/core/messages';
+import { BaseMessage, ToolMessage } from '@langchain/core/messages';
 import { Injectable } from '@nestjs/common';
 import { LlmClientService } from 'src/llm-client/llm-client.service';
 import { PromptService } from 'src/prompt/prompt.service';
-import { Tool } from 'src/tools/interfaces/tool.interface';
+import { ToolRegistry } from 'src/tools/tools.registry';
 
 @Injectable()
 export class LlmService {
@@ -18,6 +18,7 @@ export class LlmService {
   constructor(
     private readonly llmClientService: LlmClientService,
     private readonly promptService: PromptService,
+    private readonly toolRegistry: ToolRegistry,
   ) {}
 
   async generate(prompt: string) {
@@ -57,38 +58,65 @@ export class LlmService {
 
   async decide(
     question: string,
-    histories: {
+
+    // tools: Tool[],
+    context: string,
+  ) {
+    const tools = this.toolRegistry.getAll();
+    const modelWithTools = this.model.bindTools(tools);
+    const histories: {
       toolName: string;
       result: unknown;
-    }[],
-    tools: Tool[],
-    context: string,
-  ): Promise<{
-    type: 'tool' | 'answer';
-    tool?: string;
-    parameters?: Record<string, any>;
-    answer?: string;
-    context?: string;
-  }> {
+    }[] = [];
+
     const messages: BaseMessage[] = await this.promptService.buildDecidePrompt(
       question,
       histories,
       tools,
       context,
     );
-    // const response = await this.generate(prompt);
-    const response = await this.invoke(messages);
 
-    // return response;
+    const maxIterations = 10;
+    let iterations = 0;
 
-    // return this.parseJsonResponse(response) as {
-    //   type: 'tool' | 'answer';
-    //   tool?: string;
-    //   parameters?: Record<string, any>;
-    //   answer?: string;
-    // };
+    while (iterations < maxIterations) {
+      iterations += 1;
 
-    return JSON.parse(response.content as string);
+      const response = await modelWithTools.invoke(messages);
+
+      // Tool 호출이 없다면 최종 답변
+      if (!response.tool_calls?.length) {
+        return response.content;
+      }
+
+      for (const toolCall of response.tool_calls) {
+        const tool = tools.find((tool) => tool.name === toolCall.name);
+
+        if (!tool) {
+          throw new Error(`Tool not found: ${toolCall.name}`);
+        }
+
+        const result = await tool.invoke(toolCall.args);
+
+        console.log(`Tool [${toolCall.name}] result:`, result);
+
+        // History 저장
+        histories.push({
+          toolName: toolCall.name,
+          result,
+        });
+
+        // Tool 결과를 LLM에게 전달
+        messages.push(
+          new ToolMessage({
+            content: JSON.stringify(result),
+            tool_call_id: toolCall.id!,
+          }),
+        );
+      }
+    }
+
+    return messages;
   }
 
   /** LLM이 마크다운 코드펜스나 부가 텍스트를 붙여도 JSON만 추출해 파싱한다. */
