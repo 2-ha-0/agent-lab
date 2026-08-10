@@ -1,3 +1,5 @@
+import { ChatOpenAI } from '@langchain/openai';
+import { BaseMessage } from '@langchain/core/messages';
 import { Injectable } from '@nestjs/common';
 import { LlmClientService } from 'src/llm-client/llm-client.service';
 import { PromptService } from 'src/prompt/prompt.service';
@@ -5,6 +7,14 @@ import { Tool } from 'src/tools/interfaces/tool.interface';
 
 @Injectable()
 export class LlmService {
+  private readonly model = new ChatOpenAI({
+    model: 'Qwen/Qwen3.5-35B-A3B-FP8',
+    apiKey: process.env.LLM_API_KEY ?? 'not-needed',
+    configuration: {
+      baseURL: process.env.LLM_BASE_URL ?? 'http://192.168.14.248:12001/v1',
+    },
+  });
+
   constructor(
     private readonly llmClientService: LlmClientService,
     private readonly promptService: PromptService,
@@ -60,20 +70,25 @@ export class LlmService {
     answer?: string;
     context?: string;
   }> {
-    const prompt = this.promptService.buildDecidePrompt(
+    const messages: BaseMessage[] = await this.promptService.buildDecidePrompt(
       question,
       histories,
       tools,
       context,
     );
-    const response = await this.generate(prompt);
+    // const response = await this.generate(prompt);
+    const response = await this.invoke(messages);
 
-    return this.parseJsonResponse(response) as {
-      type: 'tool' | 'answer';
-      tool?: string;
-      parameters?: Record<string, any>;
-      answer?: string;
-    };
+    // return response;
+
+    // return this.parseJsonResponse(response) as {
+    //   type: 'tool' | 'answer';
+    //   tool?: string;
+    //   parameters?: Record<string, any>;
+    //   answer?: string;
+    // };
+
+    return JSON.parse(response.content as string);
   }
 
   /** LLM이 마크다운 코드펜스나 부가 텍스트를 붙여도 JSON만 추출해 파싱한다. */
@@ -93,5 +108,9 @@ export class LlmService {
       }
       return JSON.parse(embedded);
     }
+  }
+
+  async invoke(messages: BaseMessage[]) {
+    return this.model.invoke(messages);
   }
 }

@@ -24,6 +24,8 @@ export class AgentService {
   async test(question: string) {
     const context = await this.retrievalService.retrieval(question);
 
+    const contextText = context.map((item) => item.payload?.text).join('\n');
+
     console.log('context', context);
 
     const histories: {
@@ -33,12 +35,17 @@ export class AgentService {
 
     const tools = this.toolRegistry.getAll();
 
-    while (true) {
+    const maxIterations = 5;
+    let iterations = 0;
+
+    while (iterations < maxIterations) {
+      iterations += 1;
+
       const action = await this.llmService.decide(
         question,
         histories,
         tools,
-        context.map((item) => item.payload?.text).join('\n'),
+        contextText,
       );
       console.log('action', action);
 
@@ -55,5 +62,7 @@ export class AgentService {
         result,
       });
     }
+
+    return '최대 시도 횟수를 초과했습니다.';
   }
 }

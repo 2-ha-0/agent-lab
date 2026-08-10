@@ -23,6 +23,10 @@ export class LlmClientService {
     });
   }
 
+  // async invoke(messages: BaseMessage[]) {
+  //   return this.model.invoke(messages);
+  // }
+
   async embedding(model: string, text: string) {
     const { data } = await firstValueFrom(
       this.http.post<EmbedResponse>('http://localhost:11434/api/embed', {
