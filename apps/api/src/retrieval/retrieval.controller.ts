@@ -10,6 +10,6 @@ export class RetrievalController {
   @Post('')
   @ApiOperation({ summary: '검색' })
   async retrieval(@Body() body: RetrievalDto) {
-    return this.retrievalService.retrieval(body.query);
+    return this.retrievalService.retrieve(body.query);
   }
 }

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Sparkles, Swords, Users, Zap } from 'lucide-react';
+import { ArrowRight, Sparkles, Swords, Users, Workflow, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { fetchChampions } from '@/lib/champions';
@@ -37,11 +37,14 @@ export default async function HomePage() {
             <Button variant="outline" size="lg" asChild>
               <Link href="/champions">챔피언 도감 보기</Link>
             </Button>
+            <Button variant="outline" size="lg" asChild>
+              <Link href="/agent">에이전트 경로 보기</Link>
+            </Button>
           </div>
         </div>
       </section>
 
-      <section className="grid gap-4 md:grid-cols-3">
+      <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <FeatureCard
           icon={Users}
           title="챔피언 도감"
@@ -59,6 +62,12 @@ export default async function HomePage() {
           title="시너지 분석"
           description="활성 시너지와 팀 요약을 즉시 계산"
           href="/builder"
+        />
+        <FeatureCard
+          icon={Workflow}
+          title="에이전트"
+          description="질문 한 번이 검색·모델·툴을 어떻게 거치는지 시각화"
+          href="/agent"
         />
       </section>
     </div>

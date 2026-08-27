@@ -1,38 +1,30 @@
 import { Injectable } from '@nestjs/common';
-import { ChatPromptTemplate } from '@langchain/core/prompts';
-import { DynamicStructuredTool } from '@langchain/core/tools';
 
 @Injectable()
 export class PromptService {
-  private readonly agentPrompt = ChatPromptTemplate.fromMessages([
-    [
-      'system',
-      `
+  getAgentSystemPrompt() {
+    return `
       너는 AI Agent다.
 
-        사용 가능한 Tool
-
-        {toolDescriptions}
-
         규칙
-        1. Context만으로 답 가능하면 answer를 반환하고 아직 필요한 정보가 없거나 부족하면 Tool을 호출해라.
-        2. 정보가 충분하면 answer를 반환해라.
+        1. Context만으로 답 가능하면 바로 답하고, 정보가 없거나 부족하면 Tool을 호출해라.
+        2. 정보가 충분하면 최종 답변을 해라.
         3. 답변은 이전 실행 결과(Tool 결과)에 있는 데이터만 사용해라.
           사전 지식, 메타 정보, 기억으로 챔피언/아이템을 추가하거나 추측하지 마라.
-        4. answer에 등장하는 챔피언 이름, 아이템 이름은
+        4. 답변에 등장하는 챔피언 이름, 아이템 이름은
           반드시 이전 실행 결과에 실제로 존재하는 것만 써라.
         5. 특정 챔피언 아이템 추천 요청이면 아래 순서를 반드시 지켜라.
 
           - 이전 실행 결과에 해당 챔피언 정보가 없으면
-            먼저 searchChampionByName을 호출한다.
+            먼저 searchChampionsByName을 호출한다.
 
-          - 이전 실행 결과에 searchItemAll 결과가 없으면
-            searchItemAll을 호출한다.
+          - 이전 실행 결과에 searchAllItems 결과가 없으면
+            searchAllItems를 호출한다.
 
           - 챔피언의 role, ability, description과
             아이템의 type, effects, description을 비교해 추천한다.
 
-          - 추천 아이템은 searchItemAll 결과 중
+          - 추천 아이템은 searchAllItems 결과 중
             type이 COMPLETED_ITEM인 것만 고른다.
 
           - COMPONENT, AMBLEM, SET17_SPECIAL_ITEM은 추천하지 마라.
@@ -40,22 +32,19 @@ export class PromptService {
           - 추천 이유를 쓸 때도 Tool 결과에 있는
             수치/설명만 근거로 써라.
         6. 딜러는 딜 아이템, 탱커는 방어 아이템을 추천해라.
-      `,
-    ],
-    [
-      'user',
-      `
-        이전 실행 결과
-        {histories}
+      `;
+  }
 
+  buildAgentUserMessage(question: string, context: string) {
+    return `
         질문:
-        {question}
-        
+        ${question}
+
         관련 문서:
-        {context}
-      `,
-    ],
-  ]);
+        ${context}
+      `;
+  }
+
   buildRagPrompt(docs: string, question: string) {
     return `
         너는 검색 결과를 기반으로만 답변하는 AI이다.
@@ -118,33 +107,5 @@ export class PromptService {
 
         검색 결과를 이용해서 자연스럽게 답변해줘.
     `;
-  }
-
-  buildAgentPrompt(
-    question: string,
-    histories: {
-      toolName: string;
-      result: unknown;
-    }[],
-    tools: DynamicStructuredTool[],
-    context: string,
-  ) {
-    const toolDescriptions = tools
-      .map(
-        (tool) => `
-          이름: ${tool.name}
-          설명: ${tool.description}
-          파라미터:
-          ${JSON.stringify(tool.schema)}
-          `,
-      )
-      .join('\n');
-
-    return this.agentPrompt.formatMessages({
-      question,
-      histories: JSON.stringify(histories),
-      toolDescriptions,
-      context,
-    });
   }
 }

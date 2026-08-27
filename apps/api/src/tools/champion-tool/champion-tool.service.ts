@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Trait } from 'generated/prisma/enums';
 import { ChampionService } from 'src/champion/champion.service';
+import { toToolContent } from 'src/tools/to-tool-content';
 import { tool } from '@langchain/core/tools';
 import z from 'zod/v3';
 
@@ -12,7 +13,7 @@ export class ChampionToolService {
     return [
       tool(
         async ({ cost }) => {
-          return this.championService.findAllByCost(cost);
+          return toToolContent(await this.championService.findAllByCost(cost));
         },
         {
           name: 'searchChampionsByCost',
@@ -24,7 +25,7 @@ export class ChampionToolService {
       ),
       tool(
         async ({ name }) => {
-          return this.championService.findByName(name);
+          return toToolContent(await this.championService.findByName(name));
         },
         {
           name: 'searchChampionsByName',
@@ -36,7 +37,7 @@ export class ChampionToolService {
       ),
       tool(
         async ({ trait }) => {
-          return this.championService.findByTrait(trait);
+          return toToolContent(await this.championService.findByTrait(trait));
         },
         {
           name: 'searchChampionsByTrait',

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Sparkles, Swords, Users } from 'lucide-react';
+import { Sparkles, Swords, Users, Workflow } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -7,6 +7,7 @@ const navItems = [
   { href: '/', label: '홈', icon: Sparkles },
   { href: '/champions', label: '챔피언', icon: Users },
   { href: '/builder', label: '팀 빌더', icon: Swords },
+  { href: '/agent', label: '에이전트', icon: Workflow },
 ];
 
 export function SiteHeader({ className }: { className?: string }) {

@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Trait } from 'generated/prisma/enums';
 import { TraitService } from 'src/trait/trait.service';
+import { toToolContent } from 'src/tools/to-tool-content';
 import { tool } from '@langchain/core/tools';
 import z from 'zod/v3';
 
@@ -12,7 +13,7 @@ export class TraitToolService {
     return [
       tool(
         async () => {
-          return this.traitService.findAll();
+          return toToolContent(await this.traitService.findAll());
         },
         {
           name: 'searchAllTraits',
@@ -22,7 +23,7 @@ export class TraitToolService {
       ),
       tool(
         async ({ name }) => {
-          return this.traitService.findByName(name);
+          return toToolContent(await this.traitService.findByName(name));
         },
         {
           name: 'searchTraitsByName',

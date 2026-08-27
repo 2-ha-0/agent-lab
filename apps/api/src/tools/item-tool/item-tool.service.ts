@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ItemType } from 'generated/prisma/enums';
 import { ItemService } from 'src/item/item.service';
+import { toToolContent } from 'src/tools/to-tool-content';
 import { tool } from '@langchain/core/tools';
 import z from 'zod/v3';
 
@@ -12,7 +13,7 @@ export class ItemToolService {
     return [
       tool(
         async ({ name }) => {
-          return this.itemService.findByName(name);
+          return toToolContent(await this.itemService.findByName(name));
         },
         {
           name: 'searchItemsByName',
@@ -24,7 +25,7 @@ export class ItemToolService {
       ),
       tool(
         async ({ type }) => {
-          return this.itemService.findByType(type);
+          return toToolContent(await this.itemService.findByType(type));
         },
         {
           name: 'searchItemsByType',
@@ -36,7 +37,7 @@ export class ItemToolService {
       ),
       tool(
         async () => {
-          return this.itemService.findByAD();
+          return toToolContent(await this.itemService.findByAD());
         },
         {
           name: 'searchItemsByAD',
@@ -46,7 +47,7 @@ export class ItemToolService {
       ),
       tool(
         async () => {
-          return this.itemService.findByAP();
+          return toToolContent(await this.itemService.findByAP());
         },
         {
           name: 'searchItemsByAP',
@@ -56,7 +57,7 @@ export class ItemToolService {
       ),
       tool(
         async () => {
-          return this.itemService.findAll();
+          return toToolContent(await this.itemService.findAll());
         },
         {
           name: 'searchAllItems',

@@ -14,7 +14,7 @@ export class RagService {
   ) {}
 
   async search(query: string) {
-    const queryResult = await this.retrievalService.retrieval(query);
+    const queryResult = await this.retrievalService.retrieve(query);
 
     if (queryResult.length === 0) {
       return '검색 결과가 없습니다.';

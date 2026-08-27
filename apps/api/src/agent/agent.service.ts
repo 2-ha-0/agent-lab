@@ -1,9 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { BaseMessage, ToolMessage } from '@langchain/core/messages';
+import { AIMessage } from '@langchain/core/messages';
+import { createAgent, modelCallLimitMiddleware } from 'langchain';
+import { GraphRecursionError } from '@langchain/langgraph';
 import { LlmService } from 'src/llm/llm.service';
 import { PromptService } from 'src/prompt/prompt.service';
 import { RetrievalService } from 'src/retrieval/retrieval.service';
 import { ToolRegistry } from 'src/tools/tools.registry';
+
+type TraceStep = {
+  type: 'retrieve' | 'model' | 'tool' | 'end';
+  name?: string;
+};
 
 @Injectable()
 export class AgentService {
@@ -24,61 +31,132 @@ export class AgentService {
   //   return tool.execute(parameters);
   // }
 
+  async getGraph() {
+    const drawable = await this.createAgent().graph.getGraphAsync();
+
+    return drawable.drawMermaid();
+  }
+
   async run(question: string) {
+    const { messages } = await this.execute(question);
+
+    return this.getFinalContent(messages);
+  }
+
+  async trace(question: string) {
+    const { messages } = await this.execute(question);
+    const steps = this.buildTrace(messages);
+
+    return {
+      answer: this.getFinalContent(messages),
+      steps,
+      mermaid: this.drawTraceMermaid(steps),
+    };
+  }
+
+  private async execute(question: string) {
     const context = await this.retrievalService.retrieve(question);
     const contextText = context.map((item) => item.payload?.text).join('\n');
-    const tools = this.toolRegistry.getAll();
-    const histories: {
-      toolName: string;
-      result: unknown;
-    }[] = [];
+    const agent = this.createAgent();
 
-    const messages: BaseMessage[] = await this.promptService.buildAgentPrompt(
-      question,
-      histories,
-      tools,
-      contextText,
-    );
+    try {
+      const result = await agent.invoke(
+        {
+          messages: [
+            {
+              role: 'user',
+              content: this.promptService.buildAgentUserMessage(
+                question,
+                contextText,
+              ),
+            },
+          ],
+        },
+        { recursionLimit: 25 },
+      );
 
-    const maxIterations = 10;
-    let iterations = 0;
-
-    while (iterations < maxIterations) {
-      iterations += 1;
-
-      const response = await this.llmService.invoke(messages, tools);
-
-      if (!response.tool_calls?.length) {
-        return response.content;
+      return { messages: result.messages };
+    } catch (error) {
+      if (error instanceof GraphRecursionError) {
+        return { messages: [] };
       }
 
-      messages.push(response);
+      throw error;
+    }
+  }
 
-      for (const toolCall of response.tool_calls) {
-        const tool = this.toolRegistry.get(toolCall.name);
+  private buildTrace(messages: unknown[]) {
+    const steps: TraceStep[] = [{ type: 'retrieve' }];
 
-        if (!tool) {
-          throw new Error(`Tool not found: ${toolCall.name}`);
+    for (const message of messages) {
+      if (!AIMessage.isInstance(message)) {
+        continue;
+      }
+
+      steps.push({ type: 'model' });
+
+      if (message.tool_calls?.length) {
+        for (const toolCall of message.tool_calls) {
+          steps.push({ type: 'tool', name: toolCall.name });
         }
+      } else {
+        steps.push({ type: 'end' });
+      }
+    }
 
-        const result = await tool.invoke(toolCall.args);
+    if (steps.at(-1)?.type !== 'end') {
+      steps.push({ type: 'end' });
+    }
 
-        console.log(`Tool [${toolCall.name}] result:`, result);
+    return steps;
+  }
 
-        histories.push({
-          toolName: toolCall.name,
-          result,
-        });
+  private drawTraceMermaid(steps: TraceStep[]) {
+    const labels: Record<string, (step: { name?: string }) => string> = {
+      retrieve: () => 'retrieve',
+      model: () => '모델',
+      tool: (step) => step.name ?? 'tool',
+      end: () => '끝',
+    };
+    const lines = ['flowchart TD', '  start([시작])'];
+    let previous = 'start';
 
-        messages.push(
-          new ToolMessage({
-            content: JSON.stringify(result),
-            tool_call_id: toolCall.id!,
-          }),
-        );
+    steps.forEach((step, index) => {
+      const id = `n${index}`;
+      const label = labels[step.type](step);
+      const shape =
+        step.type === 'end' ? `([${label}])` : `[${JSON.stringify(label)}]`;
+
+      lines.push(`  ${id}${shape}`);
+      lines.push(`  ${previous} --> ${id}`);
+      previous = id;
+    });
+
+    return lines.join('\n');
+  }
+
+  private getFinalContent(messages: unknown[]) {
+    for (let i = messages.length - 1; i >= 0; i -= 1) {
+      const message = messages[i];
+      if (AIMessage.isInstance(message) && !message.tool_calls?.length) {
+        return message.content;
       }
     }
 
     return '최대 도구 호출 횟수에 도달했습니다.';
+  }
+
+  private createAgent() {
+    return createAgent({
+      model: this.llmService.getModel(),
+      tools: this.toolRegistry.getAll(),
+      systemPrompt: this.promptService.getAgentSystemPrompt(),
+      middleware: [
+        modelCallLimitMiddleware({
+          runLimit: 10,
+          exitBehavior: 'end',
+        }),
+      ],
+    });
   }
 }

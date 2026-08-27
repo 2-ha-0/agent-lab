@@ -20,6 +20,10 @@ export class LlmService {
     private readonly promptService: PromptService,
   ) {}
 
+  getModel() {
+    return this.model;
+  }
+
   async generate(prompt: string) {
     const response = await this.llmClientService.chat(
       'Qwen/Qwen3.5-35B-A3B-FP8',
