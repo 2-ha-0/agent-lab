@@ -9,6 +9,7 @@ import {
 } from '@/app/agent/actions';
 import { AgentFlow, AgentFlowSkeleton } from '@/components/agent/agent-flow';
 import { AgentGraphSchematic } from '@/components/agent/agent-graph-schematic';
+import { MarkdownContent } from '@/components/agent/markdown-content';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -167,9 +168,7 @@ export function AgentPageClient() {
                   <CardTitle>최종 답변</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="whitespace-pre-wrap text-sm leading-7 text-foreground/90">
-                    {trace.answer}
-                  </p>
+                  <MarkdownContent>{trace.answer}</MarkdownContent>
                 </CardContent>
               </Card>
             ) : null}
