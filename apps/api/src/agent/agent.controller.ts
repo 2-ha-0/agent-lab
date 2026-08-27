@@ -7,8 +7,8 @@ import { SelectToolDto } from './dto/select-tool.dto';
 export class AgentController {
   constructor(private readonly agentService: AgentService) {}
 
-  @Post('select-tool')
-  async selectTool(@Body() body: SelectToolDto) {
-    return this.agentService.test(body.question);
+  @Post('run')
+  async run(@Body() body: SelectToolDto) {
+    return this.agentService.run(body.question);
   }
 }

@@ -9,7 +9,7 @@ export class RetrievalService {
     private readonly qdrantService: QdrantService,
   ) {}
 
-  async retrieval(query: string) {
+  async retrieve(query: string) {
     const embedding = await this.embeddingService.embedding(query);
     const result = await this.qdrantService.search(embedding);
 

@@ -4,7 +4,7 @@ import { DynamicStructuredTool } from '@langchain/core/tools';
 
 @Injectable()
 export class PromptService {
-  private readonly decidePrompot = ChatPromptTemplate.fromMessages([
+  private readonly agentPrompt = ChatPromptTemplate.fromMessages([
     [
       'system',
       `
@@ -120,7 +120,7 @@ export class PromptService {
     `;
   }
 
-  buildDecidePrompt(
+  buildAgentPrompt(
     question: string,
     histories: {
       toolName: string;
@@ -140,7 +140,7 @@ export class PromptService {
       )
       .join('\n');
 
-    return this.decidePrompot.formatMessages({
+    return this.agentPrompt.formatMessages({
       question,
       histories: JSON.stringify(histories),
       toolDescriptions,
