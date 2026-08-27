@@ -1,0 +1,130 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider     = "prisma-client"
+  output       = "../generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  APTank
+  APCaster
+  APCarry
+  APReaper
+  APFighter
+  ADTank
+  ADFighter
+  ADCaster
+  ADSpecialist
+  ADReaper
+  ADCarry
+  HFighter
+  null
+}
+
+enum Trait {
+  NOVA
+  길잡이
+  도전자
+  동물특공대
+  메카
+  복제자
+  불한당
+  선봉대
+  습격자
+  시간균열자
+  싸움꾼
+  암흑의별
+  여행자
+  요새
+  우주그루브
+  운명술사
+  저격수
+  전달자
+  정령족
+  중재자
+  초능력
+  최신상
+  태고족
+  구원자
+  기동총격여신
+  말살자
+  보루
+  신성결투가
+  어둠의여인
+  예언자
+  은하계사냥꾼
+  지휘관
+  특성선택
+  파멸자
+  파티광
+  별돌보미
+}
+
+enum ItemType {
+  AMBLEM
+  COMPONENT
+  COMPLETED_ITEM
+  SET17_SPECIAL_ITEM
+}
+
+enum TraitKind {
+  MAIN
+  UNIQUE
+  STARGAZER
+}
+
+model ChampionInfo {
+  id        String   @id @default(uuid())
+  cost      Int
+  name      String
+  role      Role
+  traits    Trait[]
+  stat_1star     Json
+  stat_2star     Json
+  stat_3star     Json
+  ability   Json
+  version   String  // 일단 항상 최신 버전 데이터만 저장한다 가정함.
+  description String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ItemInfo {
+  id               String    @id @default(uuid())
+  type             ItemType
+  name             String
+  effects          Json
+  composition      Json[]
+  unique           Boolean
+  associatedTraits Trait[]
+  version          String // 일단 항상 최신 버전 데이터만 저장한다 가정함.
+  description      String
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+}
+
+model TraitInfo {
+  id            String    @id @default(uuid())
+  apiName       String
+  name          Trait
+  kind          TraitKind
+  description   String
+  breakpoints   Json
+  champions     Json
+  constellation String?
+  version       String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@unique([apiName, version])
+  @@index([kind, version])
+  @@index([name, version])
+}
