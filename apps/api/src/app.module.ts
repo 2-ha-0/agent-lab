@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
-import { LlmClientModule } from './llm-client/llm-client.module';
 import { EmbeddingModule } from './embedding/embedding.module';
 import { QdrantModule } from './qdrant/qdrant.module';
 import { IndexingModule } from './indexing/indexing.module';
@@ -24,7 +23,6 @@ import { TraitModule } from './trait/trait.module';
       isGlobal: true,
       envFilePath: ['.env', '../../.env'],
     }),
-    LlmClientModule,
     EmbeddingModule,
     QdrantModule,
     IndexingModule,

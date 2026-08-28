@@ -21,16 +21,6 @@ export class AgentService {
     private readonly retrievalService: RetrievalService,
   ) {}
 
-  // async selectTool(toolName: string, parameters: Record<string, any>) {
-  //   const tool = this.toolRegistry.get(toolName);
-
-  //   if (!tool) {
-  //     return 'Tool을 선택할 수 없습니다.';
-  //   }
-
-  //   return tool.execute(parameters);
-  // }
-
   async getGraph() {
     const drawable = await this.createAgent().graph.getGraphAsync();
 

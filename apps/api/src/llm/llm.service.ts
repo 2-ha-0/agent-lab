@@ -2,7 +2,6 @@ import { ChatOpenAI } from '@langchain/openai';
 import { BaseMessage } from '@langchain/core/messages';
 import { DynamicStructuredTool } from '@langchain/core/tools';
 import { Injectable } from '@nestjs/common';
-import { LlmClientService } from 'src/llm-client/llm-client.service';
 import { PromptService } from 'src/prompt/prompt.service';
 
 @Injectable()
@@ -15,27 +14,39 @@ export class LlmService {
     },
   });
 
-  constructor(
-    private readonly llmClientService: LlmClientService,
-    private readonly promptService: PromptService,
-  ) {}
+  constructor(private readonly promptService: PromptService) {}
 
   getModel() {
     return this.model;
   }
 
   async generate(prompt: string) {
-    const response = await this.llmClientService.chat(
-      'Qwen/Qwen3.5-35B-A3B-FP8',
-      [
-        {
-          role: 'user',
-          content: prompt,
-        },
-      ],
-    );
+    const response = await this.model.invoke(prompt);
+    return this.contentToText(response.content);
+  }
 
-    return response;
+  private contentToText(content: unknown): string {
+    if (typeof content === 'string') {
+      return content;
+    }
+    if (!Array.isArray(content)) {
+      return '';
+    }
+
+    let text = '';
+    for (const part of content) {
+      if (typeof part === 'string') {
+        text += part;
+      } else if (
+        part &&
+        typeof part === 'object' &&
+        'text' in part &&
+        typeof part.text === 'string'
+      ) {
+        text += part.text;
+      }
+    }
+    return text;
   }
 
   async selectTools(

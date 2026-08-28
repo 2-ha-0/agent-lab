@@ -1,3 +1,4 @@
+import { HttpService } from '@nestjs/axios';
 import { Test, TestingModule } from '@nestjs/testing';
 import { EmbeddingService } from './embedding.service';
 
@@ -6,7 +7,13 @@ describe('EmbeddingService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [EmbeddingService],
+      providers: [
+        EmbeddingService,
+        {
+          provide: HttpService,
+          useValue: { post: jest.fn() },
+        },
+      ],
     }).compile();
 
     service = module.get<EmbeddingService>(EmbeddingService);
