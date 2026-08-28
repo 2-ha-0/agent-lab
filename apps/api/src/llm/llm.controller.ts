@@ -7,9 +7,9 @@ import { ApiOperation } from '@nestjs/swagger';
 export class LlmController {
   constructor(private readonly llmService: LlmService) {}
 
-  @Post('generate')
-  @ApiOperation({ summary: '채팅' })
-  async indexing(@Body() body: generateChatDto) {
-    return this.llmService.generate(body.prompt);
+  @Post('generate-chat')
+  @ApiOperation({ summary: '채팅 테스트' })
+  async generate(@Body() body: generateChatDto) {
+    return this.llmService.generateChat(body.prompt);
   }
 }

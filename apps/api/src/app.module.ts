@@ -7,7 +7,6 @@ import { QdrantModule } from './qdrant/qdrant.module';
 import { IndexingModule } from './indexing/indexing.module';
 import { RetrievalModule } from './retrieval/retrieval.module';
 import { LlmModule } from './llm/llm.module';
-import { RagModule } from './rag/rag.module';
 import { PromptModule } from './prompt/prompt.module';
 import { ChampionToolService } from './tools/champion-tool/champion-tool.service';
 import { ChampionService } from './champion/champion.service';
@@ -28,7 +27,6 @@ import { TraitModule } from './trait/trait.module';
     IndexingModule,
     RetrievalModule,
     LlmModule,
-    RagModule,
     PromptModule,
     ChampionModule,
     PrismaModule,

@@ -15,7 +15,8 @@ export class EmbeddingService {
 
   constructor(private readonly http: HttpService) {}
 
-  async embedding(text: string) {
+  // local ollama embedding
+  async localEmbedding(text: string) {
     const { data } = await firstValueFrom(
       this.http.post<EmbedResponse>('http://localhost:11434/api/embed', {
         model: 'bge-m3',
@@ -26,7 +27,7 @@ export class EmbeddingService {
     return data.embeddings[0];
   }
 
-  async embed(text: string) {
+  async openaiEmbedding(text: string) {
     return this.embeddings.embedQuery(text);
   }
 }

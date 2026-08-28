@@ -7,10 +7,10 @@ import { EmbeddingService } from './embedding.service';
 export class EmbeddingController {
   constructor(private readonly embeddingService: EmbeddingService) {}
 
-  @Get()
+  @Get('/test/local')
   @ApiOperation({ summary: '임베딩 테스트' })
   async test() {
-    return this.embeddingService.embedding(
+    return this.embeddingService.localEmbedding(
       '푸른 눈의 백룡은 공격력 3000의 드래곤족 몬스터이다.',
     );
   }

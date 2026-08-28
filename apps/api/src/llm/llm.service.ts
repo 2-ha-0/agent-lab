@@ -1,6 +1,4 @@
 import { ChatOpenAI } from '@langchain/openai';
-import { BaseMessage } from '@langchain/core/messages';
-import { DynamicStructuredTool } from '@langchain/core/tools';
 import { Injectable } from '@nestjs/common';
 import { PromptService } from 'src/prompt/prompt.service';
 
@@ -20,7 +18,7 @@ export class LlmService {
     return this.model;
   }
 
-  async generate(prompt: string) {
+  async generateChat(prompt: string) {
     const response = await this.model.invoke(prompt);
     return this.contentToText(response.content);
   }
@@ -49,27 +47,6 @@ export class LlmService {
     return text;
   }
 
-  async selectTools(
-    question: string,
-  ): Promise<{ tool: string; parameters: Record<string, any> }[]> {
-    const prompt = this.promptService.buildSelectToolsPrompt(question);
-    const response = await this.generate(prompt);
-
-    console.log('response', response);
-
-    return this.parseJsonResponse(response) as {
-      tool: string;
-      parameters: Record<string, any>;
-    }[];
-  }
-
-  async answer(question: string, toolResults: any) {
-    const prompt = this.promptService.buildAnswerPrompt(question, toolResults);
-    const response = await this.generate(prompt);
-
-    return response;
-  }
-
   /** LLM이 마크다운 코드펜스나 부가 텍스트를 붙여도 JSON만 추출해 파싱한다. */
   private parseJsonResponse(raw: string): unknown {
     const trimmed = raw.trim();
@@ -87,10 +64,5 @@ export class LlmService {
       }
       return JSON.parse(embedded);
     }
-  }
-
-  async invoke(messages: BaseMessage[], tools?: DynamicStructuredTool[]) {
-    const model = tools?.length ? this.model.bindTools(tools) : this.model;
-    return model.invoke(messages);
   }
 }
