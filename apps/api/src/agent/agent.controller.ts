@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Header, Post } from '@nestjs/common';
 import { ApiOperation } from '@nestjs/swagger';
 import { AgentService } from './agent.service';
-import { SelectToolDto } from './dto/select-tool.dto';
+import { AgentQuestionDto } from './dto/agent-question.dto';
 
 @Controller('agent')
 export class AgentController {
@@ -16,13 +16,13 @@ export class AgentController {
 
   @Post('run')
   @ApiOperation({ summary: '에이전트 실행' })
-  async run(@Body() body: SelectToolDto) {
+  async run(@Body() body: AgentQuestionDto) {
     return this.agentService.run(body.question);
   }
 
   @Post('trace')
   @ApiOperation({ summary: '이번 질문이 지나간 경로를 Mermaid로 반환' })
-  trace(@Body() body: SelectToolDto) {
+  trace(@Body() body: AgentQuestionDto) {
     return this.agentService.trace(body.question);
   }
 }

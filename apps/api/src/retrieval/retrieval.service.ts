@@ -11,13 +11,6 @@ export class RetrievalService {
 
   async retrieve(query: string) {
     const embedding = await this.embeddingService.localEmbedding(query);
-    const result = await this.qdrantService.search(embedding);
-
-    // if (result) {
-    //   return result[0]?.payload?.name;
-    // } else {
-    //   return null;
-    // }
-    return result;
+    return this.qdrantService.search(embedding);
   }
 }

@@ -22,7 +22,7 @@ export class IndexingService {
   ) {}
 
   async indexing(name: string, text: string) {
-    const embedding = await this.embeddingService.embedding(text);
+    const embedding = await this.embeddingService.localEmbedding(text);
 
     const result = await this.qdrantService.upsert(embedding, {
       name,
@@ -38,7 +38,7 @@ export class IndexingService {
   async indexChampions() {
     const champions = await this.championService.findAll();
     const deps = createChampionIndexerDeps(this.qdrantService, (text) =>
-      this.embeddingService.embedding(text),
+      this.embeddingService.localEmbedding(text),
     );
     const result = await indexChampionRecords(champions, deps);
 
@@ -50,7 +50,7 @@ export class IndexingService {
   async indexItems() {
     const items = await this.itemService.findAll();
     const deps = createItemIndexerDeps(this.qdrantService, (text) =>
-      this.embeddingService.embedding(text),
+      this.embeddingService.localEmbedding(text),
     );
     const result = await indexItemRecords(items, deps);
 
@@ -62,7 +62,7 @@ export class IndexingService {
   async indexTraits() {
     const traits = await this.traitService.findAll();
     const deps = createTraitIndexerDeps(this.qdrantService, (text) =>
-      this.embeddingService.embedding(text),
+      this.embeddingService.localEmbedding(text),
     );
     const result = await indexTraitRecords(traits, deps);
 

@@ -20,7 +20,7 @@ export class ToolRegistry {
     this.register(this.traitTool.getTools());
   }
 
-  register(tools: DynamicStructuredTool[]) {
+  private register(tools: DynamicStructuredTool[]) {
     for (const tool of tools) {
       this.tools.set(tool.name, tool);
     }
@@ -28,9 +28,5 @@ export class ToolRegistry {
 
   getAll() {
     return Array.from(this.tools.values());
-  }
-
-  get(name: string): DynamicStructuredTool | undefined {
-    return this.tools.get(name);
   }
 }
