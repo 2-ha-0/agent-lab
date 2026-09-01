@@ -2,6 +2,15 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class PromptService {
+  getContextAnswerSystemPrompt() {
+    return `
+      너는 검색된 문서만으로 답하는 AI다.
+
+      문서에 없는 내용은 추측하지 말고 모른다고 답하라.
+      챔피언 이름, 아이템 이름은 문서에 있는 것만 써라.
+    `;
+  }
+
   getAgentSystemPrompt() {
     return `
       너는 AI Agent다.

@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { AIMessage } from '@langchain/core/messages';
-import { createAgent, modelCallLimitMiddleware } from 'langchain';
 import { GraphRecursionError } from '@langchain/langgraph';
 import { LlmService } from 'src/llm/llm.service';
 import { PromptService } from 'src/prompt/prompt.service';
 import { RetrievalService } from 'src/retrieval/retrieval.service';
 import { ToolRegistry } from 'src/tools/tools.registry';
+import { compileAgentGraph } from './agent.graph';
 
 type TraceStep = {
   type: 'retrieve' | 'model' | 'tool' | 'end';
@@ -14,6 +14,8 @@ type TraceStep = {
 
 @Injectable()
 export class AgentService {
+  private compiledGraph?: ReturnType<typeof compileAgentGraph>;
+
   constructor(
     private readonly llmService: LlmService,
     private readonly promptService: PromptService,
@@ -22,7 +24,7 @@ export class AgentService {
   ) {}
 
   async getGraph() {
-    const drawable = await this.createAgent().graph.getGraphAsync();
+    const drawable = await this.getCompiledGraph().getGraphAsync();
 
     return drawable.drawMermaid();
   }
@@ -34,8 +36,8 @@ export class AgentService {
   }
 
   async trace(question: string) {
-    const { messages } = await this.execute(question);
-    const steps = this.buildTrace(messages);
+    const { messages, useTools } = await this.execute(question);
+    const steps = this.buildTrace(messages, useTools);
 
     return {
       answer: this.getFinalContent(messages),
@@ -44,39 +46,44 @@ export class AgentService {
     };
   }
 
-  private async execute(question: string) {
-    const context = await this.retrievalService.retrieve(question);
-    const contextText = context.map((item) => item.payload?.text).join('\n');
-    const agent = this.createAgent();
+  private getCompiledGraph() {
+    this.compiledGraph ??= compileAgentGraph({
+      llmService: this.llmService,
+      promptService: this.promptService,
+      retrievalService: this.retrievalService,
+      toolRegistry: this.toolRegistry,
+    });
 
+    return this.compiledGraph;
+  }
+
+  private async execute(question: string) {
     try {
-      const result = await agent.invoke(
-        {
-          messages: [
-            {
-              role: 'user',
-              content: this.promptService.buildAgentUserMessage(
-                question,
-                contextText,
-              ),
-            },
-          ],
-        },
+      const result = await this.getCompiledGraph().invoke(
+        { question },
         { recursionLimit: 25 },
       );
 
-      return { messages: result.messages };
+      return {
+        messages: result.messages,
+        useTools: result.useTools,
+      };
     } catch (error) {
       if (error instanceof GraphRecursionError) {
-        return { messages: [] };
+        return { messages: [], useTools: false };
       }
 
       throw error;
     }
   }
 
-  private buildTrace(messages: unknown[]) {
-    const steps: TraceStep[] = [{ type: 'retrieve' }];
+  private buildTrace(messages: unknown[], useTools: boolean) {
+    const steps: TraceStep[] = [
+      {
+        type: 'retrieve',
+        name: useTools ? '아이템 추천 → 툴' : '그 외 → 모델만',
+      },
+    ];
 
     for (const message of messages) {
       if (!AIMessage.isInstance(message)) {
@@ -103,7 +110,7 @@ export class AgentService {
 
   private drawTraceMermaid(steps: TraceStep[]) {
     const labels: Record<string, (step: { name?: string }) => string> = {
-      retrieve: () => 'retrieve',
+      retrieve: (step) => step.name ?? 'retrieve',
       model: () => '모델',
       tool: (step) => step.name ?? 'tool',
       end: () => '끝',
@@ -134,19 +141,5 @@ export class AgentService {
     }
 
     return '최대 도구 호출 횟수에 도달했습니다.';
-  }
-
-  private createAgent() {
-    return createAgent({
-      model: this.llmService.getModel(),
-      tools: this.toolRegistry.getAll(),
-      systemPrompt: this.promptService.getAgentSystemPrompt(),
-      middleware: [
-        modelCallLimitMiddleware({
-          runLimit: 10,
-          exitBehavior: 'end',
-        }),
-      ],
-    });
   }
 }

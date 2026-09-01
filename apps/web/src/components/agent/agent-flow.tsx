@@ -85,7 +85,7 @@ function toNodes(question: string, steps: TraceStep[]): FlowNode[] {
         return {
           type: step.type,
           title: 'RAG 검색',
-          detail: '질문과 관련된 문서를 먼저 찾음',
+          detail: step.name ?? '질문과 관련된 문서를 먼저 찾음',
         };
       }
 

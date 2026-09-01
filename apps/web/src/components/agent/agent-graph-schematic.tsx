@@ -1,4 +1,4 @@
-import { Brain, CheckCircle2, Play, Wrench } from 'lucide-react';
+import { Brain, CheckCircle2, Play, Search, Wrench } from 'lucide-react';
 
 export function AgentGraphSchematic() {
   return (
@@ -6,46 +6,49 @@ export function AgentGraphSchematic() {
       <GraphNode
         icon={Play}
         label="시작"
-        detail="질문 + RAG 문서를 모델에 전달"
+        detail="질문을 그래프로 넘김"
         tone="sky"
       />
-      <ArrowDown label="messages" />
+      <ArrowDown label="question" />
       <GraphNode
-        icon={Brain}
-        label="모델"
-        detail="툴을 호출할지, 바로 답할지 결정"
-        tone="fuchsia"
+        icon={Search}
+        label="retrieve"
+        detail="관련 문서를 찾은 뒤, 질문이 아이템 추천인지 본다"
+        tone="violet"
       />
       <div className="grid w-full max-w-xl gap-4 md:grid-cols-2">
         <div className="flex flex-col items-center gap-3 rounded-3xl border border-amber-400/30 bg-amber-500/5 p-4">
           <p className="text-xs uppercase tracking-wider text-amber-200">
-            툴이 필요하면
+            아이템·추천·빌드
           </p>
-          <ArrowDown label="tool_calls" />
+          <ArrowDown label="useTools = true" />
           <GraphNode
             icon={Wrench}
-            label="툴 실행"
-            detail="searchChampionsByName 등을 호출"
+            label="tools"
+            detail="createAgent로 챔피언/아이템 툴 호출"
             tone="amber"
           />
-          <ArrowDown label="ToolMessage" />
-          <p className="text-center text-sm text-muted-foreground">
-            결과를 들고 다시 모델로
-          </p>
         </div>
         <div className="flex flex-col items-center gap-3 rounded-3xl border border-emerald-400/30 bg-emerald-500/5 p-4">
           <p className="text-xs uppercase tracking-wider text-emerald-200">
-            바로 답할 수 있으면
+            그 외 질문
           </p>
-          <ArrowDown label="final answer" />
+          <ArrowDown label="useTools = false" />
           <GraphNode
-            icon={CheckCircle2}
-            label="끝"
-            detail="툴 없이 최종 답변 반환"
+            icon={Brain}
+            label="answer"
+            detail="툴 없이 검색 문서만으로 답"
             tone="emerald"
           />
         </div>
       </div>
+      <ArrowDown label="END" />
+      <GraphNode
+        icon={CheckCircle2}
+        label="끝"
+        detail="선택한 노드의 답을 반환"
+        tone="fuchsia"
+      />
     </div>
   );
 }
@@ -59,13 +62,14 @@ function GraphNode({
   icon: typeof Brain;
   label: string;
   detail: string;
-  tone: 'sky' | 'fuchsia' | 'amber' | 'emerald';
+  tone: 'sky' | 'fuchsia' | 'amber' | 'emerald' | 'violet';
 }) {
   const tones = {
     sky: 'border-sky-400/40 from-sky-500/15',
     fuchsia: 'border-fuchsia-400/40 from-fuchsia-500/20',
     amber: 'border-amber-400/40 from-amber-500/15',
     emerald: 'border-emerald-400/40 from-emerald-500/15',
+    violet: 'border-violet-400/40 from-violet-500/15',
   };
 
   return (

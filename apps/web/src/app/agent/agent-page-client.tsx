@@ -83,8 +83,8 @@ export function AgentPageClient() {
           </span>
         </h1>
         <p className="max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
-          질문을 보내면 에이전트가 RAG 검색 → 모델 판단 → 툴 실행 → 최종 답을
-          어떤 순서로 했는지 위에서 아래로 보여 줍니다.
+          질문을 보내면 아이템 추천인지로 길이 갈립니다. 추천이면 툴
+          에이전트, 아니면 검색 문서만으로 답합니다.
         </p>
       </section>
 
@@ -180,8 +180,8 @@ export function AgentPageClient() {
             <CardHeader>
               <CardTitle>LangGraph 설계도</CardTitle>
               <CardDescription>
-                질문과 무관한 고정 구조입니다. 모델과 툴 사이를 오갈 수 있는
-                길만 보여 줍니다.
+                질문과 무관한 고정 구조입니다. 검색 뒤에 아이템 추천 여부로
+                길이 갈라집니다.
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col gap-6">
